@@ -11,3 +11,5 @@ First session = 27th september
 ____
 
 Dieter are you getting this?
+
+# Dieter reading loud and clear!
