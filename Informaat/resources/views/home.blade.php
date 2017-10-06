@@ -17,6 +17,8 @@
                         
                     
                     You are logged in!
+                    <hr>
+                    Go to <a href="/posts">posts </a> 
                 </div>
             </div>
         </div>
