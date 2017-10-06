@@ -13,6 +13,10 @@
         {{$post->user->name}}
         </div>
     </div>
+
+    @foreach($post->comments as $comment)
+    <p>{{$comment->title}}</p>
+    @endforeach
 </div>
 
 @endsection

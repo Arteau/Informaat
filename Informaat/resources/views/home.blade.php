@@ -14,9 +14,7 @@
                         </div>
                     @endif
                     
-                        @foreach($posts as $post)
-                            {{$post->body}}
-                        @endforeach
+                        
                     
                     You are logged in!
                 </div>
