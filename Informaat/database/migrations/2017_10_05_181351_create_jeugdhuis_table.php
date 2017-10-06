@@ -15,8 +15,11 @@ class CreateJeugdhuisTable extends Migration
     {
         Schema::create('jeugdhuis', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('points');
+            $table->integer('user_id');            
             $table->timestamps();
         });
+        
     }
 
     /**

@@ -18,9 +18,15 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            // $table->integer('comment_id')->unsigned();
+            // $table->integer('post_id')->unsigned();           
             $table->rememberToken();
             $table->timestamps();
         });
+        // Schema::table('users', function(Blueprint $table) {
+        //     $table->foreign('comment_id')->references('id')->on('comments');
+        //     $table->foreign('post_id')->references('id')->on('posts');
+        // });
     }
 
     /**

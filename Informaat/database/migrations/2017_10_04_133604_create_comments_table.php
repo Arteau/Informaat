@@ -20,6 +20,8 @@ class CreateCommentsTable extends Migration
             $table->smallInteger('downvotes')->nullable();
             $table->smallInteger('upvotes')->nullable();
             $table->string('filename')->nullable();
+            $table->integer('post_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
