@@ -19,7 +19,15 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+        return view('post.index', compact('posts'));
+        
+    }
+    public function show(Post $post)
+    {
+        
+        return view('post.show', compact('post'));
+        
     }
 
     /**
@@ -43,16 +51,7 @@ class PostController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Post $post)
-    {
-        //
-    }
+    
 
     /**
      * Show the form for editing the specified resource.
