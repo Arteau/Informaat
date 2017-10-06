@@ -30,8 +30,7 @@
 
           @foreach($posts as $post)
           <!-- Blog Post -->
-          <div class="blog_post md-4" style="padding: 5px;
-                    background-color: #d2d1d1;margin-bottom:5px">
+          <div class="blog_post md-4 alert alert-info">
             <div class="card ">
                 <div class="card-body">
                 <h2 class="card-title">{{$post->title}}</h2>

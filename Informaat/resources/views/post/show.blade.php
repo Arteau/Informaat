@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-    <div class="card ">
+    <div class="card alert alert-info ">
         <div class="card-body">
         <h2 class="card-title">{{$post->title}}</h2>
         <p class="card-text">{{$post->body}}</p>
@@ -13,10 +13,14 @@
         {{$post->user->name}}
         </div>
     </div>
-
-    @foreach($post->comments as $comment)
-    <p>{{$comment->title}}</p>
-    @endforeach
+    
+    
+    <ul class="list-group">
+        @foreach($post->comments as $comment)
+        <li class="list-group-item">{{$comment->title}}</li>
+        @endforeach
+    </ul>
+    
 </div>
 
 @endsection
