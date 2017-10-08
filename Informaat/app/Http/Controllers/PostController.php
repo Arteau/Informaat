@@ -49,8 +49,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $post = new Post;
-
+    
             $this->validate(request(), [
             'title' => 'required|min:2',
             'body' => 'required',
@@ -75,7 +74,6 @@ class PostController extends Controller
         // redirect to homepage
         session()->flash('message', 'Created succesfull ');
 
-
         return redirect('/posts');
     }
 
@@ -89,7 +87,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('post.edit', compact('post'));
     }
 
     /**
@@ -101,7 +99,10 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $post->update($request->all());
+        
+
+        return redirect('posts/'.$post->id);
     }
 
     /**
@@ -110,8 +111,12 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function delete(Request $request, Post $post)
     {
-        //
+        $post->delete($request->all());
+        
+        session()->flash('message', 'Deleted succesfull ');
+
+        return redirect('posts/');
     }
 }
