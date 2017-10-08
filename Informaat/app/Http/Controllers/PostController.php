@@ -38,7 +38,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('post.create');
     }
 
     /**
@@ -49,7 +49,34 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = new Post;
+
+            $this->validate(request(), [
+            'title' => 'required|min:2',
+            'body' => 'required',
+        ]);
+
+        Post::create([
+            'title' => request('title'),
+
+            'topic' => request('topic'),
+
+            'body' => request('body'),
+            
+            'tag1' => request('tag1'),
+
+            'tag2' => request('tag2'),
+
+            'tag3' => request('tag3'),
+
+            'user_id' => auth()->id(),
+        ]);
+
+        // redirect to homepage
+        session()->flash('message', 'Created succesfull ');
+
+
+        return redirect('/posts');
     }
 
     
