@@ -50,6 +50,8 @@
             @endif
             <b>{{$comment->title}}</b> <br>
             <i>{{$comment->body}} </i><hr>
+            <small> Gepost: {{$comment->created_at->diffForHumans()}} by
+            {{$comment->user->name}}</small>
             <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/edit">Edit</a>
         </li>
         @endforeach

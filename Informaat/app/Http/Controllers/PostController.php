@@ -45,6 +45,9 @@ class PostController extends Controller
      */
     public function index()
     {
+
+        // votes in table en elke up/downvote tabel aanpassen
+        // niet efficient --> mogelijk betere oplossing vinden
         $user = Auth::user();
         $posts = Post::all();
         return view('post.index', compact('posts', 'user'));
