@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use App\Post;
+use App\User;
+use Auth;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -12,6 +14,32 @@ class CommentController extends Controller
     {
         $this->middleware('auth');
         
+    }
+
+    public function upvote(Post $post, Comment $comment)
+    {
+        
+        $user = Auth::user();
+        $user->cancelVote($comment);
+        $user->upVote($comment);
+        
+        return back();
+    }
+
+    public function downvote(Post $post, Comment $comment)
+    {
+        $user = Auth::user();
+        $user->cancelVote($comment);
+        $user->downVote($comment);
+        
+        return back();
+    }
+    public function cancelvote(Post $post, Comment $comment)
+    {
+        $user = Auth::user();
+        $user->cancelVote($comment);
+        
+        return back();
     }
     /**
      * Display a listing of the resource.
@@ -81,6 +109,8 @@ class CommentController extends Controller
      */
     public function edit(Post $post, Comment $comment)
     {
+        
+        
         return view('comment.edit', compact('comment', 'post'));
     }
 

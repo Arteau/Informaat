@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\Comment;
+use Auth;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -26,8 +27,9 @@ class PostController extends Controller
     }
     public function show(Post $post)
     {
+        $user = Auth::user();
         
-        return view('post.show', compact('post'));
+        return view('post.show', compact('post','user'));
         
     }
 

@@ -32,4 +32,5 @@ Route::get('/posts/{post}/comment/{comment}/edit', 'CommentController@edit')->na
 Route::patch('/posts/{post}/comment/{comment}/update', 'CommentController@update')->name('update_comment');
 Route::post('/posts/{post}/comment/store', 'CommentController@store')->name('store_comment');
 Route::patch('/posts/{post}/comment/{comment}/delete', 'CommentController@delete')->name('delete_comment');
-
+Route::get('/posts/{post}/comment/{comment}/upvote', 'CommentController@upvote');
+Route::get('/posts/{post}/comment/{comment}/downvote', 'CommentController@downvote');
