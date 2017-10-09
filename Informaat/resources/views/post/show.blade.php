@@ -20,7 +20,10 @@
         <li class="list-group-item">
         
                 {{ ($comment->countUpVoters()) - ($comment->countDownVoters()) }}
-        
+        @if(!$user->hasVoted($comment))
+        <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
+        <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+        @else
         @if($user->hasUpVoted($comment))
             <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/cancelvote"><i class="fa fa-caret-up" aria-hidden="true" style="color:black"></i></a>
             <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
@@ -29,7 +32,8 @@
             <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
             <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/cancelvote"><i class="fa fa-caret-down" aria-hidden="true" style="color:black"></i></a>
         @endif
-        <hr>
+        @endif
+        
         
         <b>{{$comment->title}}</b> <br>
         <i>{{$comment->body}} </i><hr>

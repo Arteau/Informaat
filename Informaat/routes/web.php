@@ -34,3 +34,4 @@ Route::post('/posts/{post}/comment/store', 'CommentController@store')->name('sto
 Route::patch('/posts/{post}/comment/{comment}/delete', 'CommentController@delete')->name('delete_comment');
 Route::get('/posts/{post}/comment/{comment}/upvote', 'CommentController@upvote');
 Route::get('/posts/{post}/comment/{comment}/downvote', 'CommentController@downvote');
+Route::get('/posts/{post}/comment/{comment}/cancelvote', 'CommentController@cancelvote');
