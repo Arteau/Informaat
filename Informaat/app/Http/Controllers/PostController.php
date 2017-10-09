@@ -14,6 +14,30 @@ class PostController extends Controller
         $this->middleware('auth');
         
     }
+
+    public function upvote(Post $post)
+    {
+        $user = Auth::user();
+        $user->cancelVote($post);
+        $user->upVote($post);
+        
+        return back();
+    }
+    public function downvote(Post $post)
+    {
+        $user = Auth::user();
+        $user->cancelVote($post);
+        $user->downVote($post);
+        
+        return back();
+    }
+    public function cancel(Post $post)
+    {
+        $user = Auth::user();
+        $user->cancelVote($post);
+        
+        return back();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -21,8 +45,9 @@ class PostController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
         $posts = Post::all();
-        return view('post.index', compact('posts'));
+        return view('post.index', compact('posts', 'user'));
         
     }
     public function show(Post $post)

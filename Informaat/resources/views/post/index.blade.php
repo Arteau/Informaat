@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
     .card-img-top {
@@ -33,6 +34,22 @@
           <div class="blog_post md-4 alert alert-info">
             <div class="card ">
                 <div class="card-body">
+                
+                {{ ($post->countUpVoters()) - ($post->countDownVoters()) }}
+                @if(!$user->hasVoted($post))
+                <a href="/posts/{{$post->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
+                <a href="/posts/{{$post->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                @else
+                    @if($user->hasUpVoted($post))
+                        <a href="/posts/{{$post->id}}/cancelvote"><i class="fa fa-caret-up" aria-hidden="true" style="color:black"></i></a>
+                        <a href="/posts/{{$post->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                    @endif
+                    @if($user->hasDownVoted($post))
+                        <a href="/posts/{{$post->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
+                        <a href="/posts/{{$post->id}}/cancelvote"><i class="fa fa-caret-down" aria-hidden="true" style="color:black"></i></a>
+                    @endif
+                @endif
+
                 <h2 class="card-title">{{$post->title}}</h2>
                 <a href="/posts/{{$post->id}}" class="btn btn-primary">Read More &rarr;</a>
                 </div>

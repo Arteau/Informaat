@@ -5,6 +5,22 @@
 <div class="container">
     <div class="card alert alert-info ">
         <div class="card-body">
+
+        {{ ($post->countUpVoters()) - ($post->countDownVoters()) }}
+        @if(!$user->hasVoted($post))
+        <a href="/posts/{{$post->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
+        <a href="/posts/{{$post->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+        @else
+            @if($user->hasUpVoted($post))
+                <a href="/posts/{{$post->id}}/cancelvote"><i class="fa fa-caret-up" aria-hidden="true" style="color:black"></i></a>
+                <a href="/posts/{{$post->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+            @endif
+            @if($user->hasDownVoted($post))
+                <a href="/posts/{{$post->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
+                <a href="/posts/{{$post->id}}/cancelvote"><i class="fa fa-caret-down" aria-hidden="true" style="color:black"></i></a>
+            @endif
+        @endif
+
         <h2 class="card-title">{{$post->title}}</h2>
         <p class="card-text">{{$post->body}}</p>
         </div>
@@ -18,26 +34,23 @@
     <ul class="list-group">
         @foreach($post->comments as $comment)
         <li class="list-group-item">
-        
-                {{ ($comment->countUpVoters()) - ($comment->countDownVoters()) }}
-        @if(!$user->hasVoted($comment))
-        <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
-        <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
-        @else
-        @if($user->hasUpVoted($comment))
-            <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/cancelvote"><i class="fa fa-caret-up" aria-hidden="true" style="color:black"></i></a>
-            <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
-        @endif
-        @if($user->hasDownVoted($comment))
+            {{ ($comment->countUpVoters()) - ($comment->countDownVoters()) }}
+            @if(!$user->hasVoted($comment))
             <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
-            <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/cancelvote"><i class="fa fa-caret-down" aria-hidden="true" style="color:black"></i></a>
-        @endif
-        @endif
-        
-        
-        <b>{{$comment->title}}</b> <br>
-        <i>{{$comment->body}} </i><hr>
-        <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/edit">Edit</a>
+            <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+            @else
+                @if($user->hasUpVoted($comment))
+                    <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/cancelvote"><i class="fa fa-caret-up" aria-hidden="true" style="color:black"></i></a>
+                    <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                @endif
+                @if($user->hasDownVoted($comment))
+                    <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
+                    <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/cancelvote"><i class="fa fa-caret-down" aria-hidden="true" style="color:black"></i></a>
+                @endif
+            @endif
+            <b>{{$comment->title}}</b> <br>
+            <i>{{$comment->body}} </i><hr>
+            <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/edit">Edit</a>
         </li>
         @endforeach
     </ul>
