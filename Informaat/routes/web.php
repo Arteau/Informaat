@@ -28,4 +28,5 @@ Route::post('/posts', 'PostController@store')->name('save_post');
 Route::patch('/posts/{post}/update', 'PostController@update')->name('update_post');
 Route::patch('/posts/{post}/delete', 'PostController@delete')->name('delete_post');
 
+Route::get('/posts/{post}/comment/{comment}/edit', 'CommentController@edit')->name('edit_comment');
 

@@ -61,9 +61,9 @@ class CommentController extends Controller
      * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Comment $comment)
+    public function edit(Post $post, Comment $comment)
     {
-        //
+        return view('comment.edit', compact('comment', 'post'));
     }
 
     /**

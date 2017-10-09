@@ -17,7 +17,10 @@
     
     <ul class="list-group">
         @foreach($post->comments as $comment)
-        <li class="list-group-item">{{$comment->title}}</li>
+        <li class="list-group-item">
+        {{$comment->title}} <br>
+        <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/edit">Edit</a>
+        </li>
         @endforeach
     </ul>
     
