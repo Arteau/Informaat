@@ -29,4 +29,7 @@ Route::patch('/posts/{post}/update', 'PostController@update')->name('update_post
 Route::patch('/posts/{post}/delete', 'PostController@delete')->name('delete_post');
 
 Route::get('/posts/{post}/comment/{comment}/edit', 'CommentController@edit')->name('edit_comment');
+Route::patch('/posts/{post}/comment/{comment}/update', 'CommentController@update')->name('update_comment');
+Route::post('/posts/{post}/comment/store', 'CommentController@store')->name('store_comment');
+Route::patch('/posts/{post}/comment/{comment}/delete', 'CommentController@delete')->name('delete_comment');
 

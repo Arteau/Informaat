@@ -8,7 +8,7 @@
         </div>
     </div>
 
-    <form method="POST" action="/posts/{{$post->id}}/comment/{{$comment->id}}">
+    <form method="POST" action="/posts/{{$post->id}}/comment/{{$comment->id}}/update">
 
      {{ csrf_field() }}
      {{ method_field('PATCH') }}
@@ -20,13 +20,19 @@
     </div>
 
     <div class="form-group">
-        <label for="body">Vraag of opmerking</label>
+        <label for="body">Commentaar</label>
         <input type="text" name="body" id="body" value="{{ $comment->body }}" class="form-control">
     </div>
 
 
     <button type="submit" class="btn btn-primary">Edit post</button>
     <a href="/posts/{{$post->id}}"><div class="btn btn-danger">Back</div></a>
+    </form>
+
+    <form action="/posts/{{ $post->id }}/comment/{{ $comment->id }}/delete" method="POST">
+            {{ csrf_field() }}
+            {{ method_field('PATCH') }}
+        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
     </form>
     
 

@@ -39,9 +39,27 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Post $post)
     {
-        //
+        $this->validate(request(), [
+            'title' => 'required|min:2',
+            'body' => 'required',
+        ]);
+
+        Comment::create([
+            'title' => request('title'),
+
+            'body' => request('body'),
+            
+            'post_id' => $post->id,
+
+            'user_id' => auth()->id(),
+        ]);
+
+        // redirect to homepage
+        session()->flash('message', 'Created succesfull ');
+
+        return redirect('/posts/'.$post->id);
     }
 
     /**
@@ -73,9 +91,13 @@ class CommentController extends Controller
      * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comment $comment)
+    public function update(Request $request, Post $post, Comment $comment)
     {
-        //
+        // dd($comment);
+       
+        $comment->update($request->all());
+
+        return redirect('/posts/'.$post->id);
     }
 
     /**
@@ -84,8 +106,12 @@ class CommentController extends Controller
      * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comment $comment)
+    public function delete(Request $request, Post $post, Comment $comment)
     {
-        //
+        $comment->delete($request->all());
+        
+        session()->flash('message', 'Deleted succesfull ');
+
+        return redirect('posts/'.$post->id);
     }
 }
