@@ -31,7 +31,7 @@ class PostController extends Controller
         
         return back();
     }
-    public function cancel(Post $post)
+    public function cancelvote(Post $post)
     {
         $user = Auth::user();
         $user->cancelVote($post);
