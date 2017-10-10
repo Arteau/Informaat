@@ -88,7 +88,7 @@ class PostController extends Controller
         // votes in table en elke up/downvote tabel aanpassen
         // niet efficient --> mogelijk betere oplossing vinden
         $user = Auth::user();
-        $posts = Post::all();
+        $posts = Post::orderBy('votes', 'desc')->get();
         return view('post.index', compact('posts', 'user'));
         
     }
