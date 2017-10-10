@@ -18,16 +18,23 @@ class PostController extends Controller
     public function upvote(Post $post)
     {
         $user = Auth::user();
-
-        if($user->hasDownvoted($post))
+        
+        if(!$user->hasUpvoted($post) || !$user->hasVoted($post))
         {
-            $post->increment('votes', 2);
-            
-        } else {
-            $post->increment('votes');
+            if($user->hasDownvoted($post) )
+            {
+                $post->increment('votes', 2);
+            } 
+            else
+            {
+                $post->increment('votes');
+            }
+
+            $user->cancelVote($post);      
+            $user->upVote($post);
         }
-        $user->cancelVote($post);      
-        $user->upVote($post);
+
+        
 
         return back();
     }
@@ -35,32 +42,36 @@ class PostController extends Controller
     {
         $user = Auth::user();
 
-        if($user->hasUpvoted($post))
+        if(!$user->hasDownvoted($post) || !$user->hasVoted($post))
         {
-            $post->decrement('votes', 2);
 
-        } else {
-            $post->decrement('votes');
+            if($user->hasUpvoted($post))
+            {
+                $post->decrement('votes', 2);
+            } 
+            else 
+            {
+                $post->decrement('votes');
+            }
+
+            $user->cancelVote($post);
+            $user->downVote($post);
+            
         }
-        
-        $user->cancelVote($post);
-        $user->downVote($post);
-        
-        
+
         return back();
     }
     public function cancelvote(Post $post)
     {
         $user = Auth::user();
+        
         if($user->hasUpvoted($post))
         {
             $post->decrement('votes');
-            
         }
         if($user->hasDownvoted($post))
         {
             $post->increment('votes');
-            
         }
         $user->cancelVote($post);
         

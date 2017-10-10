@@ -21,17 +21,21 @@ class CommentController extends Controller
         
         $user = Auth::user();
 
-        if($user->hasDownvoted($comment))
+        if(!$user->hasUpvoted($comment) || !$user->hasVoted($comment))
         {
-            $comment->increment('votes', 2);
-            
-        } else {
-            $comment->increment('votes');
+            if($user->hasDownvoted($comment))
+            {
+                $comment->increment('votes', 2);
+                
+            } else 
+            {
+                $comment->increment('votes');
+            }
+
+            $user->cancelVote($comment);
+            $user->upVote($comment);
         }
 
-        $user->cancelVote($comment);
-        $user->upVote($comment);
-        
         return back();
     }
 
@@ -39,16 +43,20 @@ class CommentController extends Controller
     {
         $user = Auth::user();
 
-        if($user->hasUpvoted($comment))
+        if(!$user->hasDownvoted($comment) || !$user->hasVoted($comment))
         {
-            $comment->decrement('votes', 2);
 
-        } else {
-            $comment->decrement('votes');
+            if($user->hasUpvoted($comment))
+            {
+                $comment->decrement('votes', 2);
+            } else 
+            {
+                $comment->decrement('votes');
+            }
+
+            $user->cancelVote($comment);
+            $user->downVote($comment);
         }
-
-        $user->cancelVote($comment);
-        $user->downVote($comment);
         
         return back();
     }
@@ -58,13 +66,11 @@ class CommentController extends Controller
 
         if($user->hasUpvoted($comment))
         {
-            $comment->decrement('votes');
-            
+            $comment->decrement('votes');  
         }
         if($user->hasDownvoted($comment))
         {
-            $comment->increment('votes');
-            
+            $comment->increment('votes');  
         }
 
         $user->cancelVote($comment);
