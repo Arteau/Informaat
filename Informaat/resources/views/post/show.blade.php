@@ -36,7 +36,7 @@
     <ul class="list-group">
         @foreach($post->comments as $comment)
         <li class="list-group-item">
-            {{ ($comment->countUpVoters()) - ($comment->countDownVoters()) }}
+            {{ $comment->votes }}
             @if(!$user->hasVoted($comment))
             <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
             <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>

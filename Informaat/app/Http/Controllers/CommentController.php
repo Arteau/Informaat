@@ -20,6 +20,15 @@ class CommentController extends Controller
     {
         
         $user = Auth::user();
+
+        if($user->hasDownvoted($comment))
+        {
+            $comment->increment('votes', 2);
+            
+        } else {
+            $comment->increment('votes');
+        }
+
         $user->cancelVote($comment);
         $user->upVote($comment);
         
@@ -29,6 +38,15 @@ class CommentController extends Controller
     public function downvote(Post $post, Comment $comment)
     {
         $user = Auth::user();
+
+        if($user->hasUpvoted($comment))
+        {
+            $comment->decrement('votes', 2);
+
+        } else {
+            $comment->decrement('votes');
+        }
+
         $user->cancelVote($comment);
         $user->downVote($comment);
         
@@ -37,6 +55,18 @@ class CommentController extends Controller
     public function cancelvote(Post $post, Comment $comment)
     {
         $user = Auth::user();
+
+        if($user->hasUpvoted($comment))
+        {
+            $comment->decrement('votes');
+            
+        }
+        if($user->hasDownvoted($comment))
+        {
+            $comment->increment('votes');
+            
+        }
+
         $user->cancelVote($comment);
         
         return back();
