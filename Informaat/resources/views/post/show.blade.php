@@ -27,6 +27,8 @@
         <div class="card-footer text-muted">
         Gepost: {{$post->created_at->diffForHumans()}} by
         {{$post->user->name}}
+        <a href="/posts/{{$post->id}}/edit"><button class="btn btn-default">edit post</button></a>
+
         </div>
     </div>
     

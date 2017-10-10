@@ -21,8 +21,7 @@ class CreatePostsTable extends Migration
             $table->string('tag1')->nullable();
             $table->string('tag2')->nullable();
             $table->string('tag3')->nullable();
-            $table->integer('upvotes')->nullable();
-            $table->integer('downvotes')->nullable();
+            $table->integer('votes')->default(0);
             $table->boolean('question')->default(true);
             $table->boolean('upload')->default(false);
             $table->integer('user_id');

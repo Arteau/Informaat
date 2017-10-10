@@ -51,22 +51,15 @@
                 @endif
 
                 <h2 class="card-title">{{$post->title}}</h2>
+                <i>{{$post->body}}</i>
+                <hr>
                 <a href="/posts/{{$post->id}}" class="btn btn-primary">Read More &rarr;</a>
+                <a href="/posts/{{$post->id}}/edit"><button class="btn btn-default">edit post</button></a>
                 </div>
             </div>
           </div>
           @endforeach
-
-         
-          <!-- Pagination -->
-          <ul class="pagination justify-content-center md-4">
-            <li class="page-item">
-              <a class="page-link" href="#">&larr; Older</a>
-            </li>
-            <li class="page-item disabled">
-              <a class="page-link" href="#">Newer &rarr;</a>
-            </li>
-          </ul>
+          <a href="/posts/create"><button class="btn btn-default">Create post</button></a>
 
         </div>
 

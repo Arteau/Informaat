@@ -17,8 +17,7 @@ class CreateCommentsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('body');
-            $table->smallInteger('downvotes')->nullable();
-            $table->smallInteger('upvotes')->nullable();
+            $table->integer('votes')->default(0);            
             $table->string('filename')->nullable();
             $table->integer('post_id');
             $table->integer('user_id');
