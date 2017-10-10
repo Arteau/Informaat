@@ -6,7 +6,7 @@
     <div class="card alert alert-info ">
         <div class="card-body">
 
-        {{ ($post->countUpVoters()) - ($post->countDownVoters()) }}
+        {{ $post->votes }}
         @if(!$user->hasVoted($post))
         <a href="/posts/{{$post->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
         <a href="/posts/{{$post->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
