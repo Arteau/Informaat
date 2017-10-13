@@ -20,10 +20,21 @@ class PostController extends Controller
     public function search(){
         
         $keyword = Input::get('keyword', '');
-        $searchPost = Post::SearchByTag($keyword)->get();
+        $searchPost = Post::SearchByKey($keyword)->get();
         $user = Auth::user();
         
         return view('post.search', compact('searchPost', 'user'));
+    }
+
+    public function sort(){
+        
+        $user = Auth::user();
+        $keyword = Input::get('sort');
+        $sort = explode(" ", $keyword);
+        
+        $posts = Post::orderBy($sort[0], $sort[1])->get();
+        
+        return view('post.index', compact('posts', 'user'));        
     }
 
     public function upvote(Post $post)
@@ -98,6 +109,7 @@ class PostController extends Controller
 
         // votes in table en elke up/downvote tabel aanpassen
         // niet efficient --> mogelijk betere oplossing vinden
+        
         $user = Auth::user();
         $posts = Post::orderBy('votes', 'desc')->get();
         return view('post.index', compact('posts', 'user'));

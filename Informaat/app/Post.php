@@ -23,7 +23,7 @@ class Post extends Model
         return $this->hasMany(Comment::class);
     }
 
-    public function scopeSearchByTag($query, $keyword)
+    public function scopeSearchByKey($query, $keyword)
     {
         if ($keyword!='') {
             $query->where(function ($query) use ($keyword) {
@@ -31,6 +31,16 @@ class Post extends Model
                     ->orWhere("tag1", "LIKE", "%$keyword%")
                     ->orWhere("tag2", "LIKE", "%$keyword%")
                     ->orWhere("tag3", "LIKE", "%$keyword%");
+            });
+        }
+        return $query;
+    }
+
+    public function scopeSortPosts($query, $keyword)
+    {
+        if ($keyword!='') {
+            $query->orderBy(function ($query) use ($keyword) {
+                $query->orderBy("%$keyword%", 'desc')->get();    
             });
         }
         return $query;
