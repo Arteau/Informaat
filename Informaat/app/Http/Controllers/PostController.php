@@ -17,15 +17,13 @@ class PostController extends Controller
         
     }
 
-    public function search(Post $post){
+    public function search(){
         
         $keyword = Input::get('keyword', '');
         $searchPost = Post::SearchByTag($keyword)->get();
+        $user = Auth::user();
         
-        
-        session()->flash('find', $searchPost);
-        
-        return back();
+        return view('post.search', compact('searchPost', 'user'));
     }
 
     public function upvote(Post $post)

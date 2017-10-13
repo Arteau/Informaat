@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
     .card-img-top {
@@ -36,19 +35,7 @@
         </form>
 
 
-        @if ($searchPost = session('find'))
-
-          @isset($searchPost)
-            @empty($searchPost[0])
-              <h1>Geen resultaten gevonden!</h1>
-            @endempty
-          @endisset
-
-          @foreach($searchPost as $post)
-          {{$post->title}}
-          @endforeach
-
-        @endif
+        
 
        
           @foreach($posts as $post)
