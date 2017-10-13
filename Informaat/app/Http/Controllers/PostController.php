@@ -29,13 +29,13 @@ class PostController extends Controller
 
     public function sort(){
         
-        $user = Auth::user();
+        
         $keyword = Input::get('sort');
         $sort = explode(" ", $keyword);
         
         $posts = Post::orderBy($sort[0], $sort[1])->get();
         Session::put('posts', $posts);
-        
+        Session::put('option', $keyword);
         return back();        
     }
 
@@ -109,15 +109,11 @@ class PostController extends Controller
      */
     public function index()
     {
-
-        // votes in table en elke up/downvote tabel aanpassen
-        // niet efficient --> mogelijk betere oplossing vinden
         
         $user = Auth::user();
         if(session()->has('posts'))
         {
             $posts = session('posts');
-            
             
         } else {
             $posts = Post::orderBy('votes', 'desc')->get();

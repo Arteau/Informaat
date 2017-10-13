@@ -35,17 +35,17 @@
         </form>
 
 
-        
-      <form role="sort" class="app-sort" action="/posts/sort" method="POST">
+      <form role="sort" class="app-sort" id="sort-form" action="/posts/sort" method="POST">
       {{ csrf_field() }}
-
         <div class="form-group">
           <label for="keyword">Sorteer op</label>
           <select class="form-control"  name="sort" id="sort">
-          <option value="votes desc">Most votes</option>
-            <option value="title asc">Titel: A - Z</option>
-            <option value="title desc">Titel: Z - A</option>
-            <option value="created_at desc">Verschijningsdatum</option>
+          
+            <option value="votes desc" @if(session('option') == "votes desc") selected @endif>Most votes</option>
+            <option value="title asc" @if(session('option') == "title asc") selected @endif>Titel: A - Z</option>
+            <option value="title desc" @if(session('option') == "title desc") selected @endif>Titel: Z - A</option>
+            <option value="created_at desc" @if(session('option') == "created_at desc") selected @endif>Jongste eerst</option>
+            <option value="created_at asc" @if(session('option') == "created_at asc") selected @endif>Oudste eerst</option>
           </select>
         </div>
         <button type="submit">sort</button>

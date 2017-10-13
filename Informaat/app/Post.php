@@ -36,13 +36,5 @@ class Post extends Model
         return $query;
     }
 
-    public function scopeSortPosts($query, $keyword)
-    {
-        if ($keyword!='') {
-            $query->orderBy(function ($query) use ($keyword) {
-                $query->orderBy("%$keyword%", 'desc')->get();    
-            });
-        }
-        return $query;
-    }
+   
 }
