@@ -15,12 +15,12 @@
     <div class="row">
         <a href="#">
             <div class="col-xs-6" style="background-color:rgb(173, 173, 173); border:1px solid black">
-                <p class="text-center" style="color:white">Posts</p>
+                <p class="text-center" style="color:white; margin:14px;">Posts</p>
             </div>
         </a>
         <a href="#">
             <div class="col-xs-6" style="background-color:#c3c3c5; border:1px solid black">
-                <p class="text-center" style="color:white">Comments</p>
+                <p class="text-center" style="color:white; margin:14px;">Comments</p>
             </div>
         </a>
     </div>

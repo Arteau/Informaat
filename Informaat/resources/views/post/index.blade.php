@@ -28,7 +28,29 @@
           <h1 class="md-4">Alle posts
             <small>Informaat</small>
           </h1>
+          <form role="search" class="app-search" action="/posts/search" method="POST">
+          {{ csrf_field() }}
 
+            @include ('layouts.errors')
+            <input type="text" name="keyword" id="keyword" placeholder="Zoeken" class="form-control" style="width:100%"> <a href=""><i class="fa fa-search"></i></a>
+        </form>
+
+
+        @if ($searchPost = session('find'))
+
+          @isset($searchPost)
+            @empty($searchPost[0])
+              <h1>Geen resultaten gevonden!</h1>
+            @endempty
+          @endisset
+
+          @foreach($searchPost as $post)
+          {{$post->title}}
+          @endforeach
+
+        @endif
+
+       
           @foreach($posts as $post)
           <!-- Blog Post -->
           <div class="blog_post md-4 alert alert-info">

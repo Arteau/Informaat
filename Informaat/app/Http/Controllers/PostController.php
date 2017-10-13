@@ -6,6 +6,8 @@ use App\Post;
 use App\Comment;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+
 
 class PostController extends Controller
 {
@@ -13,6 +15,17 @@ class PostController extends Controller
     {
         $this->middleware('auth');
         
+    }
+
+    public function search(Post $post){
+        
+        $keyword = Input::get('keyword', '');
+        $searchPost = Post::SearchByTag($keyword)->get();
+        
+        
+        session()->flash('find', $searchPost);
+        
+        return back();
     }
 
     public function upvote(Post $post)

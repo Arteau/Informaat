@@ -22,4 +22,17 @@ class Post extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function scopeSearchByTag($query, $keyword)
+    {
+        if ($keyword!='') {
+            $query->where(function ($query) use ($keyword) {
+                $query->where("title", "LIKE","%$keyword%")
+                    ->orWhere("tag1", "LIKE", "%$keyword%")
+                    ->orWhere("tag2", "LIKE", "%$keyword%")
+                    ->orWhere("tag3", "LIKE", "%$keyword%");
+            });
+        }
+        return $query;
+    }
 }
