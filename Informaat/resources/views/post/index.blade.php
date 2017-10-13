@@ -42,15 +42,21 @@
         <div class="form-group">
           <label for="keyword">Sorteer op</label>
           <select class="form-control"  name="sort" id="sort">
+          <option value="votes desc">Most votes</option>
             <option value="title asc">Titel: A - Z</option>
             <option value="title desc">Titel: Z - A</option>
             <option value="created_at desc">Verschijningsdatum</option>
-            <option value="votes desc">Votes</option>
           </select>
         </div>
         <button type="submit">sort</button>
       </form>
-          @foreach($posts as $post)
+
+
+     @if(session()->has('posts'))
+          @foreach(session('posts') as $post)
+    
+         
+      
           <!-- Blog Post -->
           <div class="blog_post md-4 alert alert-info">
             <div class="card ">
@@ -82,6 +88,41 @@
             </div>
           </div>
           @endforeach
+          @else
+          @foreach($posts as $post)
+      
+          <!-- Blog Post -->
+          <div class="blog_post md-4 alert alert-info">
+            <div class="card ">
+                <div class="card-body">
+                
+                {{ $post->votes }}
+                @if(!$user->hasVoted($post))
+                <a href="/posts/{{$post->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
+                <a href="/posts/{{$post->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                @else
+                    @if($user->hasUpVoted($post))
+                        <a href="/posts/{{$post->id}}/cancelvote"><i class="fa fa-caret-up" aria-hidden="true" style="color:black"></i></a>
+                        <a href="/posts/{{$post->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                    @endif
+                    @if($user->hasDownVoted($post))
+                        <a href="/posts/{{$post->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
+                        <a href="/posts/{{$post->id}}/cancelvote"><i class="fa fa-caret-down" aria-hidden="true" style="color:black"></i></a>
+                    @endif
+                @endif
+
+                <h2 class="card-title">{{$post->title}}</h2>
+                <i>{{$post->body}}</i>
+                <hr>
+                <a href="/posts/{{$post->id}}" class="btn btn-primary">Read More &rarr;</a>
+                <a href="/posts/{{$post->id}}/edit"><button class="btn btn-default">edit post</button></a>
+                </div>
+                <p>Onderwerp: {{$post->topic}}</p> 
+                <small>{{$post->tag1}} // {{$post->tag2}} // {{$post->tag3}}</small>
+            </div>
+          </div>
+          @endforeach
+          @endif
           <a href="/posts/create"><button class="btn btn-default">Create post</button></a>
 
         </div>

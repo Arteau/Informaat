@@ -34,7 +34,7 @@ class PostController extends Controller
         
         $posts = Post::orderBy($sort[0], $sort[1])->get();
         
-        return view('post.index', compact('posts', 'user'));        
+        return redirect()->back()->with('posts', $posts);        
     }
 
     public function upvote(Post $post)
