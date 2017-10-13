@@ -7,6 +7,7 @@ use App\Comment;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Session;
 
 
 class PostController extends Controller
@@ -33,8 +34,9 @@ class PostController extends Controller
         $sort = explode(" ", $keyword);
         
         $posts = Post::orderBy($sort[0], $sort[1])->get();
+        Session::put('posts', $posts);
         
-        return redirect()->back()->with('posts', $posts);        
+        return back();        
     }
 
     public function upvote(Post $post)
@@ -69,6 +71,7 @@ class PostController extends Controller
 
             if($user->hasUpvoted($post))
             {
+                
                 $post->decrement('votes', 2);
             } 
             else 
@@ -111,7 +114,15 @@ class PostController extends Controller
         // niet efficient --> mogelijk betere oplossing vinden
         
         $user = Auth::user();
-        $posts = Post::orderBy('votes', 'desc')->get();
+        if(session()->has('posts'))
+        {
+            $posts = session('posts');
+            
+            
+        } else {
+            $posts = Post::orderBy('votes', 'desc')->get();
+            
+        }
         return view('post.index', compact('posts', 'user'));
         
     }
