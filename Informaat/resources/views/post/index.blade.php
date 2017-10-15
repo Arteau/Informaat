@@ -48,7 +48,7 @@
             <option value="created_at asc" @if(session('option') == "created_at asc") selected @endif>Oudste eerst</option>
           </select>
         </div>
-        <button type="submit">sort</button>
+        <noscript><button type="submit">sort</button></noscript>
       </form>
           @foreach($posts as $post)
       
