@@ -31,10 +31,9 @@ class PostController extends Controller
         
         
         $keyword = Input::get('sort');
-        $sort = explode(" ", $keyword);
-        
-        $posts = Post::orderBy($sort[0], $sort[1])->get();
-        Session::put('posts', $posts);
+        $sort_var = explode(" ", $keyword);
+
+        Session::put('sort_var', $sort_var);
         Session::put('option', $keyword);
         return back();        
     }
@@ -109,11 +108,13 @@ class PostController extends Controller
      */
     public function index()
     {
-        
+        // !!!!!!!! vote systeem werkt niet meer!!!!
+        // Sessie variabele past aan ipv database!!!!!!!!!!!!
         $user = Auth::user();
-        if(session()->has('posts'))
+        if(session()->has('sort_var'))
         {
-            $posts = session('posts');
+            $sort = session('sort_var');
+            $posts = Post::orderBy($sort[0], $sort[1])->get();
             
         } else {
             $posts = Post::orderBy('votes', 'desc')->get();
