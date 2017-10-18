@@ -1,7 +1,10 @@
 $(function() {
     $('#sort').change(function() {
         $('#sort-form').submit(); 
-});
+    });
+
+    $('.collapsible').collapsible();
+    
 
 
 // add tags to project

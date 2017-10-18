@@ -21,7 +21,7 @@
           <p class="truncate">{{$top->title}}</p>
         </div>
         <div class="card-action">
-          <a href="#">Lees meer</a>
+          <a href="/posts/{{$top->id}}">Lees meer</a>
         </div>
       </div>
     </div> 
@@ -65,45 +65,46 @@
     <div class="col s12 m7">
   
     @foreach($posts as $post)
-    <div class="card horizontal z-depth-2">
-      <div class="card-image">
-        <img src="https://maxcdn.icons8.com/Share/icon/color/Gaming//pokecoin1600.png" style="width:60%">
-      </div>
-      <div class="card-stacked">
-        <div class="card-content">
-              {{ $post->votes }}
-                @if(!$user->hasVoted($post))
-                <a href="/posts/{{$post->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
-                <a href="/posts/{{$post->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
-                @else
-                    @if($user->hasUpVoted($post))
-                        <a href="/posts/{{$post->id}}/cancelvote"><i class="fa fa-caret-up" aria-hidden="true" style="color:black"></i></a>
-                        <a href="/posts/{{$post->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
-                    @endif
-                    @if($user->hasDownVoted($post))
-                        <a href="/posts/{{$post->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
-                        <a href="/posts/{{$post->id}}/cancelvote"><i class="fa fa-caret-down" aria-hidden="true" style="color:black"></i></a>
-                    @endif
-                @endif
+      <div class="card horizontal z-depth-2 hoverable">
+        <div class="card-image">
+          <img src="https://maxcdn.icons8.com/Share/icon/color/Gaming//pokecoin1600.png" style="width:60%">
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+                {{ $post->votes }}
+                  @if(!$user->hasVoted($post))
+                  <a href="/posts/{{$post->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
+                  <a href="/posts/{{$post->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                  @else
+                      @if($user->hasUpVoted($post))
+                          <a href="/posts/{{$post->id}}/cancelvote"><i class="fa fa-caret-up" aria-hidden="true" style="color:black"></i></a>
+                          <a href="/posts/{{$post->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                      @endif
+                      @if($user->hasDownVoted($post))
+                          <a href="/posts/{{$post->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
+                          <a href="/posts/{{$post->id}}/cancelvote"><i class="fa fa-caret-down" aria-hidden="true" style="color:black"></i></a>
+                      @endif
+                  @endif
 
-                <h2 class="card-title">{{$post->title}}</h2>
-                <i>{{$post->body}}</i>
-                <hr>
-                <a href="/posts/{{$post->id}}/edit"><button class="btn btn-default">edit post</button></a>
-                
-                <p>Onderwerp: {{$post->topic}}</p> 
-                @if(!empty($post->tag1 | $post->tag2 | $post->tag3))
-                <small>{{$post->tag1}} // {{$post->tag2}} // {{$post->tag3}}</small>
-                @endif
-        </div>
-        <div class="card-action">
-          <a href="/posts/{{$post->id}}">Lees meer</a>
+                  <h2 class="card-title">{{$post->title}}</h2>
+                  <i>{{$post->body}}</i>
+                  <hr>
+                  <a href="/posts/{{$post->id}}/edit"><button class="btn btn-default">edit post</button></a>
+                  
+                  <p>Onderwerp: {{$post->topic}}</p> 
+                  @if(!empty($post->tag1 | $post->tag2 | $post->tag3))
+                  <small>{{$post->tag1}} // {{$post->tag2}} // {{$post->tag3}}</small>
+                  @endif
+          </div>
+          <div class="card-action">
+            <a href="/posts/{{$post->id}}">Lees meer</a>
+          </div>
         </div>
       </div>
-    </div>
+
     @endforeach
     <a href="/posts/create"><button class="btn btn-default">Create post</button></a>
-
+</div>
   </div>
 </div>
 
