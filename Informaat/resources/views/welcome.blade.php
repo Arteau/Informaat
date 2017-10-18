@@ -23,17 +23,17 @@
 
 <div class="row">
 
-      <div class="col s4">
+      <div class="col s4 center-align" >
         <!-- Promo Content 1 goes here -->
-        PAGE1
+        <a href="/posts">Posts</a>
       </div>
-      <div class="col s4">
+      <div class="col s4 center-align">
         <!-- Promo Content 2 goes here -->
-        PAGE2
+        <a href="">Mijn jeugdhuis</a>
       </div>
-      <div class="col s4">
+      <div class="col s4 center-align">
         <!-- Promo Content 3 goes here -->
-        PAGE3
+        <a href="">Top 10 posts</a>
       </div>
 
     </div>
