@@ -7,6 +7,25 @@
 <div class="container">
   
   <h2 class="header">Alle posts</h2>
+
+  <div class="row">
+    <div class="col s6 m2 offset-m1">
+      <div class="card">
+        <div class="card-image">
+          <img src="https://maxcdn.icons8.com/Share/icon/color/Gaming//bullbasaur1600.png">
+          <span class="card-title">Card Title</span>
+        </div>
+        <div class="card-content">
+          <p>Titel project</p>
+        </div>
+        <div class="card-action">
+          <a href="#">Lees meer</a>
+        </div>
+      </div>
+    </div> 
+  </div>
+
+
   <div class="row">
     <div class="col m6 s12">
       <form role="search" class="app-search" action="/posts/search" method="POST">
@@ -16,6 +35,11 @@
           <input type="text" name="keyword" id="keyword" placeholder="Zoeken" class="form-control" style="width:100%"> <a href=""></a>
       </form>
     </div>
+
+  
+
+
+    
  
     <div class="col m6 s12">
       <form role="sort" class="app-sort" id="sort-form" action="/posts/sort" method="POST">
