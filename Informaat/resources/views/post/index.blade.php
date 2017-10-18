@@ -9,20 +9,23 @@
   <h2 class="header">Alle posts</h2>
 
   <div class="row">
-    <div class="col s6 m2 offset-m1">
+  <div class="col m1"></div>
+  @foreach($tops as $top)
+    <div class="col s6 m2">
       <div class="card">
         <div class="card-image">
           <img src="https://maxcdn.icons8.com/Share/icon/color/Gaming//bullbasaur1600.png">
-          <span class="card-title">Card Title</span>
+          <span class="card-title"></span>
         </div>
         <div class="card-content">
-          <p>Titel project</p>
+          <p class="truncate">{{$top->title}}</p>
         </div>
         <div class="card-action">
           <a href="#">Lees meer</a>
         </div>
       </div>
     </div> 
+    @endforeach
   </div>
 
 

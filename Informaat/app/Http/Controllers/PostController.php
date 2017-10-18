@@ -120,7 +120,8 @@ class PostController extends Controller
             $posts = Post::orderBy('votes', 'desc')->get();
             
         }
-        return view('post.index', compact('posts', 'user'));
+        $tops = Post::orderBy('votes', 'desc')->take(5)->get();
+        return view('post.index', compact('posts', 'user', 'tops'));
         
     }
     public function show(Post $post)
