@@ -120,7 +120,7 @@ class PostController extends Controller
             $posts = Post::orderBy('votes', 'desc')->get();
             
         }
-        $tops = Post::orderBy('votes', 'desc')->take(5)->get();
+        $tops = Post::orderBy('votes', 'desc')->take(4)->get();
         return view('post.index', compact('posts', 'user', 'tops'));
         
     }
@@ -202,7 +202,7 @@ class PostController extends Controller
     {
         $post->update($request->all());
         
-
+        session()->flash('message', 'Updated succesfull ');
         return redirect('posts/'.$post->id);
     }
 

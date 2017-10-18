@@ -121,7 +121,7 @@ class CommentController extends Controller
         ]);
 
         // redirect to homepage
-        session()->flash('message', 'Created succesfull ');
+        session()->flash('message', 'Commentaar aangemaakt! ');
 
         return redirect('/posts/'.$post->id);
     }
@@ -160,7 +160,8 @@ class CommentController extends Controller
     public function update(Request $request, Post $post, Comment $comment)
     {
         // dd($comment);
-       
+        session()->flash('message', 'Updated succesfull ');
+        
         $comment->update($request->all());
 
         return redirect('/posts/'.$post->id);

@@ -1,26 +1,35 @@
 @extends('layouts.app')
 
 @section('content')
-
-
     <!-- /.container -->
 <div class="container">
+
+@if ($flash = session('message'))
+
+    <script>
+    $(function() {
+      Materialize.toast('{{$flash}}', 4000);
+    });
+    </script>
+
+@endif
+
   
   <h2 class="header">Alle posts</h2>
 
   <div class="row">
-  <div class="col m1"></div>
+ 
   @foreach($tops as $top)
-    <div class="col s6 m2">
+    <div class="col s6 m3">
       <div class="card">
-        <div class="card-image">
-          <img src="https://maxcdn.icons8.com/Share/icon/color/Gaming//bullbasaur1600.png">
+        <div class="card-image valign-wrapper ">
+          <img src="https://maxcdn.icons8.com/Share/icon/color/Gaming//bullbasaur1600.png" style="width:60%; margin:0 auto;">
           <span class="card-title"></span>
         </div>
         <div class="card-content">
-          <p class="truncate">{{$top->title}}</p>
+          <p class="truncate center-align">{{$top->title}}</p>
         </div>
-        <div class="card-action">
+        <div class="card-action center-align">
           <a href="/posts/{{$top->id}}">Lees meer</a>
         </div>
       </div>
@@ -90,7 +99,6 @@
                   <h2 class="card-title">{{$post->title}}</h2>
                   <i>{{$post->body}}</i>
                   <hr>
-                  <a href="/posts/{{$post->id}}/edit"><button class="btn btn-default">edit post</button></a>
                   
                   <p>Onderwerp: {{$post->topic}}</p> 
                   @if(!empty($post->tag1 | $post->tag2 | $post->tag3))

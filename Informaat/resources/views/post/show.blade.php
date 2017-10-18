@@ -3,6 +3,15 @@
 @section('content')
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="container">
+@if ($flash = session('message'))
+
+    <script>
+    $(function() {
+      Materialize.toast('{{$flash}}', 4000);
+    });
+    </script>
+    
+@endif
     <div class="card horizontal z-depth-2">
       <div class="card-image">
         <img src="https://maxcdn.icons8.com/Share/icon/color/Gaming//pokecoin1600.png" style="width:60%">
@@ -39,8 +48,7 @@
       </div>
     </div>
     <hr>
-    <h6>Commentaar</h6>
-
+    
     @foreach($post->comments as $comment)
     <div class="card horizontal z-depth-2">
       <div class="card-image">
@@ -69,14 +77,13 @@
                 {{$comment->user->name}}</small>
         </div>
         <div class="card-action">
-          <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/edit">Edit post</a>
+          <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/edit">Edit comment </a>
         </div>
       </div>
     </div>
     @endforeach
     
     <hr>
-    <h6>Commentaar toevoegen</h6>
     <ul class="collapsible hoverable " data-collapsible="accordion">
         <li>
             <div class="collapsible-header light-green accent-1">
