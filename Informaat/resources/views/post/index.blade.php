@@ -35,7 +35,8 @@
         {{ csrf_field() }}
 
           @include ('layouts.errors')
-          <input type="text" name="keyword" id="keyword" placeholder="Zoeken" class="form-control" style="width:100%"> <a href=""></a>
+          <label for="keyword">Zoeken</label>
+          <input type="text" name="keyword" id="keyword"  class="field-input" style="width:100%"> <a href=""></a>
       </form>
     </div>
 
@@ -49,7 +50,7 @@
           {{ csrf_field() }}
             <div class="form-group">
               <label for="keyword">Sorteer op</label>
-              <select class="form-control"  name="sort" id="sort">
+              <select class="field-input"  name="sort" id="sort">
               
                 <option value="votes desc" @if(session('option') == "votes desc") selected @endif>Most votes</option>
                 <option value="title asc" @if(session('option') == "title asc") selected @endif>Titel: A - Z</option>

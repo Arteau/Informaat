@@ -85,13 +85,13 @@
             <div class="collapsible-body">
                 <form action="/posts/{{ $post->id }}/comment/store" method="POST">
                         {{ csrf_field() }}
-
-                    <div class="form-group">
+                        
+                    <div class="input-field">
                         <label for="title">Titel</label>
                         <input type="text" name="title" id="title" value="{{ old('title') }}" class="form-control">
                     </div>
 
-                    <div class="form-group">
+                    <div class="input-field">
                         <label for="body">Commentaar</label>
                         <input type="text" name="body" id="body" value="{{ old('body') }}" class="form-control">
                     </div>

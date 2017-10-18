@@ -14,19 +14,20 @@
      {{ method_field('PATCH') }}
      @include ('layouts.errors')
    
-    <div class="form-horizontal form-material">
+    <div class="input-field">
         <label for="title">Titel</label>
-        <input name="title" id="title" value="{{$post->title}}" class="form-control">
+        <input name="title" id="title" type="text" value="{{$post->title}}" >
     </div>
 
-    <div class="form-group">
+    <div class="input-field">
         <label for="body">Vraag of opmerking</label>
-        <input type="text" name="body" id="body" value="{{ $post->body }}" class="form-control">
+        <input type="text" name="body" id="body" value="{{ $post->body }}" >
     </div>
 
-    <div class="form-group{{ $errors->has('topic') ? ' has-error' : '' }}">
-        <label for="topic">Onderwerp</label>
-        <select class="form-control" id="topic" name="topic">
+    <div class="input-field">
+        <select id="topic" name="topic">
+            <option disabled selected>Onderwerp</option>
+
             <option @if($post->topic == "Onderwerp 1") selected @endif >
             Onderwerp 1</option>
             <option @if($post->topic == "Onderwerp 2") selected @endif>
@@ -43,27 +44,43 @@
                 @endif
     </div>
 
-    <div class="form-group">
+    <div class="input-field">
         <label for="tag1">Tag 1</label>
-        <input type="text" name="tag1" id="tag1" value="{{ $post->tag1 }}" class="form-control">
+        <input type="text" name="tag1" id="tag1" value="{{ $post->tag1 }}">
     </div>
-    <div class="form-group">
+    <div class="input-field">
         <label for="tag2">Tag 2</label>
-        <input type="text" name="tag2" id="tag2" value="{{ $post->tag2 }}" class="form-control">
+        <input type="text" name="tag2" id="tag2" value="{{ $post->tag2 }}">
     </div>
-    <div class="form-group">
+    <div class="input-field">
         <label for="tag3">Tag 3</label>
-        <input type="text" name="tag3" id="tag3" value="{{ $post->tag3 }}" class="form-control">
+        <input type="text" name="tag3" id="tag3" value="{{ $post->tag3 }}">
     </div>
 
     <button type="submit" class="btn btn-primary">Edit post</button>
     <a href="/posts"><div class="btn btn-danger">Back</div></a>
+    <a class="waves-effect waves-light btn modal-trigger" href="#modal_delete">Delete</a>
     </form>
-    <form action="/posts/{{ $post->id }}/delete" method="POST">
-            {{ csrf_field() }}
-            {{ method_field('PATCH') }}
-        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
-    </form>
+
+    
+
+    <div id="modal_delete" class="modal">
+        <div class="modal-content">
+            <h4>Delete</h4>
+            <p>Are you sure?</p>
+            
+        </div>
+        <div class="modal-footer">
+            
+            <form action="/posts/{{ $post->id }}/delete" method="POST">
+                {{ csrf_field() }}
+                {{ method_field('PATCH') }}
+                <button type="submit" class="modal-action waves-effect waves-green btn-flat">Yes</button>
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">No</a>
+            </form>
+        
+        </div>
+    </div>
 
 </div>
 @endsection

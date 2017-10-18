@@ -14,27 +14,40 @@
      {{ method_field('PATCH') }}
      @include ('layouts.errors')
    
-    <div class="form-horizontal form-material">
+    <div class="input-field">
         <label for="title">Titel</label>
-        <input name="title" id="title" value="{{$comment->title}}" class="form-control">
+        <input name="title" id="title" value="{{$comment->title}}" type="text">
     </div>
 
-    <div class="form-group">
+    <div class="input-field">
         <label for="body">Commentaar</label>
-        <input type="text" name="body" id="body" value="{{ $comment->body }}" class="form-control">
+        <input type="text" name="body" id="body" value="{{ $comment->body }}" >
     </div>
 
 
     <button type="submit" class="btn btn-primary">Edit post</button>
     <a href="/posts/{{$post->id}}"><div class="btn btn-danger">Back</div></a>
+    <a class="waves-effect waves-light btn modal-trigger" href="#modal_delete_comment">Delete</a>
     </form>
 
-    <form action="/posts/{{ $post->id }}/comment/{{ $comment->id }}/delete" method="POST">
-            {{ csrf_field() }}
-            {{ method_field('PATCH') }}
-        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
-    </form>
-    
+    <div id="modal_delete_comment" class="modal">
+        <div class="modal-content">
+            <h4>Delete</h4>
+            <p>Are you sure?</p>
+            
+        </div>
+        <div class="modal-footer">
+            
+        <form action="/posts/{{ $post->id }}/comment/{{ $comment->id }}/delete" method="POST">
+                {{ csrf_field() }}
+                {{ method_field('PATCH') }}
+            <button type="submit" class="modal-action waves-effect waves-green btn-flat" >Ja</button>
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Nee</a>
+
+        </form>
+        
+        </div>
+    </div>
 
 </div>
 @endsection
