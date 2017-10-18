@@ -50,5 +50,4 @@ Route::get('/jeugdhuizen/{jeugdhuis}/edit', 'JeugdhuisController@edit');
 Route::post('/jeugdhuizen/', 'JeugdhuisController@store');
 Route::patch('/jeughuizen/{jeugdhuizen}/update', 'JeugdhuisController@update');
 Route::patch('/jeughuizen/{jeugdhuizen}/delete', 'JeugdhuisController@delete');
-Route::post('/jeughuizen/{jeugdhuizen}/delete', 'JeugdhuisController@delete');
 
