@@ -29,7 +29,7 @@
       </div>
       <div class="col s4 center-align">
         <!-- Promo Content 2 goes here -->
-        <a href="">Mijn jeugdhuis</a>
+        <a href="/dashboard">Mijn jeugdhuis</a>
       </div>
       <div class="col s4 center-align">
         <!-- Promo Content 3 goes here -->

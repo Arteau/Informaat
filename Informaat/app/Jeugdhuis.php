@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Jeugdhuis extends Model
 {
-    //
 
     public function users()
     {

@@ -42,3 +42,13 @@ Route::patch('/posts/{post}/comment/{comment}/delete', 'CommentController@delete
 Route::get('/posts/{post}/comment/{comment}/upvote', 'CommentController@upvote');
 Route::get('/posts/{post}/comment/{comment}/downvote', 'CommentController@downvote');
 Route::get('/posts/{post}/comment/{comment}/cancelvote', 'CommentController@cancelvote');
+
+Route::get('/jeugdhuizen', 'JeugdhuisController@index');
+Route::get('/jeugdhuizen/create', 'JeugdhuisController@create');
+Route::get('/jeugdhuizen/{jeugdhuis}', 'JeugdhuisController@show');
+Route::get('/jeugdhuizen/{jeugdhuis}/edit', 'JeugdhuisController@edit');
+Route::post('/jeugdhuizen/', 'JeugdhuisController@store');
+Route::patch('/jeughuizen/{jeugdhuizen}/update', 'JeugdhuisController@update');
+Route::patch('/jeughuizen/{jeugdhuizen}/delete', 'JeugdhuisController@delete');
+Route::post('/jeughuizen/{jeugdhuizen}/delete', 'JeugdhuisController@delete');
+
