@@ -1,19 +1,12 @@
 $(function() {
-    console.log("working first");
     $('.modal').modal();
-    
     $('select').material_select();
-    
+    $('.collapsible').collapsible();
    
-    
-    
-
-   $('#sort').change(function() {
+    $('#sort').change(function() {
         $('#sort-form').submit(); 
     });
 
-    $('.collapsible').collapsible();
-
-
+    
 });
 

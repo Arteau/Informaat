@@ -28,7 +28,7 @@
           <span class="card-title"></span>
         </div>
         <div class="card-content">
-          <b><p class="truncate center-align">{{$top->title}}</p></b>
+        <i> <p>{{ $top->votes }} points</p></i><b><p class="truncate center-align">{{$top->title}}</p></b>
         </div>
         <div class="card-action center-align">
           <a href="/posts/{{$top->id}}">Lees meer</a>

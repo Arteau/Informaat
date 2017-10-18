@@ -8,7 +8,7 @@
         </div>
     </div>
 
-    <form method="POST" action="/posts">
+    <form method="POST" action="/posts" id="post_form">
 
      {{ csrf_field() }}
      @include ('layouts.errors')
@@ -47,7 +47,7 @@
         <input type="text" name="tag3" id="tag3" value="{{ old('tag3') }}" class="form-control">
     </div>
 
-    <button type="submit" class="btn btn-primary">Publish post</button>
+    <button type="submit" class="btn btn-primary" id="post_button_submit">Publish post</button>
     <a href="/posts"><div class="btn btn-danger">Back</div></a>
     </form>
 
