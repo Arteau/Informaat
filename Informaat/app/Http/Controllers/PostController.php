@@ -154,6 +154,7 @@ class PostController extends Controller
             $this->validate(request(), [
             'title' => 'required|min:2',
             'body' => 'required',
+            'topic' => 'required',
         ]);
 
         Post::create([

@@ -1,11 +1,12 @@
 @if (count($errors))
-     <div class="form-group">
-        <div class="alert alert-danger">
-            <ul>
+     
                 @foreach ($errors->all() as $error)
-                <li>{{$error}}</li>
+                <script>
+                    $(function() {
+                    Materialize.toast('{{$error}}', 4000);
+                    });
+                    </script>
+                
                 @endforeach
-            </ul>
-        </div> 
-    </div>
+           
     @endif

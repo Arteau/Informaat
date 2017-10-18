@@ -20,20 +20,22 @@
   <div class="row">
  
   @foreach($tops as $top)
+  <a href="/posts/{{$top->id}}">
     <div class="col s6 m3">
-      <div class="card">
+      <div class="card hoverable">
         <div class="card-image valign-wrapper ">
           <img src="https://maxcdn.icons8.com/Share/icon/color/Gaming//bullbasaur1600.png" style="width:60%; margin:0 auto;">
           <span class="card-title"></span>
         </div>
         <div class="card-content">
-          <p class="truncate center-align">{{$top->title}}</p>
+          <b><p class="truncate center-align">{{$top->title}}</p></b>
         </div>
         <div class="card-action center-align">
           <a href="/posts/{{$top->id}}">Lees meer</a>
         </div>
       </div>
     </div> 
+  </a>
     @endforeach
   </div>
 

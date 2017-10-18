@@ -14,19 +14,19 @@
      @include ('layouts.errors')
    
     <div class="input-field">
-        <label for="title">Titel</label>
+        <label for="title">Titel*</label>
         <input name="title" id="title" type="text" value="{{ old('title') }}" class="form-control">
     </div>
 
     <div class="input-field">
-        <label for="body">Vraag of opmerking</label>
+        <label for="body">Vraag of opmerking*</label>
         <input type="text" name="body" id="body" value="{{ old('body') }}" class="form-control">
     </div>
 
 
     <div class="input-field">
         <select id="topic" name="topic">
-            <option disabled selected>Onderwerp</option>
+            <option disabled selected>Onderwerp*</option>
             <option>Onderwerp 1</option>
             <option>Onderwerp 2</option>
             <option>Onderwerp 3</option>
