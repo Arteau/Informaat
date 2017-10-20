@@ -133,6 +133,7 @@
       </div>
 
     @endforeach
+    {{ $posts->links() }}
     <a href="/posts/create"><button class="btn btn-default">Create post</button></a>
 </div>
   </div>

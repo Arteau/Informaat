@@ -115,10 +115,13 @@ class PostController extends Controller
         if(session()->has('sort_var'))
         {
             $sort = session('sort_var');
-            $posts = Post::orderBy($sort[0], $sort[1])->get();
+                        
+            $posts = Post::orderBy($sort[0], $sort[1])->paginate(5);
+
+            $number_of_page = $posts->currentPage();
             
         } else {
-            $posts = Post::orderBy('votes', 'desc')->get();
+            $posts = Post::orderBy('votes', 'desc')->paginate(5);
             
         }
         $tops = Post::orderBy('votes', 'desc')->take(4)->get();
@@ -130,8 +133,9 @@ class PostController extends Controller
     {
         $user = Auth::user();
         
+        $comments = Comment::where('post_id', $post->id)->orderBy('votes', 'desc')->paginate(5);
         
-        return view('post.show', compact('post','user'));
+        return view('post.show', compact('post','user', 'comments'));
         
     }
 

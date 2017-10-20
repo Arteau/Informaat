@@ -49,7 +49,7 @@
     </div>
     <hr>
     
-    @foreach($post->comments as $comment)
+    @foreach($comments as $comment)
     <div class="card horizontal z-depth-2">
       <div class="card-image">
        <!-- image here -->
@@ -82,6 +82,8 @@
       </div>
     </div>
     @endforeach
+    {{ $comments->links() }}
+
     
     <hr>
 
