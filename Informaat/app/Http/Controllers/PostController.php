@@ -201,6 +201,12 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        $this->validate(request(), [
+            'title' => 'required|min:2',
+            'body' => 'required',
+            'topic' => 'required',
+        ]);
+        
         $post->update($request->all());
         
         session()->flash('message', 'Updated succesfull ');

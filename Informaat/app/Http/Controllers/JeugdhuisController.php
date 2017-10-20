@@ -98,6 +98,13 @@ class JeugdhuisController extends Controller
      */
     public function update(Request $request, Jeugdhuis $jeugdhuis)
     {
+        $this->validate(request(), [
+            'name' => 'required|min:2',
+            'village' => 'required',
+            'zipcode' => 'required',
+            
+        ]);
+        
         $jeugdhuis->update($request->all());
         
         session()->flash('message', 'Updated succesfull ');
