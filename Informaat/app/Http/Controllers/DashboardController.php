@@ -18,8 +18,10 @@ class DashboardController extends Controller
     public function index()
     {
         $user = Auth::user();
+        $user_posts = Auth::user()->posts;
+        // dd($user_posts);
         $posts = Post::orderBy('votes', 'desc')->get();
-        return view('dashboard.index', compact('posts', 'user'));
+        return view('dashboard.index', compact('posts', 'user', 'user_posts'));
         
     }
 }

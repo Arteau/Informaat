@@ -33,35 +33,25 @@
         </div>
     </div>
     <br>
+    @foreach($user_posts as $post)
 
     <div class="row" style="margin-bottom:5px;">
         <div class="col-xs-1" style="border:1px solid black">
-            <p class="">punten </p>
+            <p class="">{{$post->votes}} </p>
         </div>
         <div class="col-xs-2" style="border:1px solid black">
             <p>icon</p>
         </div>
         <div class="col-xs-7" style="border:1px solid black">
-            <p>titel & body</p>
+            <p>{{$post->title}}</p>
+            
         </div>
         <div class="col-xs-2" style="border:1px solid black">
             <p>comments</p>
         </div>
     </div>
-    <div class="row" >
-        <div class="col-xs-1" style="border:1px solid black">
-            <p class="">punten </p>
-        </div>
-        <div class="col-xs-2" style="border:1px solid black">
-            <p>icon</p>
-        </div>
-        <div class="col-xs-7" style="border:1px solid black">
-            <p>titel & body</p>
-        </div>
-        <div class="col-xs-2" style="border:1px solid black">
-            <p>comments</p>
-        </div>
-    </div>
+    @endforeach
+    
 
     <br>
 
