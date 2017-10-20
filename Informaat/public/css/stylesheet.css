@@ -5,3 +5,8 @@
 .navbar {
     margin-bottom:0;
 }
+.star {
+    border: none;
+    background: transparent;
+    color: #ffc000;
+}

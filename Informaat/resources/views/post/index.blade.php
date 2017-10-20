@@ -97,13 +97,18 @@
                           <a href="/posts/{{$post->id}}/cancelvote"><i class="fa fa-caret-down" aria-hidden="true" style="color:black"></i></a>
                       @endif
                   @endif
-                
-                  @if(count($user->posts->post_id->favorites))
+                  
+                    
+                    
+                  @if( count($post->favorites->where('user_id', auth()->id())) )
 
                     <form action="/posts/{{ $post->id }}/unfavorite" method="POST">
                       {{ csrf_field() }}
                       {{ method_field('PATCH') }}
-                      <button type="submit" class="modal-action waves-effect waves-green btn-flat">UnFavorite</button>
+                      
+                      <button type="submit" class="star">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                      </button>
                     </form>
                   
                   @else
@@ -111,7 +116,7 @@
                     <form action="/posts/{{ $post->id }}/favorite" method="POST">
                       {{ csrf_field() }}
                       
-                      <button type="submit" class="modal-action waves-effect waves-green btn-flat">Favorite</button>
+                      <button type="submit" class="star"><i class="fa fa-star-o" aria-hidden="true"></i></button>
                     </form>
 
                   @endif

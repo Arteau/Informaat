@@ -34,9 +34,10 @@ class FavoriteController extends Controller
      */
     public function unfavorite(Request $request, Post $post, Favorite $favorite)
     {
-        $favorite = Favorite::where('post_id', $post->id);
+        
+        $favorite = Favorite::where('post_id', $post->id)->where('user_id', auth()->id());
         $favorite->delete();
-        session()->flash('message', 'Unfavorite'.$post->title);
+        session()->flash('message', 'Unfavorite '.$post->title);
         return back();
     }
 
