@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use App\Post;
+use Illuminate\Support\Facades\Auth;
 
 class CheckUser
 {
@@ -16,7 +17,10 @@ class CheckUser
      */
     public function handle($request, Closure $next)
     {
-        if ($request->age <= 200) {
+        if (Auth::check() && Auth::user()->isAdmin) {
+            
+        }
+        else {
             return redirect('home');
         }
         return $next($request);

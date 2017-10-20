@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class JeugdhuisController extends Controller
 {
+    public function __construct() 
+    {
+        $this->middleware('isAdmin');
+        
+    }
     /**
      * Display a listing of the resource.
      *
