@@ -6,6 +6,12 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateUsersTable extends Migration
 {
+
+    public function __construct() 
+    {
+        $this->middleware('auth');
+        
+    }
     /**
      * Run the migrations.
      *
@@ -17,7 +23,8 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('password');            
+            $table->string('password');
+            $table->boolean('isAdmin')->default(false);            
             // $table->integer('comment_id')->unsigned();
             // $table->integer('post_id')->unsigned();           
             $table->rememberToken();

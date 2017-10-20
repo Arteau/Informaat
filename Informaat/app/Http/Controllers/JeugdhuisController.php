@@ -14,7 +14,9 @@ class JeugdhuisController extends Controller
      */
     public function index()
     {
-        //
+        $jeugdhuizen = Jeugdhuis::all();
+
+        return view('jeugdhuis.index', compact('jeugdhuizen'));
     }
 
     /**
@@ -24,7 +26,7 @@ class JeugdhuisController extends Controller
      */
     public function create()
     {
-        //
+        return view('jeugdhuis.create');
     }
 
     /**
@@ -35,7 +37,29 @@ class JeugdhuisController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $this->validate(request(), [
+            'name' => 'required|min:2',
+            'village' => 'required',
+            'zipcode' => 'required',
+            
+        ]);
+
+        Jeugdhuis::create([
+            'name' => request('name'),
+
+            'village' => request('village'),
+
+            'zipcode' => request('zipcode'),
+
+            'points' => 0,
+            
+        ]);
+
+        // redirect to homepage
+        session()->flash('message', 'Created succesfull ');
+
+        return redirect('/jeugdhuizen');
     }
 
     /**
@@ -57,7 +81,7 @@ class JeugdhuisController extends Controller
      */
     public function edit(Jeugdhuis $jeugdhuis)
     {
-        //
+        return view('jeugdhuis.edit', compact('jeugdhuis'));
     }
 
     /**
@@ -69,7 +93,10 @@ class JeugdhuisController extends Controller
      */
     public function update(Request $request, Jeugdhuis $jeugdhuis)
     {
-        //
+        $jeugdhuis->update($request->all());
+        
+        session()->flash('message', 'Updated succesfull ');
+        return redirect('jeugdhuizen/');
     }
 
     /**
@@ -78,8 +105,12 @@ class JeugdhuisController extends Controller
      * @param  \App\Jeugdhuis  $jeugdhuis
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Jeugdhuis $jeugdhuis)
+    public function delete(Request $request, Jeugdhuis $jeugdhuis)
     {
-        //
+        $jeugdhuis->delete($request->all());
+        
+        session()->flash('message', 'Deleted succesfull ');
+
+        return redirect('/jeugdhuizen');
     }
 }

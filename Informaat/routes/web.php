@@ -48,6 +48,6 @@ Route::get('/jeugdhuizen/create', 'JeugdhuisController@create');
 Route::get('/jeugdhuizen/{jeugdhuis}', 'JeugdhuisController@show');
 Route::get('/jeugdhuizen/{jeugdhuis}/edit', 'JeugdhuisController@edit');
 Route::post('/jeugdhuizen/', 'JeugdhuisController@store');
-Route::patch('/jeughuizen/{jeugdhuizen}/update', 'JeugdhuisController@update');
-Route::patch('/jeughuizen/{jeugdhuizen}/delete', 'JeugdhuisController@delete');
+Route::patch('/jeugdhuizen/{jeugdhuis}/update', 'JeugdhuisController@update');
+Route::patch('/jeugdhuizen/{jeugdhuis}/delete', 'JeugdhuisController@delete');
 
