@@ -24,7 +24,35 @@
             </div>
         </a>
     </div>
+    <br>
+    <div class="row">
+        <div class="col-xs-12" style="border-bottom:2px solid #808080">
+            <p class="">Favoriete posts </p>
+        </div>
+    </div>
+   
 
+    @foreach($favorite_posts as $favorite)
+
+    <div class="row" style="margin-bottom:5px;">
+        <div class="col-xs-1" style="border:1px solid black">
+            <p class="">{{$favorite->post->votes}} </p>
+        </div>
+        <div class="col-xs-2" style="border:1px solid black">
+        <p>{{$favorite->post->title}}</p>
+        </div>
+        <div class="col-xs-7" style="border:1px solid black">
+            <p>{{$favorite->post->body}}</p>
+            
+        </div>
+        <div class="col-xs-2" style="border:1px solid black">
+            <p>Gepost door: {{$favorite->post->user->name}}</p>
+        </div>
+    </div>
+
+   
+    @endforeach
+    
     <br>
 
     <div class="row">
@@ -40,14 +68,14 @@
             <p class="">{{$post->votes}} </p>
         </div>
         <div class="col-xs-2" style="border:1px solid black">
-            <p>icon</p>
+            <p>{{$post->title}}</p>
         </div>
         <div class="col-xs-7" style="border:1px solid black">
-            <p>{{$post->title}}</p>
+            <p>{{$post->body}}</p>
             
         </div>
         <div class="col-xs-2" style="border:1px solid black">
-            <p>comments</p>
+            <p>Gepost door: {{$post->user->name}}</p>
         </div>
     </div>
     @endforeach
@@ -55,27 +83,6 @@
 
     <br>
 
-    <div class="row">
-        <div class="col-xs-12" style="border-bottom:2px solid #808080">
-            <p class="">Posts van 05/10/2017 </p>
-        </div>
-    </div>
-    <br>
-
-    <div class="row" style="margin-bottom:5px;">
-        <div class="col-xs-1" style="border:1px solid black">
-            <p class="">punten </p>
-        </div>
-        <div class="col-xs-2" style="border:1px solid black">
-            <p>icon</p>
-        </div>
-        <div class="col-xs-7" style="border:1px solid black">
-            <p>titel & body</p>
-        </div>
-        <div class="col-xs-2" style="border:1px solid black">
-            <p>comments</p>
-        </div>
-    </div>
 
 
 </div>
