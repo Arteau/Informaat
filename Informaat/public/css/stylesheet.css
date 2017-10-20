@@ -10,3 +10,10 @@
     background: transparent;
     color: #ffc000;
 }
+.caret
+{
+    /* DROPDOWN MENU HEEFT DUBBELE CARET DOOR FA ICONS CLASSNAME EN MATERIALZECSS CLASS NAME */
+position: absolute;
+right: 0;
+bottom: 10px;
+}
