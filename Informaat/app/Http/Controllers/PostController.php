@@ -108,8 +108,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        // !!!!!!!! vote systeem werkt niet meer!!!!
-        // Sessie variabele past aan ipv database!!!!!!!!!!!!
+        
         $user = Auth::user();
         if(session()->has('sort_var'))
         {
@@ -121,6 +120,7 @@ class PostController extends Controller
             
         }
         $tops = Post::orderBy('votes', 'desc')->take(4)->get();
+        
         return view('post.index', compact('posts', 'user', 'tops'));
         
     }

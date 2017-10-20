@@ -33,6 +33,9 @@ Route::get('/posts/{post}/downvote', 'PostController@downvote');
 Route::get('/posts/{post}/cancelvote', 'PostController@cancelvote');
 Route::post('/posts/search', 'PostController@search');
 Route::any('/posts/sort', 'PostController@sort');
+Route::post('/posts/{post}/favorite', 'FavoriteController@favorite');
+Route::patch('/posts/{post}/unfavorite', 'FavoriteController@unfavorite');
+
 
 
 Route::get('/posts/{post}/comment/{comment}/edit', 'CommentController@edit')->name('edit_comment');

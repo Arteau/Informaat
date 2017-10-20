@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Favorite;
+use App\Post;
 use Illuminate\Http\Request;
 
 class FavoriteController extends Controller
@@ -12,9 +13,18 @@ class FavoriteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function favorite(Request $request, Post $post)
     {
-        //
+        Favorite::create([
+            'post_id' => $post->id,
+
+            'user_id' => auth()->id(),
+
+        ]);
+
+        // redirect to homepage
+        session()->flash('message', 'Favorite '.$post->title );
+        return back();
     }
 
     /**
@@ -22,9 +32,12 @@ class FavoriteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function unfavorite(Request $request, Post $post, Favorite $favorite)
     {
-        //
+        $favorite = Favorite::where('post_id', $post->id);
+        $favorite->delete();
+        session()->flash('message', 'Unfavorite'.$post->title);
+        return back();
     }
 
     /**
