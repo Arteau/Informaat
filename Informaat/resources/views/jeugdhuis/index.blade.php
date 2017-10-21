@@ -24,7 +24,7 @@
           {{$jeugdhuis->zipcode}} {{$jeugdhuis->village}}
           <br>
           <div class="card-action">
-          <a href="/jeugdhuizen/{{$jeugdhuis->id}}/edit">Edit comment </a>
+          <a href="/jeugdhuizen/{{$jeugdhuis->id}}/edit"><i class="fa fa-search" aria-hidden="true"></i></a>
         </div>
           </span>
         </div>
