@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.landing')
 
 @section('content')
 
 
 
-    <div class="parallax-container">
+    <div class="parallax-container" style="height:100vh">
         <div class="parallax container" style="z-index:2">
             
             <div class="row valign-wrapper" style="margin-top:10%">
@@ -19,8 +19,8 @@
                             {{ csrf_field() }}
 
                             @include ('layouts.errors')
-                            <input type="text" name="keyword" id="keyword" placeholder="Zoek hier u onderwerp" class="z-depth-3" style="width:100%; background-color:white; border-radius:10px; padding:10px 30px;box-shadow: 2px 2px 11px rgba(0, 0, 0, 0.5)">
-                            <a href=""><i class="fa fa-search" style="position: absolute;top: 0;left: 5px"></i></a>
+                            <input type="text" name="keyword" id="keyword" placeholder="Zoek hier u onderwerp" class="z-depth-3" style="width:100%; background-color:white; border-radius:10px;margin: -5px -30px; padding:5px 30px;box-shadow: 2px 2px 11px rgba(0, 0, 0, 0.5)">
+                            <a href=""><i class="fa fa-search" style="position: absolute;top: 0;left: -20px"></i></a>
 
                         </span>
                     </form>
@@ -30,6 +30,11 @@
             <div class="row valign-wrapper">
             
                 <h5 class="center-align" style="margin:0 auto;color:white;">Informaat</h5>
+
+            </div>
+            <div class="row valign-wrapper" style="position: absolute; bottom: 0px; left: -25px; margin: 0px auto; width: 100%;">
+
+                <img class="paralax-normalize" style="height:50px" src="{{asset('img/arrowdown.gif')}}" alt="">
 
             </div>
             
