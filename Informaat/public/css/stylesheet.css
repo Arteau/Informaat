@@ -27,3 +27,13 @@ bottom: 10px;
     -webkit-transform: translateX(0%) !important;
     transform: translateX(0%) !important;
 }
+.nav_landing {
+    position:absolute; 
+    top: 0; 
+    background-color:transparent; 
+    box-shadow: none; 
+
+}
+.nav_landing a:hover {
+   text-decoration: none;
+}

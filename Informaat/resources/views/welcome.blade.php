@@ -4,7 +4,7 @@
 
 
 
-    <div class="parallax-container" style="height:100vh">
+    <div class="parallax-container" style="height:100vh; z-index:0">
         <div class="parallax container" style="z-index:2">
             
             <div class="row valign-wrapper" style="margin-top:10%">

@@ -25,6 +25,67 @@
 </head>
 <body>
     <div id="app">
+            <nav class="nav_landing" style="">
+                <div class="nav-wrapper">
+                <a href="#" data-activates="mobile-demo" class="button-collapse" style="display:block"><i class="material-icons" style="color:black">menu</i></a>
+               
+                <ul class="side-nav" id="mobile-demo">
+                <li style="height:45px"> <a href="/" class="brand-logo"><img src="{{asset('img/logo.png')}}" style="height:45px" alt=""></a></li>
+                        @if (Auth::guest())
+                        <li><a href="{{ route('login') }}">Login</a></li>
+                        
+                    @elseif (Auth::user()->isAdmin)
+                        <li><a href="/jeugdhuizen">Jeugdhuizen</a></li>
+                        <li><a href="{{ route('register') }}">Register</a></li>
+                        <li><a href="/posts">Posts</a></li>
+                        <li><a href="/dashboard">Dashboard</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+
+                    @else
+                        
+                        <li><a href="/posts">Posts</a></li>
+                        <li><a href="/dashboard">Dashboard</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
+                </ul>
+                </div>
+            </nav>
         @yield('content')
     </div>
 

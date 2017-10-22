@@ -27,9 +27,10 @@
     <div id="app">
             <nav class="grey darken-2">
                 <div class="nav-wrapper">
-                <a href="#!" class="brand-logo">Logo</a>
+                <a href="/" class="brand-logo"><img src="{{asset('img/logo.png')}}" style="height:45px" alt=""></a>
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
+                
                         @if (Auth::guest())
                         <li><a href="{{ route('login') }}">Login</a></li>
                         
@@ -85,6 +86,7 @@
                     @endif
                 </ul>
                 <ul class="side-nav" id="mobile-demo">
+                <li> <a href="/" class="brand-logo"><img src="{{asset('img/logo.png')}}" style="height:45px" alt=""></a></li>
                         @if (Auth::guest())
                         <li><a href="{{ route('login') }}">Login</a></li>
                         
