@@ -75,7 +75,7 @@
     @foreach($posts as $post)
       <div class="row z-depth-2 hoverable">
         <div class="col s2 m2" >
-          <!-- <img src="https://maxcdn.icons8.com/Share/icon/color/Gaming//pokecoin1600.png" style="width:60%"> -->
+          <!-- -->
           <div style="position:relative">
             <div style="position:absolute" class="votes">{{ $post->votes }}</div>
               <div style="position:absolute" class="votes_caret">
@@ -104,7 +104,6 @@
                         <i class="fa fa-star" aria-hidden="true"></i>
                       </button>
                     </form>
-                  
                   @else
                 
                     <form action="/posts/{{ $post->id }}/favorite" method="POST" class="favorite">
@@ -117,15 +116,15 @@
           </div>
         </div>
         <div class="col s10 m3" style="">
-        <i class="large material-icons">insert_chart</i>
+        <i class="large material-icons">archive</i>
 
           <!-- <img src="https://maxcdn.icons8.com/Share/icon/color/Gaming//pokecoin1600.png" style="width:60%"> -->
         </div>
         <div class="col s12 m7">
           <div class="">
                   
-                  <h2 class="">{{$post->title}}</h2>
-                  <i>{{$post->body}}</i>
+                  <h5 class="">{{$post->title}}</h5>
+                  <i class="truncate">{{$post->body}}</i>
                   
                   
                   <p>Onderwerp: {{$post->topic}}</p> 

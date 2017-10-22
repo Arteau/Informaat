@@ -19,6 +19,7 @@ class CreateJeugdhuisTable extends Migration
             $table->string('village');
             $table->string('zipcode');
             $table->integer('points')->nullable();
+            $table->softDeletes();            
             $table->timestamps();
         });
         

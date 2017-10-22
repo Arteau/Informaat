@@ -8,6 +8,7 @@ use App\User;
 use Auth;
 use Illuminate\Http\Request;
 
+
 class CommentController extends Controller
 {
     public function __construct() 

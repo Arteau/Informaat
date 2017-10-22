@@ -4,15 +4,21 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Jcc\LaravelVote\CanBeVoted;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class Post extends Model
 {
     use CanBeVoted;
     protected $vote = User::class; 
+    use SoftDeletes;
+    
 
     protected $fillable = [
         'title', 'topic', 'body', 'tag1', 'tag2', 'tag3', 'user_id',
     ];
+    protected $dates = ['deleted_at'];
+    
     //
     public function user()
     {

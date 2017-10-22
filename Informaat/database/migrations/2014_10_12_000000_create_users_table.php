@@ -9,7 +9,7 @@ class CreateUsersTable extends Migration
 
     public function __construct() 
     {
-        $this->middleware('auth');
+      
         
     }
     /**

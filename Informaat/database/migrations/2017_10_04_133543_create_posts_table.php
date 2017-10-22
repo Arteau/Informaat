@@ -25,6 +25,7 @@ class CreatePostsTable extends Migration
             $table->boolean('question')->default(true);
             $table->boolean('upload')->default(false);
             $table->integer('user_id');
+            $table->softDeletes();            
             $table->timestamps();
         });
     }
