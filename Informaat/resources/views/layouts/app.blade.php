@@ -20,10 +20,12 @@
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
 </head>
 <body>
     <div id="app">
-            <nav>
+            <nav class="grey darken-2">
                 <div class="nav-wrapper">
                 <a href="#!" class="brand-logo">Logo</a>
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -142,11 +144,16 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/index.js') }}"></script>
+   
 
     <script src="{{ asset('js/app.js') }}"></script>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+
+    <script src="{{ asset('js/index.js') }}"></script>
+
+    
 
 
 </body>

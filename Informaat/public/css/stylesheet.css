@@ -17,3 +17,13 @@ position: absolute;
 right: 0;
 bottom: 10px;
 }
+.paralax-normalize{
+    display: block !important;
+    position: relative !important;
+    min-width: 0% !important;
+    min-height: 0% !important;
+    -webkit-transform: translate3d(0, 0, 0) !important; 
+    transform: translate3d(0, 0, 0) !important;
+    -webkit-transform: translateX(0%) !important;
+    transform: translateX(0%) !important;
+}
