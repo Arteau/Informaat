@@ -4,6 +4,7 @@ $(function() {
     $('.collapsible').collapsible();
     $(".button-collapse").sideNav();
     $('.parallax').parallax();
+    $('.scrollspy').scrollSpy();
     
    
     $('#sort').change(function() {

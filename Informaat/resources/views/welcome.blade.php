@@ -19,7 +19,7 @@
                             {{ csrf_field() }}
 
                             @include ('layouts.errors')
-                            <input type="text" name="keyword" id="keyword" placeholder="Zoek hier u onderwerp" class="z-depth-3" style="width:100%; background-color:white; border-radius:10px;margin: -5px -30px; padding:5px 30px;box-shadow: 2px 2px 11px rgba(0, 0, 0, 0.5)">
+                            <input type="text" name="keyword" id="keyword" placeholder="Zoek hier u onderwerp" class="z-depth-3" style="width:100%; background-color:rgba(255, 255, 255, 0.8); border-radius:10px;margin: -5px -30px; padding:5px 30px;box-shadow: 2px 2px 11px rgba(0, 0, 0, 0.5)">
                             <a href=""><i class="fa fa-search" style="position: absolute;top: 0;left: -20px"></i></a>
 
                         </span>
@@ -34,7 +34,7 @@
             </div>
             <div class="row valign-wrapper" style="position: absolute; bottom: 0px; left: -25px; margin: 0px auto; width: 100%;">
 
-                <img class="paralax-normalize" style="height:50px" src="{{asset('img/arrowdown.gif')}}" alt="">
+                <a href="#landing_wrapper"><img class="paralax-normalize" style="height:50px; position:absolute !important" src="{{asset('img/arrowdown.gif')}}" alt=""></a>
 
             </div>
             
@@ -43,7 +43,7 @@
         <div class="parallax"><img src="{{asset('img/paralax.jpg')}}"></div>
 
     </div>
-    <div class="container">
+    <div class="container scrollspy" id="landing_wrapper">
         <div class="row" style="height:2000px">
              <h2 class="header">Informaat</h2>
              <p class="grey-text text-darken-3 lighten-3">Parallax is an effect where the background content or image in this case, is moved at a different speed than the foreground content while scrolling.</p>
