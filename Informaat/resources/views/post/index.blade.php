@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app2')
 
 @section('content')
     <!-- /.container -->
@@ -59,7 +59,6 @@
             <div class="form-group">
               <label for="keyword">Sorteer op</label>
               <select class="field-input"  name="sort" id="sort">
-              
                 <option value="votes desc" @if(session('option') == "votes desc") selected @endif>Most votes</option>
                 <option value="title asc" @if(session('option') == "title asc") selected @endif>Titel: A - Z</option>
                 <option value="title desc" @if(session('option') == "title desc") selected @endif>Titel: Z - A</option>
@@ -71,35 +70,33 @@
         </form>
       </div>
     </div>
-    <div class="col s12 m7">
+    <div class="col s12 m12">
   
     @foreach($posts as $post)
-      <div class="card horizontal z-depth-2 hoverable">
-        <div class="card-image">
-          <img src="https://maxcdn.icons8.com/Share/icon/color/Gaming//pokecoin1600.png" style="width:60%">
-        </div>
-        <div class="card-stacked">
-          <div class="card-content">
-                {{ $post->votes }}
+      <div class="row z-depth-2 hoverable">
+        <div class="col s2 m2" >
+          <!-- <img src="https://maxcdn.icons8.com/Share/icon/color/Gaming//pokecoin1600.png" style="width:60%"> -->
+          <div style="position:relative">
+            <div style="position:absolute" class="votes">{{ $post->votes }}</div>
+              <div style="position:absolute" class="votes_caret">
                   @if(!$user->hasVoted($post))
-                  <a href="/posts/{{$post->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
-                  <a href="/posts/{{$post->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                  <a href="/posts/{{$post->id}}/upvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
+                  <a href="/posts/{{$post->id}}/downvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
                   @else
                       @if($user->hasUpVoted($post))
-                          <a href="/posts/{{$post->id}}/cancelvote"><i class="fa fa-caret-up" aria-hidden="true" style="color:black"></i></a>
-                          <a href="/posts/{{$post->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                          <a href="/posts/{{$post->id}}/cancelvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true" style="color:black"></i></a>
+                          <a href="/posts/{{$post->id}}/downvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
                       @endif
                       @if($user->hasDownVoted($post))
-                          <a href="/posts/{{$post->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
-                          <a href="/posts/{{$post->id}}/cancelvote"><i class="fa fa-caret-down" aria-hidden="true" style="color:black"></i></a>
+                          <a href="/posts/{{$post->id}}/upvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
+                          <a href="/posts/{{$post->id}}/cancelvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true" style="color:black"></i></a>
                       @endif
                   @endif
-                  
-                    
-                    
-                  @if( count($post->favorites->where('user_id', auth()->id())) )
+              </div>
+          
+          @if( count($post->favorites->where('user_id', auth()->id())) )
 
-                    <form action="/posts/{{ $post->id }}/unfavorite" method="POST">
+                    <form action="/posts/{{ $post->id }}/unfavorite" method="POST" class="favorite">
                       {{ csrf_field() }}
                       {{ method_field('PATCH') }}
                       
@@ -110,23 +107,33 @@
                   
                   @else
                 
-                    <form action="/posts/{{ $post->id }}/favorite" method="POST">
+                    <form action="/posts/{{ $post->id }}/favorite" method="POST" class="favorite">
                       {{ csrf_field() }}
                       
                       <button type="submit" class="star"><i class="fa fa-star-o" aria-hidden="true"></i></button>
                     </form>
 
-                  @endif
-                  <h2 class="card-title">{{$post->title}}</h2>
+          @endif
+          </div>
+        </div>
+        <div class="col s10 m3" style="">
+        <i class="large material-icons">insert_chart</i>
+
+          <!-- <img src="https://maxcdn.icons8.com/Share/icon/color/Gaming//pokecoin1600.png" style="width:60%"> -->
+        </div>
+        <div class="col s12 m7">
+          <div class="">
+                  
+                  <h2 class="">{{$post->title}}</h2>
                   <i>{{$post->body}}</i>
-                  <hr>
+                  
                   
                   <p>Onderwerp: {{$post->topic}}</p> 
                   @if(!empty($post->tag1 | $post->tag2 | $post->tag3))
                   <small>{{$post->tag1}} // {{$post->tag2}} // {{$post->tag3}}</small>
                   @endif
           </div>
-          <div class="card-action">
+          <div class="col s12 m12">
             <a href="/posts/{{$post->id}}">Lees meer</a>
           </div>
         </div>

@@ -4,7 +4,7 @@
 
 
 
-    <div class="parallax-container" style="height:100vh; z-index:0">
+    <div class="parallax-container" style="min-height:100vh; z-index:0">
         <div class="parallax container" style="z-index:2">
             
             <div class="row valign-wrapper" style="margin-top:10%">
@@ -13,7 +13,7 @@
 
             </div>
             <div class="row valign-wrapper">
-                <div class="col s12 m8 offset-m2">
+                <div class="col s10 offset-s1 m8 offset-m2">
                     <form role="search" class="app-search" action="/posts/search" method="POST">
                         <span style="position:relative">
                             {{ csrf_field() }}
@@ -45,8 +45,24 @@
     </div>
     <div class="container scrollspy" id="landing_wrapper">
         <div class="row" style="height:2000px">
-             <h2 class="header">Informaat</h2>
-             <p class="grey-text text-darken-3 lighten-3">Parallax is an effect where the background content or image in this case, is moved at a different speed than the foreground content while scrolling.</p>
+
+            <br>
+
+
+            <div class="col s4">
+                <!-- Promo Content 1 goes here -->
+                <p class="center-align">deeeeel</p>
+            </div>
+            <div class="col s4">
+                <!-- Promo Content 2 goes here -->
+                <p class="center-align">deeeeel</p>
+            </div>
+            <div class="col s4">
+                <!-- Promo Content 3 goes here -->
+                <p class="center-align">deeeeel</p>
+            </div>
+
+
         </div>
     </div>
   

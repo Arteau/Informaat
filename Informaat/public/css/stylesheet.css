@@ -37,3 +37,24 @@ bottom: 10px;
 .nav_landing a:hover {
    text-decoration: none;
 }
+.votes {
+    top: 3px;
+    left: 5px;
+}
+
+.votes_caret {
+    left: 20px;
+}
+.votes_caret .upvote {
+    position: absolute;
+    top:0;
+}
+.votes_caret .downvote {
+    position: absolute;
+    top:10px;
+}
+.favorite {
+    top: 30px;
+    position: absolute;
+    left:5px;
+}
