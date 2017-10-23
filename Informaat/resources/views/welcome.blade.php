@@ -44,27 +44,27 @@
 
     </div>
     <br>
-    <div class="container scrollspy" id="landing_wrapper" style="height:1000px">
+    <div class="container scrollspy" id="landing_wrapper" style="height:500px; margin-top: 50px;">
         <div class="row">
             <div class="col s4 z-depth-2" style="background-color:white;">
                 <div class="center promo promo-example">
-                    <i class="material-icons" style="margin: 40px 0;color: #ee6e73;font-size: 7rem;display: block;">flash_on</i>
-                    <p class="promo-caption" style="font-size: 1.7rem;font-weight: 500;margin-top: 5px;margin-bottom: 0;">Versnelt ontwikkeling</p>
-                    <p class="light center">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components.</p>
+                    <i class="material-icons" style="margin: 40px 0;color: #e1838c;font-size: 7rem;display: block;">flash_on</i>
+                    <p class="promo-caption" style="font-size: 1.7rem;font-weight: 500;margin-top: 5px;margin-bottom: 0;">Snelle oplossingen</p>
+                    <p class="light center">Elk jeugdhuis kampt vaak met dezelfde problemen, ieder jeugdhuis heeft hier een andere oplossing voor. Door dit te delen vindt je heel snel oplossingen voor jouw problemen </p>
                 </div>
             </div>
             <div class="col s4 z-depth-2" style="background-color:white;">
                 <div class="center promo promo-example">
-                    <i class="material-icons" style="margin: 40px 0;color: #ee6e73;font-size: 7rem;display: block;">group</i>
-                    <p class="promo-caption" style="font-size: 1.7rem;font-weight: 500;margin-top: 5px;margin-bottom: 0;">Gericht op de gebruikerservaring</p>
-                    <p class="light center">By utilizing elements and principles of Material Design, we were able to create a framework that focuses on User Experience.</p>
+                    <i class="material-icons" style="margin: 40px 0;color: #e1838c;font-size: 7rem;display: block;">group</i>
+                    <p class="promo-caption" style="font-size: 1.7rem;font-weight: 500;margin-top: 5px;margin-bottom: 0;">Help elkaar en jezelf</p>
+                    <p class="light center">Door elkaar te helpen veelvoorkomende problemen op te lossen, wordt elk jeugdhuis een beetje beter gemaakt door elkaar.</p>
                 </div>
             </div>
             <div class="col s4 z-depth-2" style="background-color:white;">
                 <div class="center promo promo-example">
-                    <i class="material-icons" style="margin: 40px 0;color: #ee6e73;font-size: 7rem;display: block;">settings</i>
+                    <i class="material-icons" style="margin: 40px 0;color: #e1838c;font-size: 7rem;display: block;">settings</i>
                     <p class="promo-caption" style="font-size: 1.7rem;font-weight: 500;margin-top: 5px;margin-bottom: 0;">Makkelijk om mee te werken</p>
-                    <p class="light center">We have provided detailed documentation as well as specific code examples to help new users get started.</p>
+                    <p class="light center">Dankzij het online platform is het heel gemakkelijk om post op te zoeken, op te slaan, en later te herbekijken zodat je nooit iets mist van belangrijke posts.</p>
                 </div>
             </div>
         </div>
