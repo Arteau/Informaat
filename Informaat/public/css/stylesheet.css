@@ -58,3 +58,6 @@ bottom: 10px;
     position: absolute;
     left:5px;
 }
+.brand-logo:hover {
+    background-color:transparent !important;
+}

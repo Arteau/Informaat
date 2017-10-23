@@ -43,26 +43,30 @@
         <div class="parallax"><img src="{{asset('img/paralax.jpg')}}"></div>
 
     </div>
-    <div class="container scrollspy" id="landing_wrapper">
-        <div class="row" style="height:2000px">
-
-            <br>
-
-
-            <div class="col s4">
-                <!-- Promo Content 1 goes here -->
-                <p class="center-align">deeeeel</p>
+    <br>
+    <div class="container scrollspy" id="landing_wrapper" style="height:1000px">
+        <div class="row">
+            <div class="col s4 z-depth-2" style="background-color:white;">
+                <div class="center promo promo-example">
+                    <i class="material-icons" style="margin: 40px 0;color: #ee6e73;font-size: 7rem;display: block;">flash_on</i>
+                    <p class="promo-caption" style="font-size: 1.7rem;font-weight: 500;margin-top: 5px;margin-bottom: 0;">Versnelt ontwikkeling</p>
+                    <p class="light center">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components.</p>
+                </div>
             </div>
-            <div class="col s4">
-                <!-- Promo Content 2 goes here -->
-                <p class="center-align">deeeeel</p>
+            <div class="col s4 z-depth-2" style="background-color:white;">
+                <div class="center promo promo-example">
+                    <i class="material-icons" style="margin: 40px 0;color: #ee6e73;font-size: 7rem;display: block;">group</i>
+                    <p class="promo-caption" style="font-size: 1.7rem;font-weight: 500;margin-top: 5px;margin-bottom: 0;">Gericht op de gebruikerservaring</p>
+                    <p class="light center">By utilizing elements and principles of Material Design, we were able to create a framework that focuses on User Experience.</p>
+                </div>
             </div>
-            <div class="col s4">
-                <!-- Promo Content 3 goes here -->
-                <p class="center-align">deeeeel</p>
+            <div class="col s4 z-depth-2" style="background-color:white;">
+                <div class="center promo promo-example">
+                    <i class="material-icons" style="margin: 40px 0;color: #ee6e73;font-size: 7rem;display: block;">settings</i>
+                    <p class="promo-caption" style="font-size: 1.7rem;font-weight: 500;margin-top: 5px;margin-bottom: 0;">Makkelijk om mee te werken</p>
+                    <p class="light center">We have provided detailed documentation as well as specific code examples to help new users get started.</p>
+                </div>
             </div>
-
-
         </div>
     </div>
   

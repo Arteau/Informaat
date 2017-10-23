@@ -30,7 +30,7 @@
                 <a href="#" data-activates="mobile-demo" class="button-collapse" style="display:block"><i class="material-icons" style="color:black">menu</i></a>
                
                 <ul class="side-nav" id="mobile-demo">
-                <li style="height:45px"> <a href="/" class="brand-logo"><img src="{{asset('img/logo.png')}}" style="height:45px" alt=""></a></li>
+                <li style="height:55px"> <a href="/" class="brand-logo"><img src="{{asset('img/logo.png')}}" style="height:45px" alt=""></a></li>
                         @if (Auth::guest())
                         <li><a href="{{ route('login') }}">Login</a></li>
                         

@@ -28,10 +28,10 @@
           <span class="card-title"></span>
         </div>
         <div class="card-content">
-        <i> <p>{{ $top->votes }} points</p></i><b><p class="truncate center-align">{{$top->title}}</p></b>
+        <i class="material-icons" style="color:#ffe400">mood</i>{{ $top->votes }}<b><p class="truncate center-align">{{$top->title}}</p></b>
         </div>
         <div class="card-action center-align">
-          <a href="/posts/{{$top->id}}">Lees meer</a>
+          Lees meer
         </div>
       </div>
     </div> 
@@ -74,7 +74,29 @@
   
     @foreach($posts as $post)
       <div class="row z-depth-2 hoverable">
-        <div class="col s2 m2" >
+        
+        <div class="col s12 m3" style="">
+        <i class="large material-icons">archive</i>
+
+          <!-- <img src="https://maxcdn.icons8.com/Share/icon/color/Gaming//pokecoin1600.png" style="width:60%"> -->
+        </div>
+        <div class="col s10 m8">
+          <div class="">
+                  
+                  <h5 class="">{{$post->title}}</h5>
+                  <i class="truncate">{{$post->body}}</i>
+                  
+                  
+                  <p>Onderwerp: {{$post->topic}}</p> 
+                  @if(!empty($post->tag1 | $post->tag2 | $post->tag3))
+                  <small>{{$post->tag1}} // {{$post->tag2}} // {{$post->tag3}}</small>
+                  @endif
+          </div>
+          <div class="col s12 m12">
+            <a href="/posts/{{$post->id}}">Lees meer</a>
+          </div>
+        </div>
+        <div class="col s2 m1" >
           <!-- -->
           <div style="position:relative">
             <div style="position:absolute" class="votes">{{ $post->votes }}</div>
@@ -113,27 +135,6 @@
                     </form>
 
           @endif
-          </div>
-        </div>
-        <div class="col s10 m3" style="">
-        <i class="large material-icons">archive</i>
-
-          <!-- <img src="https://maxcdn.icons8.com/Share/icon/color/Gaming//pokecoin1600.png" style="width:60%"> -->
-        </div>
-        <div class="col s12 m7">
-          <div class="">
-                  
-                  <h5 class="">{{$post->title}}</h5>
-                  <i class="truncate">{{$post->body}}</i>
-                  
-                  
-                  <p>Onderwerp: {{$post->topic}}</p> 
-                  @if(!empty($post->tag1 | $post->tag2 | $post->tag3))
-                  <small>{{$post->tag1}} // {{$post->tag2}} // {{$post->tag3}}</small>
-                  @endif
-          </div>
-          <div class="col s12 m12">
-            <a href="/posts/{{$post->id}}">Lees meer</a>
           </div>
         </div>
       </div>
