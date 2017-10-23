@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@if($post->user_id == Auth::user()->id)
+
 @section('content')
 <div class="container">
 
@@ -85,3 +87,11 @@
 
 </div>
 @endsection
+
+
+@else 
+@section('content')
+<h1>Geen toegang</h1>
+@endsection
+
+@endif

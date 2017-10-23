@@ -62,9 +62,11 @@
                 <small>{{$post->tag1}} // {{$post->tag2}} // {{$post->tag3}}</small>
                 @endif
         </div>
+        @if($post->user_id == Auth::user()->id)
         <div class="card-action">
           <a href="/posts/{{$post->id}}/edit">Edit post</a>
         </div>
+        @endif
       </div>
     </div>
     <hr>
@@ -97,9 +99,11 @@
                 <small> Gepost: {{$comment->created_at->diffForHumans()}} by
                 {{$comment->user->name}}</small>
         </div>
+        @if($comment->user_id == Auth::user()->id)
         <div class="card-action">
           <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/edit">Edit comment </a>
         </div>
+        @endif
       </div>
     </div>
     @endforeach

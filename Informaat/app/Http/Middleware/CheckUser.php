@@ -21,7 +21,7 @@ class CheckUser
             
         }
         else {
-            return redirect('home');
+            return redirect('/');
         }
         return $next($request);
     }

@@ -24,7 +24,10 @@
     <div class="col s6 m3">
       <div class="card hoverable">
         <div class="card-image valign-wrapper ">
-          <img src="https://maxcdn.icons8.com/Share/icon/color/Gaming//bullbasaur1600.png" style="width:60%; margin:0 auto;">
+        <i class="material-icons" style="font-size: 66px;margin: 3px auto;"> highlight</i>
+       
+
+          <!-- <img src="https://maxcdn.icons8.com/Share/icon/color/Gaming//bullbasaur1600.png" style="width:60%; margin:0 auto;"> -->
           <span class="card-title"></span>
         </div>
         <div class="card-content">
@@ -74,9 +77,26 @@
   
     @foreach($posts as $post)
       <div class="row z-depth-2 hoverable">
-        
-        <div class="col s12 m3" style="">
-        <i class="large material-icons">archive</i>
+        <div class="col s12 m1" style="position:relative">
+          <div style="position:absolute" class="votes">{{ $post->votes }}</div>
+              <div style="position:absolute" class="votes_caret">
+                  @if(!$user->hasVoted($post))
+                  <a href="/posts/{{$post->id}}/upvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
+                  <a href="/posts/{{$post->id}}/downvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                  @else
+                      @if($user->hasUpVoted($post))
+                          <a href="/posts/{{$post->id}}/cancelvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true" style="color:black"></i></a>
+                          <a href="/posts/{{$post->id}}/downvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                      @endif
+                      @if($user->hasDownVoted($post))
+                          <a href="/posts/{{$post->id}}/upvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
+                          <a href="/posts/{{$post->id}}/cancelvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true" style="color:black"></i></a>
+                      @endif
+                  @endif
+              </div>
+        </div>
+        <div class="col s12 m2" style="">
+        <i class="large material-icons">monetization_on</i>
 
           <!-- <img src="https://maxcdn.icons8.com/Share/icon/color/Gaming//pokecoin1600.png" style="width:60%"> -->
         </div>
@@ -99,22 +119,7 @@
         <div class="col s2 m1" >
           <!-- -->
           <div style="position:relative">
-            <div style="position:absolute" class="votes">{{ $post->votes }}</div>
-              <div style="position:absolute" class="votes_caret">
-                  @if(!$user->hasVoted($post))
-                  <a href="/posts/{{$post->id}}/upvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
-                  <a href="/posts/{{$post->id}}/downvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
-                  @else
-                      @if($user->hasUpVoted($post))
-                          <a href="/posts/{{$post->id}}/cancelvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true" style="color:black"></i></a>
-                          <a href="/posts/{{$post->id}}/downvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
-                      @endif
-                      @if($user->hasDownVoted($post))
-                          <a href="/posts/{{$post->id}}/upvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
-                          <a href="/posts/{{$post->id}}/cancelvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true" style="color:black"></i></a>
-                      @endif
-                  @endif
-              </div>
+            
           
           @if( count($post->favorites->where('user_id', auth()->id())) )
 
