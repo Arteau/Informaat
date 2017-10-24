@@ -24,7 +24,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->boolean('isAdmin')->default(false);            
+            $table->boolean('isAdmin')->default(false);    
+            $table->integer('jeugdhuis_id')->nullable();        
             // $table->integer('comment_id')->unsigned();
             // $table->integer('post_id')->unsigned();           
             $table->rememberToken();

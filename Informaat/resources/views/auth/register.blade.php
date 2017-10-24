@@ -25,6 +25,27 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('jeugdhuis_id') ? ' has-error' : '' }}">
+                           
+
+                            <div class="col-md-6">
+                                <select id="jeugdhuis_id" type="text" class="form-control" name="jeugdhuis_id" value="{{ old('jeugdhuis_id') }}" >
+                                <option value="0">Formaat</option>   
+                                @foreach($jeugdhuizen as $jeugdhuis)
+                                        
+                                        <option value="{{$jeugdhuis->id}}">{{$jeugdhuis->name}}</option>
+                                    @endforeach
+
+                                </select>
+
+                                @if ($errors->has('jeugdhuis_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('jeugdhuis_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 

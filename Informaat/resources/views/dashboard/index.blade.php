@@ -7,7 +7,7 @@
 
 <div class="card">
     <div class="card-content">
-      <p class="text-center">{{$user->name}} / Jeugdhuis Zoezel </p>
+      <p class="text-center">{{$user->name}} / {{$user->jeugdhuis->name}} </p>
     </div>
     <div class="card-tabs">
       <ul class="tabs tabs-fixed-width">
