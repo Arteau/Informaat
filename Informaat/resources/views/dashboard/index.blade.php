@@ -3,15 +3,7 @@
 @section('content')
 
 <div class="container">
-@if ($flash = session('message'))
 
-    <script>
-    $(function() {
-      Materialize.toast('{{$flash}}', 4000);
-    });
-    </script>
-
-@endif
 
 <div class="card">
     <div class="card-content">

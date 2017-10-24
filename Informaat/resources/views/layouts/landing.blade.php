@@ -117,6 +117,8 @@
     </div>
 
     <!-- Scripts -->
+
+    
    
 
     <script src="{{ asset('js/app.js') }}"></script>
@@ -127,7 +129,15 @@
     <script src="{{ asset('js/index.js') }}"></script>
 
     
+    @if ($flash = session('message'))
 
+    <script>
+    $(function() {
+      Materialize.toast('{{$flash}}', 4000);
+    });
+    </script>
+
+@endif
 
 </body>
 </html>
