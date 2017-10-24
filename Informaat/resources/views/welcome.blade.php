@@ -2,6 +2,7 @@
 
 @section('content')
 
+<link href="https://fonts.googleapis.com/css?family=Abel|Varela+Round" rel="stylesheet">
 
 
     <div class="parallax-container" style="min-height:100vh; z-index:0">
@@ -29,7 +30,9 @@
 
             <div class="row valign-wrapper">
             
-               <a href="/posts" style="margin:0 auto"> <h5 class="center-align" style="margin:0 auto;color:white;">Alle posts</h5></a>
+               <a href="/posts" class="btn hoverable" style="left: 50%;bottom: 70px;position: absolute;margin: 0px auto 0px;background-color: rgba(195, 14, 46, 0.75);border-radius: 10px;height: 50px;transform: translateX(-50%);font-family: 'Abel', sans-serif;"> 
+                <h5 class="center-align" style="color:white;">Bekijk alles</h5>
+                </a>
 
             </div>
             <div class="row valign-wrapper" style="position: absolute; bottom: 0px; left: -25px; margin: 0px auto; width: 100%;">
