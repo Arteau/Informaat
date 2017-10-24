@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.landing')
 
 @section('content')
 
-@foreach($jeugdhuizen as $jeugdhuis)
+
 
 @if ($flash = session('message'))
 
@@ -14,25 +14,22 @@
 
 @endif
 
+<div class="container">
+  <div class="row">
+  
+    <ul class="collapsible popout" data-collapsible="accordion" style="margin-top:50px">
+    @foreach($jeugdhuizen as $jeugdhuis)
+        <li>
+          <div class="collapsible-header"><i class="material-icons">filter_drama</i>{{$jeugdhuis->name }}</div>
+          <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        </li>
+    @endforeach
+    </ul>
+ 
 
-<div class="row">
-      <div class="col s12 m5">
-        <div class="card-panel teal">
-          <span class="white-text"> 
-          {{$jeugdhuis->name }}
-          <hr>
-          {{$jeugdhuis->zipcode}} {{$jeugdhuis->village}}
-          <br>
-          <div class="card-action">
-          <a href="/jeugdhuizen/{{$jeugdhuis->id}}/edit"><i class="fa fa-search" aria-hidden="true"></i></a>
-        </div>
-          </span>
-        </div>
-      </div>
-    </div>
+  </div>
+</div>
 
-    
 
-@endforeach
 
 @endsection

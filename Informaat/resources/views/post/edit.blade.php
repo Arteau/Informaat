@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.landing')
 
 @if($post->user_id == Auth::user()->id)
 

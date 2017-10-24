@@ -18,13 +18,13 @@
     <link rel="stylesheet" href="{{ asset('css/stylesheet.css') }}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script> -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
 </head>
 <body>
-    <div id="app">
+    <div id="app" >
             <nav class="nav_landing" style="">
                 <div class="nav-wrapper">
                 <a href="#" data-activates="mobile-demo" class="button-collapse" style="display:block"><i class="material-icons" style="color:black">menu</i></a>
@@ -86,7 +86,9 @@
                 </ul>
                 </div>
             </nav>
+            <div class="body-wrapper">
         @yield('content')
+            </div>      
         <footer class="page-footer">
           <div class="container">
             <div class="row">
