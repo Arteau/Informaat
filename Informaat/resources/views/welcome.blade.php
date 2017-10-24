@@ -30,7 +30,7 @@
 
             <div class="row valign-wrapper">
             
-               <a href="/posts" class="btn hoverable" style="left: 50%;bottom: 70px;position: absolute;margin: 0px auto 0px;background-color: rgba(195, 14, 46, 0.75);border-radius: 10px;height: 45px;transform: translateX(-50%);font-family: 'Abel', sans-serif;"> 
+               <a href="/posts" class="btn hoverable" style="left: 50%;bottom: 70px;position: absolute;margin: 0px auto 0px;background-color: rgba(222, 18, 54, 0.76);border-radius: 10px;height: 45px;transform: translateX(-50%);font-family: 'Abel', sans-serif;"> 
                 <h5 class="center-align" style="color:white;font-size:1.5rem">alle posts</h5>
                 </a>
 
