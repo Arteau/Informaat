@@ -73,3 +73,9 @@ bottom: 10px;
 .brand-logo:hover {
     background-color:transparent !important;
 }
+#keyword:focus {
+    border:none !important;
+}
+.page-footer{
+    background-color:rgba(202, 29, 59, 0.75);
+}

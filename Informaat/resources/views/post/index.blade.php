@@ -13,12 +13,17 @@
   <a href="/posts/{{$top->id}}">
     <div class="col s6 m3">
       <div class="card hoverable">
-        <div class="card-image valign-wrapper ">
-          <img src="{{asset('img/icon_sound.svg')}}" alt="">          
+        <div class="card-image valign-wrapper" style="padding:20px">
+          <img src="{{asset('img/icon_sound.svg')}}" alt="" style="max-width:100px; left: 50%;transform: translateX(-50%);">          
           <span class="card-title"></span>
         </div>
         <div class="card-content">
-        <i class="material-icons" style="color:#ffe400">mood</i>{{ $top->votes }}<b><p class="truncate center-align">{{$top->title}}</p></b>
+        <span style="position: absolute;top: 2px;color: black;left: 3px;">
+          <i class="material-icons" style="color:rgba(16, 155, 229, 0.5); font-size:17px">thumb_up</i>
+          <span style="top: -3px;left: 21px;position: absolute;">{{ $top->votes }}</span>
+        </span> 
+        <b><p class="truncate center-align black-text">{{$top->title}}</p></b>
+         
         </div>
         <div class="card-action center-align">
           Lees meer
