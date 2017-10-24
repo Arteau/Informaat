@@ -10,6 +10,12 @@
         <li>
           <div class="collapsible-header"><i class="material-icons">home</i>{{$jeugdhuis->name }}</div>
           <div class="collapsible-body"><span>{{$jeugdhuis->zipcode}} {{$jeugdhuis->village}}  </span>
+          <ul>
+            @foreach($jeugdhuis->users as $user)
+            <li>{{$user->name}}</li>
+            @endforeach
+            
+          </ul>
             <a href="/jeugdhuizen/{{$jeugdhuis->id}}/edit"><i class="material-icons">create</i></a>
           </div>
          

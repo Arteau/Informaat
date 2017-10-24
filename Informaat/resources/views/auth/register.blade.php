@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.landing')
 
 @section('content')
 <div class="container">
@@ -29,7 +29,7 @@
                            
 
                             <div class="col-md-6">
-                                <select id="jeugdhuis_id" type="text" class="form-control" name="jeugdhuis_id" value="{{ old('jeugdhuis_id') }}" >
+                                <select id="jeugdhuis_id" type="text" class="form-control" name="jeugdhuis_id" value="" >
                                 <option value="0">Formaat</option>   
                                 @foreach($jeugdhuizen as $jeugdhuis)
                                         

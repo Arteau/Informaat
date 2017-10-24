@@ -77,4 +77,5 @@ class RegisterController extends Controller
         $jeugdhuizen = \App\Jeugdhuis::all();
         return view('auth.register', compact('jeugdhuizen'));
     }
+    
 }

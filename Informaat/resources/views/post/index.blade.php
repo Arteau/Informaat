@@ -14,7 +14,8 @@
     <div class="col s6 m3">
       <div class="card hoverable">
         <div class="card-image valign-wrapper ">
-        <i class="material-icons" style="font-size: 66px;margin: 3px auto;"> highlight</i>
+        <!-- <i class="material-icons" style="font-size: 66px;margin: 3px auto;"> highlight</i> -->
+        <img src="{{asset('img/icon_sound.svg')}}" alt="">
        
 
           <!-- <img src="https://maxcdn.icons8.com/Share/icon/color/Gaming//bullbasaur1600.png" style="width:60%; margin:0 auto;"> -->
