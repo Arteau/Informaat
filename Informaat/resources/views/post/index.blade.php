@@ -41,8 +41,6 @@
       </form>
     </div>
 
-    
- 
     <div class="col m6 s12">
       <form role="sort" class="app-sort" id="sort-form" action="/posts/sort" method="POST">
           {{ csrf_field() }}

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\User;
 use App\Comment;
+use App\Jeugdhuis;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -12,6 +14,18 @@ class DashboardController extends Controller
     public function __construct() 
     {
         $this->middleware('auth');
+        
+    }
+    
+    public function jeugdhuis()
+    {
+        $id = Auth::user()->jeugdhuis->id;
+        
+        $jeugdhuis = Jeugdhuis::find($id);
+
+        $users = $jeugdhuis->users;
+
+        return view('dashboard.jeugdhuis', compact('users'));
         
     }
 
