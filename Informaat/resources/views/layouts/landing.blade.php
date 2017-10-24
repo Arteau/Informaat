@@ -129,15 +129,9 @@
     <script src="{{ asset('js/index.js') }}"></script>
 
     
-    @if ($flash = session('message'))
-
-    <script>
-    $(function() {
-      Materialize.toast('{{$flash}}', 4000);
-    });
-    </script>
-
-@endif
+    
+    @include ('layouts.toasts');
+    @include ('layouts.errors')
 
 </body>
 </html>

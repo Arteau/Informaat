@@ -2,19 +2,6 @@
 
 @section('content')
 
-
-
-
-@if ($flash = session('message'))
-
-    <script>
-    $(function() {
-      Materialize.toast('{{$flash}}', 4000);
-    });
-    </script>
-
-@endif
-
 <div class="container">
   <div class="row">
   

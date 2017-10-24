@@ -3,15 +3,7 @@
 @section('content')
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="container">
-@if ($flash = session('message'))
 
-    <script>
-    $(function() {
-      Materialize.toast('{{$flash}}', 4000);
-    });
-    </script>
-    
-@endif
     <div class="card horizontal z-depth-2">
       <div class="card-image">
         <img src="https://maxcdn.icons8.com/Share/icon/color/Gaming//pokecoin1600.png" style="width:60%">

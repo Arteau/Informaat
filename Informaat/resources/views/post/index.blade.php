@@ -4,16 +4,6 @@
     <!-- /.container -->
 <div class="container">
 
-@if ($flash = session('message'))
-
-    <script>
-    $(function() {
-      Materialize.toast('{{$flash}}', 4000);
-    });
-    </script>
-
-@endif
-
   
   <h2 class="header">Alle posts</h2>
 
