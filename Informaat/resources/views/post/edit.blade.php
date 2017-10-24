@@ -30,14 +30,13 @@
         <select id="topic" name="topic">
             <option disabled selected>Onderwerp</option>
 
-            <option @if($post->topic == "Onderwerp 1") selected @endif >
-            Onderwerp 1</option>
-            <option @if($post->topic == "Onderwerp 2") selected @endif>
-            Onderwerp 2</option>
-            <option @if($post->topic == "Onderwerp 3") selected @endif>
-            Onderwerp 3</option>
-            <option @if($post->topic == "Onderwerp 4") selected @endif>
-            Onderwerp 4</option>
+            <option value="sociaal" @if($post->topic == "sociaal") selected @endif >
+            Sociaal</option>
+            <option value="techniek" @if($post->topic == "techniek") selected @endif>
+             Techniek</option>
+            <option value="muziek" @if($post->topic == "muziek") selected @endif>
+            Muziek</option>
+            
         </select>
                 @if ($errors->has('titel'))
                     <span class="help-block">

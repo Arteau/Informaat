@@ -7,7 +7,7 @@
 
 <div class="card">
     <div class="card-content">
-      <p class="text-center">{{$user->name}} / @if(!empty($user->jeugdhuis->name)){{$user->jeugdhuis->name}}@endif </p>
+      <h5 class="text-center">{{$user->name}} / @if(!empty($user->jeugdhuis->name)){{$user->jeugdhuis->name}}@endif </h5>
     </div>
     <div class="card-tabs">
       <ul class="tabs tabs-fixed-width">

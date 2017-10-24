@@ -5,7 +5,9 @@
 <div class="container">
 
   
-  <h2 class="header">Alle posts</h2>
+<blockquote>
+  Top posts deze week
+</blockquote>
 
   <div class="row">
  
@@ -13,28 +15,34 @@
   <a href="/posts/{{$top->id}}">
     <div class="col s6 m3">
       <div class="card hoverable">
-        <div class="card-image valign-wrapper" style="padding:20px">
-          <img src="{{asset('img/icon_sound.svg')}}" alt="" style="max-width:100px; left: 50%;transform: translateX(-50%);">          
+        <div class="card-image valign-wrapper" style="padding:20px; padding-bottom:0;background-color:#f79727">
+          @if($top->topic == "techniek")
+            <img src="{{asset('img/icon_techniek_white.svg')}}" alt="" style="max-height:80px; left: 50%;transform: translateX(-50%);"> 
+          @elseif($top->topic == "sociaal")
+            <img src="{{asset('img/icon_social_white.svg')}}" alt="" style="max-height:80px; left: 50%;transform: translateX(-50%);"> 
+          @else
+            <img src="{{asset('img/icon_sound_white.svg')}}" alt="" style="max-height:80px; left: 50%;transform: translateX(-50%);"> 
+          @endif
           <span class="card-title"></span>
         </div>
-        <div class="card-content">
+        <div class="card-content" style="background-color:#f79727">
         <span style="position: absolute;top: 2px;color: black;left: 3px;">
-          <i class="material-icons" style="color:rgba(16, 155, 229, 0.5); font-size:17px">thumb_up</i>
-          <span style="top: -3px;left: 21px;position: absolute;">{{ $top->votes }}</span>
+          <i class="material-icons" style="color:rgba(246, 248, 251, 0.83); font-size:17px">thumb_up</i>
+          <span style="top: -3px;left: 21px;position: absolute; color:rgba(246, 248, 251, 0.83)">{{ $top->votes }}</span>
         </span> 
-        <b><p class="truncate center-align black-text">{{$top->title}}</p></b>
+        <b><p class="truncate center-align white-text">{{$top->title}}</p></b>
          
         </div>
-        <div class="card-action center-align">
+        <div class="card-action center-align black-text">
           Lees meer
         </div>
       </div>
     </div> 
   </a>
-    @endforeach
+  @endforeach
   </div>
 
-
+ <hr>
   <div class="row">
     <div class="col m6 s12">
       <form role="search" class="app-search" action="/posts/search" method="POST">
@@ -63,9 +71,13 @@
         </form>
       </div>
     </div>
+    <blockquote>
+      Alle posts
+    </blockquote>
     <div class="col s12 m12">
   
     @foreach($posts as $post)
+    <a href="/posts/{{$post->id}}">
       <div class="row z-depth-2 hoverable">
         <div class="col s12 m1" style="position:relative">
           <div style="position:absolute" class="votes">{{ $post->votes }}</div>
@@ -103,7 +115,7 @@
                   @endif
           </div>
           <div class="col s12 m12">
-            <a href="/posts/{{$post->id}}">Lees meer</a>
+          
           </div>
         </div>
         <div class="col s2 m1" >
@@ -133,7 +145,7 @@
           </div>
         </div>
       </div>
-
+      </a>
     @endforeach
     {{ $posts->links() }}
     <a href="/posts/create"><button class="btn btn-default">Create post</button></a>

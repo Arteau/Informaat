@@ -4,7 +4,7 @@
 <div class="container" style="margin-top:50px" >
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h5>Registreer jeugdhuis</h5>
+        <blockquote>Registreer jeugdhuis</blockquote>
             <div class="panel panel-default">
 
                 <div class="panel-body">

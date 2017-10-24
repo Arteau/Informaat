@@ -4,7 +4,7 @@
 
 <div class="container" style="margin-top:50px">
   <div class="row">
-  <h5>Overzicht jeugdhuizen</h5>
+  <blockquote>Overzicht jeugdhuizen</blockquote>
   
     <ul class="collapsible popout" data-collapsible="accordion" style="margin-top:50px">
     @foreach($jeugdhuizen as $jeugdhuis)

@@ -26,10 +26,10 @@
     <div class="input-field">
         <select id="topic" name="topic">
             <option disabled selected>Onderwerp*</option>
-            <option>Onderwerp 1</option>
-            <option>Onderwerp 2</option>
-            <option>Onderwerp 3</option>
-            <option>Onderwerp 4</option>
+            <option value="sociaal">Sociaal</option>
+            <option value="techniek">Techniek</option>
+            <option value="muziek">Muziek</option>
+            
         </select>
     </div>
 
