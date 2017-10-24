@@ -81,7 +81,7 @@
               </div>
         </div>
         <div class="col s12 m2" style="">
-        <i class="large material-icons">monetization_on</i>
+        <img src="{{asset('img/icon_sound.svg')}}" alt="">  
 
           <!-- <img src="https://maxcdn.icons8.com/Share/icon/color/Gaming//pokecoin1600.png" style="width:60%"> -->
         </div>
