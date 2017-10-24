@@ -57,6 +57,7 @@ class PostController extends Controller
 
             $user->cancelVote($post);      
             $user->upVote($post);
+            session()->flash('message', 'Upvoted '.$post->title);
         }
 
         
@@ -82,6 +83,7 @@ class PostController extends Controller
 
             $user->cancelVote($post);
             $user->downVote($post);
+            session()->flash('message', 'Downvoted '.$post->title);
             
         }
 
@@ -100,6 +102,7 @@ class PostController extends Controller
             $post->increment('votes');
         }
         $user->cancelVote($post);
+        session()->flash('message', 'Cancel vote for '.$post->title);
         
         return back();
     }

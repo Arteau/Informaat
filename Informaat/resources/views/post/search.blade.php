@@ -5,7 +5,6 @@
     <form role="search" class="app-search" action="/posts/search" method="POST">
         {{ csrf_field() }}
 
-            @include ('layouts.errors')
             <input type="text" name="keyword" id="keyword" placeholder="Zoeken" class="form-control" style="width:100%"> <a href=""><i class="fa fa-search"></i></a>
     </form>
     <hr>

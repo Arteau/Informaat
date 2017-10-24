@@ -5,7 +5,6 @@
 
 <form action="/jeugdhuizen" method="POST">
             {{ csrf_field() }}
-            @include ('layouts.errors')
             
         <div class="input-field">
             <label for="name">Naam</label>

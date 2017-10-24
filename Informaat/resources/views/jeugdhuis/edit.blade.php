@@ -12,7 +12,6 @@
 
      {{ csrf_field() }}
      {{ method_field('PATCH') }}
-     @include ('layouts.errors')
    
     <div class="input-field">
         <label for="name">Titel</label>

@@ -11,7 +11,6 @@
     <form method="POST" action="/posts" id="post_form">
 
      {{ csrf_field() }}
-     @include ('layouts.errors')
    
     <div class="input-field">
         <label for="title">Titel*</label>
