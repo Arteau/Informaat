@@ -1,11 +1,11 @@
 @extends('layouts.landing')
 
 @section('content')
-<div class="container">
+<div class="container" style="margin-top:50px" >
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+                <div class="panel-heading">Registreer jeugdhuis verantwoordelijke</div>
 
                 <div class="panel-body">
                     <form  method="POST" action="{{ route('register') }}">
