@@ -5,8 +5,11 @@
 <div class="container">
 
     <div class="card horizontal z-depth-2">
-      <div class="card-image">
-        <img src="https://maxcdn.icons8.com/Share/icon/color/Gaming//pokecoin1600.png" style="width:60%">
+      <div class="card-image" style="width:150px">
+          <div style="position:absolute">
+             <img src="{{asset('img/icon_sound.svg')}}" alt="" style="width:100%">
+          </div>
+          
       </div>
       <div class="card-stacked">
         <div class="card-content">

@@ -9,7 +9,7 @@
             
             <div class="row valign-wrapper" style="margin-top:10%">
                 
-                <img src="{{asset('img/logo.png')}}" class="paralax-normalize center-align" alt="" style="height:100px; left:0; margin:0 auto">
+                <img src="{{asset('img/logo.png')}}" class="paralax-normalize center-align" alt="" style="height:100px; left:-25px; margin:0 auto">
 
             </div>
             <div class="row valign-wrapper">
