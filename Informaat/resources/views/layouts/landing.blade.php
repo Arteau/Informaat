@@ -35,6 +35,7 @@
                         <li><a href="{{ route('login') }}">Login</a></li>
                         
                     @elseif (Auth::user()->isAdmin)
+                        <li><a href="/">Home</a></li> 
                         <li><a href="/jeugdhuizen">Jeugdhuizen</a></li>
                         <li><a href="{{ route('register') }}">Register</a></li>
                         <li><a href="/posts">Posts</a></li>
@@ -60,7 +61,7 @@
                         </li>
 
                     @else
-                        
+                        <li><a href="/">Home</a></li> 
                         <li><a href="/posts">Posts</a></li>
                         <li><a href="/dashboard">Dashboard</a></li>
                         <li class="dropdown">
