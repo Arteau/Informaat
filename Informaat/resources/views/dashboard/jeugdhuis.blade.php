@@ -5,13 +5,24 @@
 <div class="container">
 @if(!Auth::user()->isAdmin)
 
-    @foreach($users as $user)
-    <ul>
+<table class="striped">
+        <thead>
+          <tr>
+              <th>Alle gebruikers voor {{$jeugdhuis->name}}</th>
+          </tr>
+        </thead>
 
-    <li>{{$user->name}}</li>
+        <tbody>
+        @foreach($users as $user)
+          <tr>
+            <td>{{$user->name}}</td>
+            
+          </tr>
+        @endforeach
+        </tbody>
+      </table>
 
-    </ul>
-    @endforeach
+    
 @endif
 </div>
 

@@ -90,7 +90,7 @@
         </div>
         <div id="mijn_posts">
             
-
+        
         @foreach($user_posts as $post)
         <div class="card horizontal z-depth-2">
       <div class="card-image">
@@ -148,6 +148,7 @@
       </div>
     </div>
     @endforeach
+    
 
 
 
@@ -157,7 +158,7 @@
 
 
 
-
+      @if(!empty($post))
         @foreach($comments as $comment)
     <div class="card horizontal z-depth-2">
       <div class="card-image">
@@ -191,6 +192,7 @@
       </div>
     </div>
     @endforeach
+    @endif
     
 
 

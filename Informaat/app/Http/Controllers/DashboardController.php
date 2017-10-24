@@ -25,14 +25,16 @@ class DashboardController extends Controller
 
         $users = $jeugdhuis->users;
 
-        return view('dashboard.jeugdhuis', compact('users'));
+        return view('dashboard.jeugdhuis', compact('users', 'jeugdhuis'));
         
     }
 
     public function index()
     {
         $user = Auth::user();
+        
         $user_posts = Auth::user()->posts;
+
         $favorite_posts = Auth::user()->favorites;
         $comments = Auth::user()->comments;
         $posts = Post::orderBy('votes', 'desc')->get();
