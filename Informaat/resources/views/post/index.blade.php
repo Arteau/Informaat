@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- /.container -->
-<div class="container">
+<div class="container" style="margin-top:50px; margin-bottom:50px;">
 
   
 <blockquote>
@@ -13,7 +13,7 @@
  
   @foreach($tops as $top)
   <a href="/posts/{{$top->id}}">
-    <div class="col s6 m3">
+    <div class="col s6 m3" class="top">
       <div class="card hoverable">
         <div class="card-image valign-wrapper" style="padding:20px; padding-bottom:0;background-color:#f79727">
           @if($top->topic == "techniek")
@@ -78,29 +78,35 @@
   
     @foreach($posts as $post)
     <a href="/posts/{{$post->id}}">
-      <div class="row z-depth-2 hoverable">
-        <div class="col s12 m1" style="position:relative">
+      <div class="row z-depth-2 hoverable" style="color:#636b6f">
+        <div class="col s12 m1 hide-on-small-only	" style="position:relative">
           <div style="position:absolute" class="votes">{{ $post->votes }}</div>
               <div style="position:absolute" class="votes_caret">
                   @if(!$user->hasVoted($post))
-                  <a href="/posts/{{$post->id}}/upvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
-                  <a href="/posts/{{$post->id}}/downvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                  <object><a href="/posts/{{$post->id}}/upvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a></object>
+                  <object><a href="/posts/{{$post->id}}/downvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a></object>
                   @else
                       @if($user->hasUpVoted($post))
-                          <a href="/posts/{{$post->id}}/cancelvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true" style="color:black"></i></a>
-                          <a href="/posts/{{$post->id}}/downvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                          <object><a href="/posts/{{$post->id}}/cancelvote" class="upvote cancelvote"><i class="fa fa-caret-up" aria-hidden="true" style="color:black"></i></a></object>
+                          <object><a href="/posts/{{$post->id}}/downvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a></object>
                       @endif
                       @if($user->hasDownVoted($post))
-                          <a href="/posts/{{$post->id}}/upvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
-                          <a href="/posts/{{$post->id}}/cancelvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true" style="color:black"></i></a>
+                          <object><a href="/posts/{{$post->id}}/upvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a></object>
+                          <object><a href="/posts/{{$post->id}}/cancelvote" class="downvote  cancelvote"><i class="fa fa-caret-down" aria-hidden="true" style="color:black"></i></a></object>
                       @endif
                   @endif
               </div>
         </div>
-        <div class="col s12 m2" style="">
-        <img src="{{asset('img/icon_sound.svg')}}" alt="">  
+        <div class="col s12 m2 hide-on-small-only	" style="position:relative">
+        @if($post->topic == "techniek")
+          <img src="{{asset('img/icon_techniek.svg')}}" alt="" style="max-height:100px;position: absolute;left: 50%;transform: translateX(-50%);top: 10px;">  
+        @elseif($post->topic == "sociaal")
+        <img src="{{asset('img/icon_social.svg')}}" alt="" style="max-height:100px;position: absolute;left: 50%;transform: translateX(-50%);top: 10px;">  
 
-          <!-- <img src="https://maxcdn.icons8.com/Share/icon/color/Gaming//pokecoin1600.png" style="width:60%"> -->
+        @else
+        <img src="{{asset('img/icon_sound.svg')}}" alt="" style="max-height:100px;position: absolute;left: 50%;transform: translateX(-50%);top: 10px;">  
+
+        @endif
         </div>
         <div class="col s10 m8">
           <div class="">
@@ -112,6 +118,8 @@
                   <p>Onderwerp: {{$post->topic}}</p> 
                   @if(!empty($post->tag1 | $post->tag2 | $post->tag3))
                   <small>{{$post->tag1}} // {{$post->tag2}} // {{$post->tag3}}</small>
+                  @else
+                  <small><br></small>
                   @endif
           </div>
           <div class="col s12 m12">

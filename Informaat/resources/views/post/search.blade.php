@@ -1,18 +1,20 @@
 @extends('layouts.landing')
 
 @section('content')
-<div class="container">
+<div class="container" style="margin-top:50px">
+
     <form role="search" class="app-search" action="/posts/search" method="POST">
         {{ csrf_field() }}
 
-            <input type="text" name="keyword" id="keyword" placeholder="Zoeken" class="form-control" style="width:100%"> <a href=""><i class="fa fa-search"></i></a>
+            <input type="text" name="keyword" id="keyword" placeholder="Zoeken" class="form-control" style="width:100%">
     </form>
-    <hr>
+    
     @if (!empty($searchPost))
 
         @isset($searchPost)
         @empty($searchPost[0])
-            <h1>Geen resultaten gevonden!</h1>
+            <br>
+            <h3 class="text-center">Whooops, geen resultaten gevonden!</h3>
         @endempty
         @endisset
 

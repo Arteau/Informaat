@@ -1,8 +1,9 @@
 .btn {
     background-color:#b12727;
 }
-.btn:hover {
+.btn:hover, .btn:focus, .btn:active {
     background-color:#9c2121;
+    color:white;
 }
 .btn:focus {
     background-color:#9c2121;
@@ -38,7 +39,7 @@ input:focus{
     border: none;
     background: transparent;
     color: #ffc000;
-    font-size: 50px; 
+    font-size: 18px; 
 }
 .star:focus {
     background-color:transparent !important;
@@ -71,10 +72,11 @@ bottom: 10px;
    text-decoration: none;
 }
 .votes {
-    top: 39px;
-    left: 29px;
+    top: 47px;
+    left: 30px;
     font-weight: 300;
-    font-size: 25px;
+    font-size: 15px;
+    color:#d44f54;
 }
 
 .votes_caret {
@@ -90,9 +92,18 @@ bottom: 10px;
     top:42px;
 }
 .favorite {
-    top: 30px;
+    top: 0;
     position: absolute;
-    left:5px;
+    right: -10px;
+
+}
+.upvote > .fa-caret-up, .downvote > .fa-caret-down{
+    color:#ee6e73;
+}
+
+
+.cancelvote  > .fa-caret-down, .cancelvote  > .fa-caret-up {
+    color:#b02829 !important;
 }
 .brand-logo:hover {
     background-color:transparent !important;
@@ -102,4 +113,9 @@ bottom: 10px;
 }
 .page-footer{
     background-color:rgba(202, 29, 59, 0.75);
+}
+.top:hover{
+    transform: scale(1.01);
+    transition: 0.4s;
+
 }
