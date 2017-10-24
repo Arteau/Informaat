@@ -2,8 +2,9 @@
 
 @section('content')
 
-<div class="container">
+<div class="container" style="margin-top:50px">
   <div class="row">
+  <h5>Overzicht jeugdhuizen</h5>
   
     <ul class="collapsible popout" data-collapsible="accordion" style="margin-top:50px">
     @foreach($jeugdhuizen as $jeugdhuis)

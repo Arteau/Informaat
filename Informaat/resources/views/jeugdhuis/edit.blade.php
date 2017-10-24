@@ -1,12 +1,9 @@
 @extends('layouts.landing')
 
 @section('content')
-<div class="container">
-    <div class="row bg-title">
-        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <h4 class="page-title">Edit Jeugdhuis!</h4> 
-        </div>
-    </div>
+<div class="container" style="margin-top:50px">
+
+    <h5>Jeugdhuis toevoegen</h5>
 
     <form method="POST" action="/jeugdhuizen/{{$jeugdhuis->id}}/update">
 
