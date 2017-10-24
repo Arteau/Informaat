@@ -131,7 +131,7 @@
 
     
     
-    @include ('layouts.toasts');
+    @include ('layouts.toasts')
     @include ('layouts.errors')
 
 </body>

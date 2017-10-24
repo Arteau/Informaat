@@ -46,21 +46,21 @@
     <br>
     <div class="container scrollspy" id="landing_wrapper" style="margin-bottom:50px; margin-top: 50px;">
         <div class="row">
-            <div class="col s4">
+            <div class="col s12 m4">
                 <div class="center promo promo-example">
                     <i class="material-icons" style="margin: 40px 0;color: #e1838c;font-size: 7rem;display: block;">flash_on</i>
                     <p class="promo-caption" style="font-size: 1.7rem;font-weight: 500;margin-top: 5px;margin-bottom: 0;">Snelle oplossingen</p>
                     <p class="light center">Elk jeugdhuis kampt vaak met dezelfde problemen, ieder jeugdhuis heeft hier een andere oplossing voor. Door dit te delen vindt je heel snel oplossingen voor jouw problemen </p>
                 </div>
             </div>
-            <div class="col s4">
+            <div class="col s12 m4">
                 <div class="center promo promo-example">
                     <i class="material-icons" style="margin: 40px 0;color: #e1838c;font-size: 7rem;display: block;">group</i>
                     <p class="promo-caption" style="font-size: 1.7rem;font-weight: 500;margin-top: 5px;margin-bottom: 0;">Help elkaar en jezelf</p>
                     <p class="light center">Door elkaar te helpen veelvoorkomende problemen op te lossen, wordt elk jeugdhuis een beetje beter gemaakt door elkaar.</p>
                 </div>
             </div>
-            <div class="col s4">
+            <div class="col s12 m4">
                 <div class="center promo promo-example">
                     <i class="material-icons" style="margin: 40px 0;color: #e1838c;font-size: 7rem;display: block;">settings</i>
                     <p class="promo-caption" style="font-size: 1.7rem;font-weight: 500;margin-top: 5px;margin-bottom: 0;">Makkelijk werken</p>
