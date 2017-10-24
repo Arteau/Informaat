@@ -1,7 +1,6 @@
 @extends('layouts.landing')
 
 @section('content')
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="container">
 
     <div class="card horizontal z-depth-2">
@@ -91,6 +90,7 @@
 
                 <h2 class="card-title">{{$comment->title}}</h2>
                 <i>{{$comment->body}}</i>
+                <hr>
                 <small> Gepost: {{$comment->created_at->diffForHumans()}} by
                 {{$comment->user->name}}</small>
         </div>
