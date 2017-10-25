@@ -52,6 +52,8 @@
                   @if(!empty($post->tag1 | $post->tag2 | $post->tag3))
                   <small>{{$post->tag1}} // {{$post->tag2}} // {{$post->tag3}}</small>
                   @endif
+                  <p><small><b>Gepost door:</b> {{$post->user->name}}  van {{$post->user->jeugdhuis->name}}</small></p>
+                    <p><small><b>{{count($post->comments)}} comments </b> </small></p>
           </div>
           <div class="card-action">
             <a href="/posts/{{$post->id}}">Lees meer</a>

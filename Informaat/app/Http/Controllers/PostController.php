@@ -124,7 +124,7 @@ class PostController extends Controller
             $number_of_page = $posts->currentPage();
             
         } else {
-            $posts = Post::orderBy('votes', 'desc')->paginate(5);
+            $posts = Post::orderBy('created_at', 'desc')->paginate(5);
             
         }
         $tops = Post::orderBy('votes', 'desc')->take(4)->get();

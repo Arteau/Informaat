@@ -78,7 +78,7 @@
   
     @foreach($posts as $post)
     <a href="/posts/{{$post->id}}">
-      <div class="row z-depth-2 hoverable" style="color:#636b6f; min-height:118px;">
+      <div class="row z-depth-2 hoverable" style="color:#636b6f; min-height:118px;height:182px">
         <div class="col s12 m1 hide-on-small-only	" style="position:relative">
           <div style="position:absolute" class="votes">{{ $post->votes }}</div>
               <div style="position:absolute" class="votes_caret">
@@ -97,14 +97,14 @@
                   @endif
               </div>
         </div>
-        <div class="col s12 m2 hide-on-small-only	" style="position:relative">
+        <div class="col s12 m2 hide-on-small-only	" style="position:relative; height:182px">
         @if($post->topic == "techniek")
-          <img src="{{asset('img/icon_techniek.svg')}}" alt="" style="max-height:100px;position: absolute;left: 50%;transform: translateX(-50%);top: 10px;">  
+          <img src="{{asset('img/icon_techniek.svg')}}" alt="" style="max-height:100px;position: absolute;left: 50%;transform: translate(-50%, 50%);">  
         @elseif($post->topic == "sociaal")
-        <img src="{{asset('img/icon_social.svg')}}" alt="" style="max-height:100px;position: absolute;left: 50%;transform: translateX(-50%);top: 10px;">  
+        <img src="{{asset('img/icon_social.svg')}}" alt="" style="max-height:100px;position: absolute;left: 50%;transform: translate(-50%, 50%);">  
 
         @else
-        <img src="{{asset('img/icon_sound.svg')}}" alt="" style="max-height:100px;position: absolute;left: 50%;transform: translateX(-50%);top: 10px;">  
+        <img src="{{asset('img/icon_sound.svg')}}" alt="" style="max-height:100px;position: absolute;left: 50%;transform: translate(-50%, 50%);">  
 
         @endif
         </div>
@@ -121,7 +121,7 @@
                   @else
                   <small><br></small>
                   @endif
-                  <p><small><b>Gepost door:</b> {{$post->user->name}}  </small></p>
+                  <p><small><b>Gepost door:</b> {{$post->user->name}} van {{$post->user->jeugdhuis->name}}  </small></p>
                   <p><small><b>{{count($post->comments)}} comments </b> </small></p>
           </div>
           <div class="col s12 m12">

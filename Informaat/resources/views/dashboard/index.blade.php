@@ -66,7 +66,8 @@
                     @else
                     <small><br></small>
                     @endif
-                    <p><small><b>Gepost door:</b> {{$favorite->post->user->name}}  </small></p>
+                    
+                    <p><small><b>Gepost door:</b> {{$favorite->post->user->name}} van  {{$favorite->post->user->jeugdhuis->name}}</small></p>
                     <p><small><b>{{count($favorite->post->comments)}} comments </b> </small></p>
             </div>
             <div class="col s12 m12">
@@ -157,7 +158,8 @@
                     @else
                     <small><br></small>
                     @endif
-                    <p><small><b>Gepost door:</b> {{$post->user->name}}  </small></p>
+                    <p><small><b>Gepost door:</b> {{$post->user->name}}  van {{$post->user->jeugdhuis->name}}</small></p>
+                    
                     <p><small><b>{{count($post->comments)}} comments </b> </small></p>
             </div>
             <div class="col s12 m12">
@@ -230,7 +232,7 @@
                 <i>{{$comment->body}}</i>
                 <br>
                 <small> Gepost: {{$comment->created_at->diffForHumans()}} door
-                {{$comment->user->name}}</small>
+                {{$comment->user->name}} van {{$comment->user->jeugdhuis->name}}</small>
         </div>
         <div class="card-action">
           <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/edit">Edit comment </a>
