@@ -62,11 +62,11 @@
                     
                    
                     @if(!empty($favorite->post->tag1 | $favorite->post->tag2 | $favorite->post->tag3))
-                    <small>{{$favorite->post->tag1}} // {{$favorite->post->tag2}} // {{$favorite->post->tag3}}</small>
+                    <small><b>Tags: </b>{{$favorite->post->tag1}} | {{$favorite->post->tag2}} | {{$favorite->post->tag3}}</small>
                     @else
                     <small><br></small>
                     @endif
-                    <small>{{$favorite->post->user}}</small>
+                    <p><small><b>Gepost door:</b> {{$favorite->post->user->name}}  </small></p>
                     <p><small><b>{{count($favorite->post->comments)}} comments </b> </small></p>
             </div>
             <div class="col s12 m12">
@@ -153,7 +153,7 @@
                     
                    
                     @if(!empty($post->tag1 | $post->tag2 | $post->tag3))
-                    <small>{{$post->tag1}} // {{$post->tag2}} // {{$post->tag3}}</small>
+                    <small><b>Tags: </b>{{$post->tag1}} | {{$post->tag2}} | {{$post->tag3}}</small>
                     @else
                     <small><br></small>
                     @endif

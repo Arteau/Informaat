@@ -11,6 +11,8 @@
         <li>
           <div class="collapsible-header"><i class="material-icons">home</i>{{$jeugdhuis->name }}</div>
           <div class="collapsible-body"><span>{{$jeugdhuis->zipcode}} {{$jeugdhuis->village}}  </span>
+          <hr>
+          <small><b>Leden van jeugdhuis:</b></small>
           <ul>
             @foreach($jeugdhuis->users as $user)
             <li>{{$user->name}}</li>
