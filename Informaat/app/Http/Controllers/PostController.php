@@ -129,6 +129,7 @@ class PostController extends Controller
         }
         $tops = Post::orderBy('votes', 'desc')->take(4)->get();
         
+        
         return view('post.index', compact('posts', 'user', 'tops'));
         
     }

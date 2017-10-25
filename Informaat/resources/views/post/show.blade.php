@@ -49,6 +49,7 @@
                     @if(!empty($post->tag1 | $post->tag2 | $post->tag3))
                     <small><b>Tags: </b>{{$post->tag1}} | {{$post->tag2}} | {{$post->tag3}}</small>
                     @endif
+                    <p><small><b>Gepost door:</b> {{$post->user->name}}  </small></p>
                     <p><small><b>{{count($post->comments)}} comments </b> </small></p>
                 </div>
 

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container">
+<div class="container" style="margin-top:50px">
 
 
 <div class="card">
@@ -66,6 +66,8 @@
                     @else
                     <small><br></small>
                     @endif
+                    <small>{{$favorite->post->user}}</small>
+                    <p><small><b>{{count($favorite->post->comments)}} comments </b> </small></p>
             </div>
             <div class="col s12 m12">
             
@@ -155,6 +157,8 @@
                     @else
                     <small><br></small>
                     @endif
+                    <p><small><b>Gepost door:</b> {{$post->user->name}}  </small></p>
+                    <p><small><b>{{count($post->comments)}} comments </b> </small></p>
             </div>
             <div class="col s12 m12">
             
@@ -224,7 +228,8 @@
 
                 <h2 class="card-title">{{$comment->title}}</h2>
                 <i>{{$comment->body}}</i>
-                <small> Gepost: {{$comment->created_at->diffForHumans()}} by
+                <br>
+                <small> Gepost: {{$comment->created_at->diffForHumans()}} door
                 {{$comment->user->name}}</small>
         </div>
         <div class="card-action">
