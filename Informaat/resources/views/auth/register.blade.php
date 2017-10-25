@@ -20,7 +20,7 @@
                            
                             
                                 <select id="jeugdhuis_id" type="text" class="input-field" name="jeugdhuis_id">
-                                        <option value="0">Formaat</option>   
+                                        <!-- <option value="0">Formaat</option>    -->
                                     @foreach($jeugdhuizen as $jeugdhuis) 
                                         <option value="{{$jeugdhuis->id}}">{{$jeugdhuis->name}}</option>
                                     @endforeach

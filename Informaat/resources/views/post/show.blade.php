@@ -82,7 +82,7 @@
       </div>
     </div>
     <hr>
-    
+    @if(count($comments) != 0)
     @foreach($comments as $comment)
     <div class="card horizontal z-depth-2">
       <div class="card-image">
@@ -120,10 +120,15 @@
       </div>
     </div>
     @endforeach
+    <hr>
+    @else
+    <small>Nog geen reactie's, wees de eerste om te reageren!</small>
+    <br>
+    @endif
     {{ $comments->links() }}
 
     
-    <hr>
+   
 
 
     
