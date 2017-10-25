@@ -78,7 +78,7 @@
   
     @foreach($posts as $post)
     <a href="/posts/{{$post->id}}">
-      <div class="row z-depth-2 hoverable" style="color:#636b6f">
+      <div class="row z-depth-2 hoverable" style="color:#636b6f; min-height:118px;">
         <div class="col s12 m1 hide-on-small-only	" style="position:relative">
           <div style="position:absolute" class="votes">{{ $post->votes }}</div>
               <div style="position:absolute" class="votes_caret">
@@ -87,12 +87,12 @@
                   <object><a href="/posts/{{$post->id}}/downvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a></object>
                   @else
                       @if($user->hasUpVoted($post))
-                          <object><a href="/posts/{{$post->id}}/cancelvote" class="upvote cancelvote"><i class="fa fa-caret-up" aria-hidden="true" style="color:black"></i></a></object>
+                          <object><a href="/posts/{{$post->id}}/cancelvote" class="upvote cancelvote"><i class="fa fa-caret-up" aria-hidden="true" ></i></a></object>
                           <object><a href="/posts/{{$post->id}}/downvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a></object>
                       @endif
                       @if($user->hasDownVoted($post))
                           <object><a href="/posts/{{$post->id}}/upvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a></object>
-                          <object><a href="/posts/{{$post->id}}/cancelvote" class="downvote  cancelvote"><i class="fa fa-caret-down" aria-hidden="true" style="color:black"></i></a></object>
+                          <object><a href="/posts/{{$post->id}}/cancelvote" class="downvote  cancelvote"><i class="fa fa-caret-down" aria-hidden="true" ></i></a></object>
                       @endif
                   @endif
               </div>
@@ -115,12 +115,13 @@
                   <i class="truncate">{{$post->body}}</i>
                   
                   
-                  <p>Onderwerp: {{$post->topic}}</p> 
+                 
                   @if(!empty($post->tag1 | $post->tag2 | $post->tag3))
-                  <small>{{$post->tag1}} // {{$post->tag2}} // {{$post->tag3}}</small>
+                  <small><b>Tags: </b>{{$post->tag1}} | {{$post->tag2}} | {{$post->tag3}}</small>
                   @else
                   <small><br></small>
                   @endif
+                  <p><small><b>{{count($post->comments)}} comments </b> </small></p>
           </div>
           <div class="col s12 m12">
           

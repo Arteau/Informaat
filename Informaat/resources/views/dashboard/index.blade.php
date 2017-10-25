@@ -20,66 +20,85 @@
         <div id="favorieten">
 
 
-
-
-
         @foreach($favorite_posts as $favorite)
-        <div class="card horizontal z-depth-2">
-      <div class="card-image">
-        <img src="https://maxcdn.icons8.com/Share/icon/color/Gaming//pokecoin1600.png" style="width:60%">
-      </div>
-      <div class="card-stacked">
-        <div class="card-content">
-              {{ $favorite->post->votes }}
-                @if(!$user->hasVoted($favorite->post))
-                <a href="/posts/{{$favorite->post->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
-                <a href="/posts/{{$favorite->post->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
-                @else
-                    @if($user->hasUpVoted($favorite->post))
-                        <a href="/posts/{{$favorite->post->id}}/cancelvote"><i class="fa fa-caret-up" aria-hidden="true" style="color:black"></i></a>
-                        <a href="/posts/{{$favorite->post->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+       
+        <a href="/posts/{{$favorite->post->id}}">
+        <div class="row z-depth-2 hoverable" style="color:#636b6f; min-height:118px;">
+          <div class="col s12 m1 hide-on-small-only	" style="position:relative">
+            <div style="position:absolute" class="votes">{{ $favorite->post->votes }}</div>
+                <div style="position:absolute" class="votes_caret">
+                    @if(!$user->hasVoted($favorite->post))
+                    <object><a href="/posts/{{$favorite->post->id}}/upvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a></object>
+                    <object><a href="/posts/{{$favorite->post->id}}/downvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a></object>
+                    @else
+                        @if($user->hasUpVoted($favorite->post))
+                            <object><a href="/posts/{{$favorite->post->id}}/cancelvote" class="upvote cancelvote"><i class="fa fa-caret-up" aria-hidden="true" ></i></a></object>
+                            <object><a href="/posts/{{$favorite->post->id}}/downvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a></object>
+                        @endif
+                        @if($user->hasDownVoted($favorite->post))
+                            <object><a href="/posts/{{$favorite->post->id}}/upvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a></object>
+                            <object><a href="/posts/{{$favorite->post->id}}/cancelvote" class="downvote  cancelvote"><i class="fa fa-caret-down" aria-hidden="true" ></i></a></object>
+                        @endif
                     @endif
-                    @if($user->hasDownVoted($favorite->post))
-                        <a href="/posts/{{$favorite->post->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
-                        <a href="/posts/{{$favorite->post->id}}/cancelvote"><i class="fa fa-caret-down" aria-hidden="true" style="color:black"></i></a>
+                </div>
+          </div>
+          <div class="col s12 m2 hide-on-small-only	" style="position:relative">
+          @if($favorite->post->topic == "techniek")
+            <img src="{{asset('img/icon_techniek.svg')}}" alt="" style="max-height:100px;position: absolute;left: 50%;transform: translateX(-50%);top: 10px;">  
+          @elseif($favorite->post->topic == "sociaal")
+          <img src="{{asset('img/icon_social.svg')}}" alt="" style="max-height:100px;position: absolute;left: 50%;transform: translateX(-50%);top: 10px;">  
+  
+          @else
+          <img src="{{asset('img/icon_sound.svg')}}" alt="" style="max-height:100px;position: absolute;left: 50%;transform: translateX(-50%);top: 10px;">  
+  
+          @endif
+          </div>
+          <div class="col s10 m8">
+            <div class="">
+                    
+                    <h5 class="">{{$favorite->post->title}}</h5>
+                    <i class="truncate">{{$favorite->post->body}}</i>
+                    
+                    
+                   
+                    @if(!empty($favorite->post->tag1 | $favorite->post->tag2 | $favorite->post->tag3))
+                    <small>{{$favorite->post->tag1}} // {{$favorite->post->tag2}} // {{$favorite->post->tag3}}</small>
+                    @else
+                    <small><br></small>
                     @endif
-                @endif
-
-                @if( count($favorite->post->favorites->where('user_id', auth()->id())) )
-
-                    <form action="/posts/{{ $favorite->post->id }}/unfavorite" method="POST">
-                      {{ csrf_field() }}
-                      {{ method_field('PATCH') }}
-                      
-                      <button type="submit" class="star">
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                      </button>
-                    </form>
+            </div>
+            <div class="col s12 m12">
+            
+            </div>
+          </div>
+          <div class="col s2 m1" >
+            <!-- -->
+            <div style="position:relative">
+              
+            
+            @if( count($favorite->post->favorites->where('user_id', auth()->id())) )
+  
+                      <form action="/posts/{{ $favorite->post->id }}/unfavorite" method="POST" class="favorite">
+                        {{ csrf_field() }}
+                        {{ method_field('PATCH') }}
+                        
+                        <button type="submit" class="star">
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                        </button>
+                      </form>
+                    @else
                   
-                  @else
-                
-                    <form action="/posts/{{ $favorite->post->id }}/favorite" method="POST">
-                      {{ csrf_field() }}
-                      
-                      <button type="submit" class="star"><i class="fa fa-star-o" aria-hidden="true"></i></button>
-                    </form>
-
-                  @endif
-
-                <h2 class="card-title">{{$favorite->post->title}}</h2>
-                <i>{{$favorite->post->body}}</i>
-                <hr>
-                
-                <p>Onderwerp: {{$favorite->post->topic}}</p> 
-                @if(!empty($favorite->post->tag1 | $favorite->post->tag2 | $favorite->post->tag3))
-                <small>{{$favorite->post->tag1}} // {{$favorite->post->tag2}} // {{$favorite->post->tag3}}</small>
-                @endif
+                      <form action="/posts/{{ $favorite->post->id }}/favorite" method="POST" class="favorite">
+                        {{ csrf_field() }}
+                        
+                        <button type="submit" class="star"><i class="fa fa-star-o" aria-hidden="true"></i></button>
+                      </form>
+  
+            @endif
+            </div>
+          </div>
         </div>
-        <div class="card-action">
-            <a href="/posts/{{$favorite->post->id}}">Lees meer</a>
-        </div>
-      </div>
-    </div>
+        </a>
     @endforeach
 
 
@@ -92,61 +111,83 @@
             
         
         @foreach($user_posts as $post)
-        <div class="card horizontal z-depth-2">
-      <div class="card-image">
-        <img src="https://maxcdn.icons8.com/Share/icon/color/Gaming//pokecoin1600.png" style="width:60%">
-      </div>
-      <div class="card-stacked">
-        <div class="card-content">
-              {{ $post->votes }}
-                @if(!$user->hasVoted($post))
-                <a href="/posts/{{$post->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
-                <a href="/posts/{{$post->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
-                @else
-                    @if($user->hasUpVoted($post))
-                        <a href="/posts/{{$post->id}}/cancelvote"><i class="fa fa-caret-up" aria-hidden="true" style="color:black"></i></a>
-                        <a href="/posts/{{$post->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+        <a href="/posts/{{$post->id}}">
+        <div class="row z-depth-2 hoverable" style="color:#636b6f; min-height:118px;">
+          <div class="col s12 m1 hide-on-small-only	" style="position:relative">
+            <div style="position:absolute" class="votes">{{ $post->votes }}</div>
+                <div style="position:absolute" class="votes_caret">
+                    @if(!$user->hasVoted($post))
+                    <object><a href="/posts/{{$post->id}}/upvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a></object>
+                    <object><a href="/posts/{{$post->id}}/downvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a></object>
+                    @else
+                        @if($user->hasUpVoted($post))
+                            <object><a href="/posts/{{$post->id}}/cancelvote" class="upvote cancelvote"><i class="fa fa-caret-up" aria-hidden="true" ></i></a></object>
+                            <object><a href="/posts/{{$post->id}}/downvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a></object>
+                        @endif
+                        @if($user->hasDownVoted($post))
+                            <object><a href="/posts/{{$post->id}}/upvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a></object>
+                            <object><a href="/posts/{{$post->id}}/cancelvote" class="downvote  cancelvote"><i class="fa fa-caret-down" aria-hidden="true" ></i></a></object>
+                        @endif
                     @endif
-                    @if($user->hasDownVoted($post))
-                        <a href="/posts/{{$post->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
-                        <a href="/posts/{{$post->id}}/cancelvote"><i class="fa fa-caret-down" aria-hidden="true" style="color:black"></i></a>
+                </div>
+          </div>
+          <div class="col s12 m2 hide-on-small-only	" style="position:relative">
+          @if($post->topic == "techniek")
+            <img src="{{asset('img/icon_techniek.svg')}}" alt="" style="max-height:100px;position: absolute;left: 50%;transform: translateX(-50%);top: 10px;">  
+          @elseif($post->topic == "sociaal")
+          <img src="{{asset('img/icon_social.svg')}}" alt="" style="max-height:100px;position: absolute;left: 50%;transform: translateX(-50%);top: 10px;">  
+  
+          @else
+          <img src="{{asset('img/icon_sound.svg')}}" alt="" style="max-height:100px;position: absolute;left: 50%;transform: translateX(-50%);top: 10px;">  
+  
+          @endif
+          </div>
+          <div class="col s10 m8">
+            <div class="">
+                    
+                    <h5 class="">{{$post->title}}</h5>
+                    <i class="truncate">{{$post->body}}</i>
+                    
+                    
+                   
+                    @if(!empty($post->tag1 | $post->tag2 | $post->tag3))
+                    <small>{{$post->tag1}} // {{$post->tag2}} // {{$post->tag3}}</small>
+                    @else
+                    <small><br></small>
                     @endif
-                @endif
-                @if( count($post->favorites->where('user_id', auth()->id())) )
-
-                    <form action="/posts/{{ $post->id }}/unfavorite" method="POST">
-                      {{ csrf_field() }}
-                      {{ method_field('PATCH') }}
-                      
-                      <button type="submit" class="star">
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                      </button>
-                    </form>
+            </div>
+            <div class="col s12 m12">
+            
+            </div>
+          </div>
+          <div class="col s2 m1" >
+            <!-- -->
+            <div style="position:relative">
+              
+            
+            @if( count($post->favorites->where('user_id', auth()->id())) )
+  
+                      <form action="/posts/{{ $post->id }}/unfavorite" method="POST" class="favorite">
+                        {{ csrf_field() }}
+                        {{ method_field('PATCH') }}
+                        
+                        <button type="submit" class="star">
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                        </button>
+                      </form>
+                    @else
                   
-                  @else
-                
-                    <form action="/posts/{{ $post->id }}/favorite" method="POST">
-                      {{ csrf_field() }}
-                      
-                      <button type="submit" class="star"><i class="fa fa-star-o" aria-hidden="true"></i></button>
-                    </form>
-
-                  @endif
-
-                <h2 class="card-title">{{$post->title}}</h2>
-                <i>{{$post->body}}</i>
-                <hr>
-                
-                <p>Onderwerp: {{$post->topic}}</p> 
-                @if(!empty($post->tag1 | $post->tag2 | $post->tag3))
-                <small>{{$post->tag1}} // {{$post->tag2}} // {{$post->tag3}}</small>
-                @endif
+                      <form action="/posts/{{ $post->id }}/favorite" method="POST" class="favorite">
+                        {{ csrf_field() }}
+                        
+                        <button type="submit" class="star"><i class="fa fa-star-o" aria-hidden="true"></i></button>
+                      </form>
+  
+            @endif
+            </div>
+          </div>
         </div>
-        <div class="card-action">
-            <a href="/posts/{{$post->id}}">Lees meer</a>
-        </div>
-      </div>
-    </div>
+        </a>
     @endforeach
     
 

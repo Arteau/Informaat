@@ -3,7 +3,7 @@
 @if($post->user_id == Auth::user()->id)
 
 @section('content')
-<div class="container">
+<div class="container" style="margin-top:50px; margin-bottom:50px;">
 
     <div class="row bg-title">
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">

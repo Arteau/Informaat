@@ -1,34 +1,24 @@
 @extends('layouts.landing')
 
 @section('content')
-<div class="container">
+<div class="container" style="margin-top:50px;">
 
-    <div class="card horizontal z-depth-2">
-      <div class="card-image" style="width:150px">
-          <div style="position:absolute">
+    <div class="col row z-depth-2" style="min-height:230px">
+      <div class="col m2" >
+          <div class="valign-wrapper" style="position:relative">
+          <div style="position: absolute;top: 3rem;left: 2%;">
              <img src="{{asset('img/icon_sound.svg')}}" alt="" style="width:100%">
           </div>
+        </div>
           
       </div>
-      <div class="card-stacked">
-        <div class="card-content">
-              {{ $post->votes }}
-                @if(!$user->hasVoted($post))
-                <a href="/posts/{{$post->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
-                <a href="/posts/{{$post->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
-                @else
-                    @if($user->hasUpVoted($post))
-                        <a href="/posts/{{$post->id}}/cancelvote"><i class="fa fa-caret-up" aria-hidden="true" style="color:black"></i></a>
-                        <a href="/posts/{{$post->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
-                    @endif
-                    @if($user->hasDownVoted($post))
-                        <a href="/posts/{{$post->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
-                        <a href="/posts/{{$post->id}}/cancelvote"><i class="fa fa-caret-down" aria-hidden="true" style="color:black"></i></a>
-                    @endif
-                @endif
-                @if( count($post->favorites->where('user_id', auth()->id())) )
+      <div class="col m10">
+        <div class="row">
+            <div style="position:relative">
 
-                    <form action="/posts/{{ $post->id }}/unfavorite" method="POST">
+            @if( count($post->favorites->where('user_id', auth()->id())) )
+                
+                    <form action="/posts/{{ $post->id }}/unfavorite" method="POST" style="position:absolute; right:0">
                       {{ csrf_field() }}
                       {{ method_field('PATCH') }}
                       
@@ -39,22 +29,49 @@
                   
                   @else
                 
-                    <form action="/posts/{{ $post->id }}/favorite" method="POST">
+                    <form action="/posts/{{ $post->id }}/favorite" method="POST" style="position:absolute; right:0">
                       {{ csrf_field() }}
                       
                       <button type="submit" class="star"><i class="fa fa-star-o" aria-hidden="true"></i></button>
                     </form>
 
                   @endif
-
-                <h2 class="card-title">{{$post->title}}</h2>
+            
+            </div>
+            
+            <div class="col m12">
+                <h4 class="card-title"><b>{{$post->title}}</b></h4>
                 <i>{{$post->body}}</i>
                 <hr>
-                
-                <p>Onderwerp: {{$post->topic}}</p> 
-                @if(!empty($post->tag1 | $post->tag2 | $post->tag3))
-                <small>{{$post->tag1}} // {{$post->tag2}} // {{$post->tag3}}</small>
+            </div>
+                <div class="col m10">
+                    <br>
+                    @if(!empty($post->tag1 | $post->tag2 | $post->tag3))
+                    <small><b>Tags: </b>{{$post->tag1}} | {{$post->tag2}} | {{$post->tag3}}</small>
+                    @endif
+                    <p><small><b>{{count($post->comments)}} comments </b> </small></p>
+                </div>
+
+                <div class="col m2">
+              {{ $post->votes }}
+                @if(!$user->hasVoted($post))
+                <a href="/posts/{{$post->id}}/upvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
+                <a href="/posts/{{$post->id}}/downvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                @else
+                    @if($user->hasUpVoted($post))
+                        <a href="/posts/{{$post->id}}/cancelvote" class="upvote cancelvote"><i class="fa fa-caret-up" aria-hidden="true" style="color:black"></i></a>
+                        <a href="/posts/{{$post->id}}/downvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                    @endif
+                    @if($user->hasDownVoted($post))
+                        <a href="/posts/{{$post->id}}/upvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
+                        <a href="/posts/{{$post->id}}/cancelvote" class="downvote cancelvote"><i class="fa fa-caret-down" aria-hidden="true" style="color:black"></i></a>
+                    @endif
                 @endif
+
+
+                
+
+                  </div>
         </div>
         @if($post->user_id == Auth::user()->id)
         <div class="card-action">
@@ -74,16 +91,16 @@
         <div class="card-content">
         {{ $comment->votes }}
             @if(!$user->hasVoted($comment))
-            <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
-            <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+            <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/upvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
+            <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/downvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
             @else
                 @if($user->hasUpVoted($comment))
-                    <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/cancelvote"><i class="fa fa-caret-up" aria-hidden="true" style="color:black"></i></a>
-                    <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                    <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/cancelvote" class="upvote cancelvote"><i class="fa fa-caret-up" aria-hidden="true" style="color:black"></i></a>
+                    <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/downvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
                 @endif
                 @if($user->hasDownVoted($comment))
-                    <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
-                    <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/cancelvote"><i class="fa fa-caret-down" aria-hidden="true" style="color:black"></i></a>
+                    <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/upvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
+                    <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/cancelvote" class="downvote cancelvote"><i class="fa fa-caret-down" aria-hidden="true" style="color:black"></i></a>
                 @endif
             @endif
             
@@ -91,12 +108,12 @@
                 <h2 class="card-title">{{$comment->title}}</h2>
                 <i>{{$comment->body}}</i>
                 <hr>
-                <small> Gepost: {{$comment->created_at->diffForHumans()}} by
+                <small> Gepost: {{$comment->created_at->diffForHumans()}} door
                 {{$comment->user->name}}</small>
         </div>
         @if($comment->user_id == Auth::user()->id)
         <div class="card-action">
-          <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/edit">Edit comment </a>
+          <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/edit">Reactie aanpassen</a>
         </div>
         @endif
       </div>
@@ -112,8 +129,8 @@
 
     <ul class="collapsible hoverable " data-collapsible="accordion">
         <li>
-            <div class="collapsible-header light-green accent-1">
-                <i class="material-icons"></i>Commentaar toevoegen
+            <div class="collapsible-header btn" style="height:50px; border-radius:5px;">
+                <i class="material-icons"></i>Reactie geven
             </div>
             <div class="collapsible-body">
                 <form action="/posts/{{ $post->id }}/comment/store" method="POST">

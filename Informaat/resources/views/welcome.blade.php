@@ -20,7 +20,7 @@
                             {{ csrf_field() }}
 
                             @include ('layouts.errors')
-                            <input type="text" name="keyword" id="keyword" placeholder="Wat is jouw probleem?" class="z-depth-3" style="width:100%; background-color:rgba(255, 255, 255, 0.8); border-radius:10px;margin: -5px -30px; padding:5px 30px;box-shadow: 2px 2px 11px rgba(0, 0, 0, 0.5)">
+                            <input type="text" name="keyword" id="keyword" placeholder="Waarmee kunnen we je helpen?" class="z-depth-3" style="width:100%; background-color:rgba(255, 255, 255, 0.8); border-radius:10px;margin: -5px -30px; padding:5px 30px;box-shadow: 2px 2px 11px rgba(0, 0, 0, 0.5)">
                             <i class="fa fa-search" style="position: absolute;top: 0;left: -20px; color:#848383"></i>
 
                         </span>
