@@ -73,14 +73,19 @@ class RegisterController extends Controller
                 'password' => bcrypt($data['password']),
                 'jeugdhuis_id' => $data['jeugdhuis_id'],
                 'isAdmin' => "1",
+                'moderator' => "1",
             ]);
         } else {
+           if (empty($data['moderator'])){
+            $data['moderator'] = "0"; 
+           }
            
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'jeugdhuis_id' => $data['jeugdhuis_id'],
+            'moderator' => $data['moderator'],     
         ]);
         }
     }

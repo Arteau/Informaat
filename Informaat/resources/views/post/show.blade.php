@@ -74,7 +74,7 @@
 
                   </div>
         </div>
-        @if($post->user_id == Auth::user()->id || Auth::user()->isAdmin)
+        @if($post->user_id == Auth::user()->id || Auth::user()->isAdmin || (Auth::user()->moderator && Auth::user()->jeugdhuis == $post->user->jeugdhuis))
         <div class="card-action">
           <a href="/posts/{{$post->id}}/edit">Edit post</a>
         </div>

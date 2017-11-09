@@ -20,7 +20,6 @@
                            
                             
                                 <select id="jeugdhuis_id" type="text" class="input-field" name="jeugdhuis_id">
-                                        <!-- <option value="0">Formaat</option>    -->
                                     @foreach($jeugdhuizen as $jeugdhuis) 
                                         <option value="{{$jeugdhuis->id}}">{{$jeugdhuis->name}}</option>
                                     @endforeach
@@ -55,6 +54,17 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             
                         </div>
+                        <label for="moderator">Moderator</label>
+
+                        <div class="switch">
+                            <label>
+                            Off
+                            <input type="checkbox" id="moderator" name="moderator" value="1">
+                            <span class="lever"></span>
+                            On
+                            </label>
+                        </div>
+                        <br>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

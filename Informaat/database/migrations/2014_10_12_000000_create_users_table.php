@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->boolean('moderator')->default(false);                
             $table->boolean('isAdmin')->default(false);    
             $table->integer('jeugdhuis_id')->unsigned();        
             $table->foreign('jeugdhuis_id')->references('id')->on('jeugdhuis')->onDelete('cascade');            
