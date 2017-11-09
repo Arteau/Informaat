@@ -13,13 +13,48 @@
           <div class="collapsible-body"><span>{{$jeugdhuis->zipcode}} {{$jeugdhuis->village}}  </span>
           <hr>
           <small><b>Leden van jeugdhuis:</b></small>
-          <ul> Naam:
-            @foreach($jeugdhuis->users as $user)
-            <a href="/user/{{$user->id}}/edit"><li>{{$user->name}}</li>
-            @endforeach
+          <div class="row">
+            <div class="col s5">
+            <b>Naam:</b>
+            </div>
+            <div class="col s4">
+            <b>Email:</b> 
+            </div>
+            <div class="col s3"> 
+            <b>Moderator:</b>
+            </div>
             
-          </ul>
-            <a href="/jeugdhuizen/{{$jeugdhuis->id}}/edit"><i class="material-icons">create</i></a>
+          </div>
+          @foreach($jeugdhuis->users as $user)
+          
+          <div class="row">
+            <div class="col s5">              
+              <span class="truncate">{{$user->name}}</span>          
+            </div>
+            <div class="col s5">              
+              <span class="truncate">{{$user->email}}</span>          
+            </div>
+            <div class="col s1"> 
+            @if($user->moderator)
+            <i class="material-icons">check</i>
+            @else
+            <i class="material-icons">clear</i>
+            @endif
+            </div>
+            <div class="col s1">              
+            <a href="/user/{{$user->id}}/edit">
+              <i class="material-icons">edit</i>
+            </a>     
+            </div>
+            
+            
+          </div>
+         
+          @endforeach
+
+          <a href="/jeugdhuizen/{{$jeugdhuis->id}}/edit"><div class="btn btn-primary btn-block">Jeugdhuis aanpassen</div></a>
+
+
           </div>
          
         </li>

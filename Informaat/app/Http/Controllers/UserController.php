@@ -8,6 +8,12 @@ use App\Jeugdhuis;
 
 class UserController extends Controller
 {
+
+    public function __construct() 
+    {
+        $this->middleware('isAdmin');
+    }
+    
     public function edit(User $user)
     {
         $jeugdhuizen = Jeugdhuis::all();
