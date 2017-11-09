@@ -49,8 +49,12 @@
                     @if(!empty($post->tag1 | $post->tag2 | $post->tag3))
                     <small><b>Tags: </b>{{$post->tag1}} | {{$post->tag2}} | {{$post->tag3}}</small>
                     @endif
-                    <p><small><b>Gepost door:</b> {{$post->user->name}}  van {{$post->user->jeugdhuis->name}}</small></p>
-                    <p><small><b>{{count($post->comments)}} comments </b> </small></p>
+                    <p><small><b>Geplaatst door:</b> {{$post->user->name}}  van {{$post->user->jeugdhuis->name}}</small></p>
+                    @if(count($post->comments) === 1)
+                    <p><small><b>{{count($post->comments)}} reactie </b> </small></p>
+                    @else
+                    <p><small><b>{{count($post->comments)}} reacties </b> </small></p>
+                    @endif
                 </div>
 
                 <div class="col m2">
@@ -76,7 +80,7 @@
         </div>
         @if($post->user_id == Auth::user()->id || Auth::user()->isAdmin || (Auth::user()->moderator && Auth::user()->jeugdhuis == $post->user->jeugdhuis))
         <div class="card-action">
-          <a href="/posts/{{$post->id}}/edit">Edit post</a>
+          <a href="/posts/{{$post->id}}/edit">Post aanpassen</a>
         </div>
         @endif
       </div>
@@ -110,7 +114,7 @@
                 <h2 class="card-title">{{$comment->title}}</h2>
                 <i>{{$comment->body}}</i>
                 <hr>
-                <small> Gepost: {{$comment->created_at->diffForHumans()}} door
+                <small> Geplaatst: {{$comment->created_at->diffForHumans()}} door
                 {{$comment->user->name}} van {{$comment->user->jeugdhuis->name}}</small>
         </div>
         @if($comment->user_id == Auth::user()->id || Auth::user()->isAdmin || (Auth::user()->moderator && Auth::user()->jeugdhuis == $comment->user->jeugdhuis))

@@ -11,24 +11,32 @@
      {{ method_field('PATCH') }}
    
      <div class="input-field">
-     <label for="name">Name</label> 
+     <label for="name">Naam</label> 
      <input id="name" type="text" class="form-control" name="name" value="{{ $user->name }}" required autofocus>
  </div>
 
  <div class="input-field">
     
-     
+        
+
          <select id="jeugdhuis_id" type="text" class="input-field" name="jeugdhuis_id">
+         @if($user->jeugdhuis_id)
+         <option value="{{$user->jeugdhuis->id}}">{{$user->jeugdhuis->name}}</option>
+            @foreach($jeugdhuizen as $jeugdhuis) 
+                 <option value="{{$jeugdhuis->id}}">{{$jeugdhuis->name}}</option>
+             @endforeach
+         @else
              @foreach($jeugdhuizen as $jeugdhuis) 
                  <option value="{{$jeugdhuis->id}}">{{$jeugdhuis->name}}</option>
              @endforeach
+        @endif
          </select>
 
      
  </div>
 
  <div class="input-field">
-     <label for="email" >E-Mail Address</label>
+     <label for="email" >E-Mail Adres</label>
 
     
          <input id="email" type="email" class="form-control" name="email" value="{{ $user->email }}" required>
@@ -58,20 +66,20 @@
 
 
 
-    <button type="submit" class="btn btn-primary">Edit user</button>
-    <a href="/jeugdhuizen/"><div class="btn btn-danger">Back</div></a>
-    <a class="waves-effect waves-light btn modal-trigger" href="#modal_delete_jeugdhuis">Delete</a>
+    <button type="submit" class="btn btn-primary">Aanpassen</button>
+    <a href="/jeugdhuizen/"><div class="btn btn-danger">Terug</div></a>
+    <a class="waves-effect waves-light btn modal-trigger" href="#modal_delete_jeugdhuis">Verwijderen</a>
     </form>
 
     <div id="modal_delete_jeugdhuis" class="modal">
         <div class="modal-content">
-            <h4>Delete</h4>
+            <h4>Verwijderen</h4>
             <p>Ben je zeker dat je deze gebruiker wil verwijderen</p>
             
             <ul>
             <li><small>Hieronder vallen ook:</small></li>
             <li>Alle posts van deze gebruiker</li>
-            <li>Alle comments van deze gebruiker</li>
+            <li>Alle reacties van deze gebruiker</li>
             <li>...</li>
             </ul>
 

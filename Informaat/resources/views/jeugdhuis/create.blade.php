@@ -21,8 +21,8 @@
             <input type="number" name="zipcode" id="zipcode" value="{{ old('zipcode') }}" class="form-control">
         </div>
 
-        <button type="submit" class="btn btn-primary">Publish jeugdhuis</button>
-        <a href="/jeugdhuizen"><div class="btn btn-danger">Back</div></a>
+        <button type="submit" class="btn btn-primary">Toevoegen</button>
+        <a href="/jeugdhuizen"><div class="btn btn-danger">Terug</div></a>
 
     </form>
 

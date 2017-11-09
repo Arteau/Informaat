@@ -61,7 +61,7 @@ class JeugdhuisController extends Controller
         ]);
 
         // redirect to homepage
-        session()->flash('message', 'Created succesfull ');
+        session()->flash('message', 'Jeugdhuis toegevoegd');
 
         return redirect('/jeugdhuizen');
     }
@@ -106,7 +106,7 @@ class JeugdhuisController extends Controller
         
         $jeugdhuis->update($request->all());
         
-        session()->flash('message', 'Updated succesfull ');
+        session()->flash('message', 'Jeugdhuis aangepast');
         return redirect('jeugdhuizen/');
     }
 
@@ -120,7 +120,7 @@ class JeugdhuisController extends Controller
     {
         $jeugdhuis->delete($request->all());
         
-        session()->flash('message', 'Deleted succesfull ');
+        session()->flash('message', 'Jeugdhuis verwijderen');
 
         return redirect('/jeugdhuizen');
     }

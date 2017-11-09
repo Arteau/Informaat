@@ -73,11 +73,11 @@
                 <option value="title desc" @if(session('option') == "title desc") selected @endif>Titel: Z - A</option>
               </select>
             </div>
-            <noscript><button type="submit">sort</button></noscript>
+            <noscript><button type="submit">sorteer</button></noscript>
         </form>
       </div>
     </div>
-    <a href="/posts/create"><button class="btn btn-default btn-block" style="background-color:#ee6e73">Create post</button></a>
+    <a href="/posts/create"><button class="btn btn-default btn-block" style="background-color:#ee6e73">Post aanmaken</button></a>
 
     <blockquote>
       Alle posts
@@ -131,8 +131,12 @@
                   @else
                   <small><br></small>
                   @endif
-                  <p><small><b>Gepost door:</b> {{$post->user->name}} van {{$post->user->jeugdhuis->name}}  </small></p>
-                  <p><small><b>{{count($post->comments)}} comments </b> </small></p>
+                  <p><small><b>Geplaatst door:</b> {{$post->user->name}} van {{$post->user->jeugdhuis->name}}  </small></p>
+                  @if(count($post->comments) === 1)
+                  <p><small><b>{{count($post->comments)}} reactie </b> </small></p>
+                  @else
+                  <p><small><b>{{count($post->comments)}} reacties </b> </small></p>
+                  @endif
           </div>
           <div class="col s12 m12">
           

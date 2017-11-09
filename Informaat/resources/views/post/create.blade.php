@@ -46,8 +46,8 @@
         <input type="text" name="tag3" id="tag3" value="{{ old('tag3') }}" class="form-control">
     </div>
 
-    <button type="submit" class="btn btn-primary" id="post_button_submit">Publish post</button>
-    <a href="/posts"><div class="btn btn-danger">Back</div></a>
+    <button type="submit" class="btn btn-primary" id="post_button_submit">Post aanmaken</button>
+    <a href="/posts"><div class="btn btn-danger">Terug</div></a>
     </form>
 
 </div>

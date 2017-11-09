@@ -11,7 +11,7 @@
      {{ method_field('PATCH') }}
    
     <div class="input-field">
-        <label for="name">Titel</label>
+        <label for="name">Naam</label>
         <input name="name" id="name" value="{{$jeugdhuis->name}}" type="text">
     </div>
 

@@ -5,7 +5,7 @@
 <div class="container" style="margin-top:50px">
   <div class="row">
   <blockquote>Overzicht jeugdhuizen</blockquote>
-  <a href="/jeugdhuizen/create"><span class="btn-block btn btn-primary"> Jeugdhuis Toevoegen</span></a>
+  <a href="/jeugdhuizen/create"><span class="btn-block btn btn-primary hoverable"> Jeugdhuis Toevoegen</span></a>
 
     <ul class="collapsible popout" data-collapsible="accordion" style="margin-top:50px">
     
@@ -15,11 +15,12 @@
     
         <li>
           <div class="collapsible-header"><i class="material-icons">home</i>{{$jeugdhuis->name }}</div>
-          <div class="collapsible-body"><span>{{$jeugdhuis->zipcode}} {{$jeugdhuis->village}}  </span>
+          <div class="collapsible-body"><span><b>Adres: </b>{{$jeugdhuis->zipcode}} {{$jeugdhuis->village}}  </span>
           <hr>
           @if(count($jeugdhuis->users) > 0)
 
-          <small><i>Leden van jeugdhuis:</i></small>
+          <!-- <p><i>Leden van jeugdhuis:</i></p> -->
+          
           <br>
           <div class="row">
             <div class="col s5">

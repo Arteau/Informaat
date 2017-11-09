@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row bg-title">
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <h4 class="page-title">Edit Comment!</h4> 
+            <blockquote>Reactie aanpassen</blockquote> 
         </div>
     </div>
 
@@ -26,15 +26,15 @@
     </div>
 
 
-    <button type="submit" class="btn btn-primary">Edit post</button>
-    <a href="/posts/{{$post->id}}"><div class="btn btn-danger">Back</div></a>
-    <a class="waves-effect waves-light btn modal-trigger" href="#modal_delete_comment">Delete</a>
+    <button type="submit" class="btn btn-primary">Reactie aanpassen</button>
+    <a href="/posts/{{$post->id}}"><div class="btn btn-danger">Terug</div></a>
+    <a class="waves-effect waves-light btn modal-trigger" href="#modal_delete_comment">Verwijderen</a>
     </form>
 
     <div id="modal_delete_comment" class="modal">
         <div class="modal-content">
-            <h4>Delete</h4>
-            <p>Are you sure?</p>
+            <h4>Verwijderen</h4>
+            <p>Ben je zeker?</p>
             
         </div>
         <div class="modal-footer">

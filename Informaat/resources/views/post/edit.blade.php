@@ -58,9 +58,9 @@
         <input type="text" name="tag3" id="tag3" value="{{ $post->tag3 }}">
     </div>
 
-    <button type="submit" class="btn btn-primary">Edit post</button>
-    <a href="/posts"><div class="btn btn-danger">Back</div></a>
-    <a class="waves-effect waves-light btn modal-trigger" href="#modal_delete">Delete</a>
+    <button type="submit" class="btn btn-primary">Aanpassen</button>
+    <a href="/posts"><div class="btn btn-danger">Terug</div></a>
+    <a class="waves-effect waves-light btn modal-trigger" href="#modal_delete">Verwijderen</a>
     </form>
 
     

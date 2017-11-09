@@ -2,16 +2,22 @@
 
 @section('content')
 <br>
-<div class="container" style="margin-top:50px">
 
-<b>{{count($jeugdhuis->users)}} gebruikers voor {{$jeugdhuis->name}}</b>
+<div class="container" style="margin-top:50px">
+<blockquote>Overzicht {{$jeugdhuis->name}}</blockquote>
+<br>
+@if(count($jeugdhuis->users) === 1)
+  <i>{{count($jeugdhuis->users)}} Gebruiker voor {{$jeugdhuis->name}}</i>
+@else
+  <i>{{count($jeugdhuis->users)}} Gebruikers voor {{$jeugdhuis->name}}</i>
+@endif
 <table class="striped">
         <thead>
           <tr>
               <th>Naam</th>
               <th>Email</th>
-              <th>Aantal posts</th>
-              <th>Aantal comments</th>
+              <th>posts</th>
+              <th>Reacties</th>
               <th>Moderator</th>
               
           </tr>
