@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration
             $table->integer('jeugdhuis_id')->unsigned();        
             $table->foreign('jeugdhuis_id')->references('id')->on('jeugdhuis')->onDelete('cascade');            
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

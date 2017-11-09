@@ -74,7 +74,7 @@
 
                   </div>
         </div>
-        @if($post->user_id == Auth::user()->id)
+        @if($post->user_id == Auth::user()->id || Auth::user()->isAdmin)
         <div class="card-action">
           <a href="/posts/{{$post->id}}/edit">Edit post</a>
         </div>
@@ -113,7 +113,7 @@
                 <small> Gepost: {{$comment->created_at->diffForHumans()}} door
                 {{$comment->user->name}} van {{$comment->user->jeugdhuis->name}}</small>
         </div>
-        @if($comment->user_id == Auth::user()->id)
+        @if($comment->user_id == Auth::user()->id || Auth::user()->isAdmin)
         <div class="card-action">
           <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/edit">Reactie aanpassen</a>
         </div>

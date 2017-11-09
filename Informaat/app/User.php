@@ -5,11 +5,18 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Jcc\LaravelVote\Vote;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Iatstuti\Database\Support\CascadeSoftDeletes;
 
 class User extends Authenticatable
 {
     use Notifiable;
     use Vote;
+    use SoftDeletes, CascadeSoftDeletes;
+    
+    protected $cascadeDeletes = ['posts', 'comments', 'favorites'];
+
+    protected $dates = ['deleted_at'];
 
     /**
      * The attributes that are mass assignable.

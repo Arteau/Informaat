@@ -5,13 +5,17 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Jcc\LaravelVote\CanBeVoted;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Iatstuti\Database\Support\CascadeSoftDeletes;
 
 
 class Post extends Model
 {
     use CanBeVoted;
     protected $vote = User::class; 
-    use SoftDeletes;
+   
+    use SoftDeletes, CascadeSoftDeletes;
+    
+    protected $cascadeDeletes = ['comments', 'favorites'];
     
 
     protected $fillable = [

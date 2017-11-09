@@ -1,6 +1,6 @@
 @extends('layouts.landing')
 
-@if($post->user_id == Auth::user()->id)
+@if($post->user_id == Auth::user()->id || Auth::user()->isAdmin)
 
 @section('content')
 <div class="container" style="margin-top:50px; margin-bottom:50px;">

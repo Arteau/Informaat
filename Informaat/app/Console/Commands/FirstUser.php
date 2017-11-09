@@ -51,5 +51,6 @@ class FirstUser extends Command
         $user->isAdmin = 1;
         $user->jeugdhuis_id = 1;
         $user->save();
+        echo "user aangemaakt met email: ".$this->argument('email')." en als passwoord: "+$this->argument('password');
     }
 }

@@ -34,8 +34,16 @@
     <div id="modal_delete_jeugdhuis" class="modal">
         <div class="modal-content">
             <h4>Delete</h4>
-            <p>Are you sure?</p>
+            <p>Ben je zeker dat je dit jeugdhuis wil verwijderen</p>
             
+            <ul>
+            <li><small>Hieronder vallen ook:</small></li>
+            <li>Alle gebruikers van het jeugdhuis</li>
+            <li>Alle posts van alle gebruikers van het jeugdhuis</li>
+            <li>Alle comments van alle gebruikers van het jeugdhuis</li>
+            <li>...</li>
+            </ul>
+
         </div>
         <div class="modal-footer">
             
