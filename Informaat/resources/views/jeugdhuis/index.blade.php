@@ -15,7 +15,7 @@
           <small><b>Leden van jeugdhuis:</b></small>
           <ul> Naam:
             @foreach($jeugdhuis->users as $user)
-            <a href="/{{$jeugdhuis->id}}/{{$user->id}}"><li>{{$user->name}}</li>
+            <a href="/user/{{$user->id}}/edit"><li>{{$user->name}}</li>
             @endforeach
             
           </ul>

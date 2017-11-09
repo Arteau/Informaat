@@ -17,6 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/user/{user}/edit', 'UserController@edit');
+Route::patch('/user/{user}/update', 'UserController@update');
+Route::patch('/user/{user}/delete', 'UserController@delete');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');

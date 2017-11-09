@@ -1,6 +1,6 @@
 @extends('layouts.landing')
 
-@if($comment->user_id == Auth::user()->id)
+@if($comment->user_id == Auth::user()->id || Auth::user()->isAdmin || (Auth::user()->moderator && Auth::user()->jeugdhuis == $comment->user->jeugdhuis))
 
 @section('content')
 <div class="container">

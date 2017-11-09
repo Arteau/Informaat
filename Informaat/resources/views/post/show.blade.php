@@ -113,7 +113,7 @@
                 <small> Gepost: {{$comment->created_at->diffForHumans()}} door
                 {{$comment->user->name}} van {{$comment->user->jeugdhuis->name}}</small>
         </div>
-        @if($comment->user_id == Auth::user()->id || Auth::user()->isAdmin)
+        @if($comment->user_id == Auth::user()->id || Auth::user()->isAdmin || (Auth::user()->moderator && Auth::user()->jeugdhuis == $comment->user->jeugdhuis))
         <div class="card-action">
           <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/edit">Reactie aanpassen</a>
         </div>
