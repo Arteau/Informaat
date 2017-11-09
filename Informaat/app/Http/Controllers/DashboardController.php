@@ -41,4 +41,13 @@ class DashboardController extends Controller
         return view('dashboard.index', compact('posts', 'user', 'user_posts', 'favorite_posts', 'comments'));
         
     }
+
+    public function delete(Request $request, User $user)
+    {
+        $user->delete($request->all());
+        
+        session()->flash('message', 'Deleted succesfull ');
+
+        return redirect('/jeugdhuizen');
+    }
 }

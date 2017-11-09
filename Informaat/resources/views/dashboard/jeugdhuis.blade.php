@@ -3,7 +3,7 @@
 @section('content')
 <br>
 <div class="container" style="margin-top:50px">
-@if(!Auth::user()->isAdmin)
+
 
 <table class="striped">
         <thead>
@@ -23,7 +23,7 @@
       </table>
 
     
-@endif
+
 </div>
 
 @endsection

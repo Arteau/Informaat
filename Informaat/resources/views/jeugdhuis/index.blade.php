@@ -13,9 +13,9 @@
           <div class="collapsible-body"><span>{{$jeugdhuis->zipcode}} {{$jeugdhuis->village}}  </span>
           <hr>
           <small><b>Leden van jeugdhuis:</b></small>
-          <ul>
+          <ul> Naam:
             @foreach($jeugdhuis->users as $user)
-            <li>{{$user->name}}</li>
+            <a href="/{{$jeugdhuis->id}}/{{$user->id}}"><li>{{$user->name}}</li>
             @endforeach
             
           </ul>

@@ -64,12 +64,25 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        
+        if($data['jeugdhuis_id'] === "1"){
+            
+            return User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => bcrypt($data['password']),
+                'jeugdhuis_id' => $data['jeugdhuis_id'],
+                'isAdmin' => "1",
+            ]);
+        } else {
+           
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'jeugdhuis_id' => $data['jeugdhuis_id'],
         ]);
+        }
     }
 
     public function showRegistrationForm()

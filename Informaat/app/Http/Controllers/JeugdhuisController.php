@@ -43,9 +43,9 @@ class JeugdhuisController extends Controller
     {
         
         $this->validate(request(), [
-            'name' => 'required|min:2',
-            'village' => 'required',
-            'zipcode' => 'required',
+            'name' => 'required|min:2|max:255',
+            'village' => 'required|min:2|max:255',
+            'zipcode' => 'required|min:1|max:255',
             
         ]);
 
