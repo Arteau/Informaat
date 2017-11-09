@@ -82,6 +82,7 @@
       </div>
     </div>
     <hr>
+    <div id="comments">
     @if(count($comments) != 0)
     @foreach($comments as $comment)
     <div class="card horizontal z-depth-2">
@@ -125,6 +126,7 @@
     <small>Nog geen reactie's, wees de eerste om te reageren!</small>
     <br>
     @endif
+    </div>
     {{ $comments->links() }}
 
     
@@ -136,7 +138,7 @@
     <ul class="collapsible hoverable " data-collapsible="accordion">
         <li>
             <div class="collapsible-header btn" style="height:50px; border-radius:5px;">
-                <i class="material-icons"></i>Reactie geven
+                <i class="material-icons"></i>Reactie plaatsen
             </div>
             <div class="collapsible-body">
                 <form action="/posts/{{ $post->id }}/comment/store" method="POST">

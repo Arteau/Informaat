@@ -11,6 +11,11 @@
             <div class="row valign-wrapper" style="margin-top:10%">
                 
                 <img src="{{asset('img/logo.png')}}" class="paralax-normalize center-align" alt="" style="height:100px; left:-25px; margin:0 auto">
+               
+            </div>
+            <div class="row valign-wrapper">
+
+            <p style="margin:0 auto">Waar jeugdhuizen informatie delen</p>
 
             </div>
             <div class="row valign-wrapper">

@@ -68,7 +68,7 @@
                     @endif
                     
                     <p><small><b>Gepost door:</b> {{$favorite->post->user->name}} van  {{$favorite->post->user->jeugdhuis->name}}</small></p>
-                    <p><small><b>{{count($favorite->post->comments)}} comments </b> </small></p>
+                    <object><a href="/posts/{{$favorite->post->id}}"><p><small><b>{{count($favorite->post->comments)}} comments </b> </small></p></a></object>
             </div>
             <div class="col s12 m12">
             
@@ -160,7 +160,7 @@
                     @endif
                     <p><small><b>Gepost door:</b> {{$post->user->name}}  van {{$post->user->jeugdhuis->name}}</small></p>
                     
-                    <p><small><b>{{count($post->comments)}} comments </b> </small></p>
+                    <object><a href="/posts/{{$post->id}}"><p><small><b>{{count($post->comments)}} comments </b> </small></p></a></object>
             </div>
             <div class="col s12 m12">
             
@@ -207,7 +207,8 @@
 
       @if(!empty($post))
         @foreach($comments as $comment)
-    <div class="card horizontal z-depth-2">
+    <a href="posts/{{$comment->post->id}}#comments">
+    <div class="card horizontal z-depth-2 hoverable" style="color: rgb(99, 107, 111);text-decoration:none;">
       <div class="card-image">
        <!-- image here -->
       </div>
@@ -215,16 +216,16 @@
         <div class="card-content">
         {{ $comment->votes }}
             @if(!$user->hasVoted($comment))
-            <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
-            <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+            <object><a href="/posts/{{$post->id}}/comment/{{$comment->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a></object>
+            <object><a href="/posts/{{$post->id}}/comment/{{$comment->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a></object>
             @else
                 @if($user->hasUpVoted($comment))
-                    <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/cancelvote"><i class="fa fa-caret-up" aria-hidden="true" style="color:black"></i></a>
-                    <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                    <object><a href="/posts/{{$post->id}}/comment/{{$comment->id}}/cancelvote"><i class="fa fa-caret-up" aria-hidden="true" style="color:black"></i></a></object>
+                    <object><a href="/posts/{{$post->id}}/comment/{{$comment->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a></object>
                 @endif
                 @if($user->hasDownVoted($comment))
-                    <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
-                    <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/cancelvote"><i class="fa fa-caret-down" aria-hidden="true" style="color:black"></i></a>
+                    <object><a href="/posts/{{$post->id}}/comment/{{$comment->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a></object>
+                    <object><a href="/posts/{{$post->id}}/comment/{{$comment->id}}/cancelvote"><i class="fa fa-caret-down" aria-hidden="true" style="color:black"></i></a></object>
                 @endif
             @endif
 
@@ -235,10 +236,11 @@
                 {{$comment->user->name}} van {{$comment->user->jeugdhuis->name}}</small>
         </div>
         <div class="card-action">
-          <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/edit">Edit comment </a>
+          <object><a href="/posts/{{$post->id}}/comment/{{$comment->id}}/edit">Edit comment </a></object>
         </div>
       </div>
     </div>
+    </a>
     @endforeach
     @endif
     
