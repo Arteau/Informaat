@@ -5,13 +5,20 @@
 <div class="container" style="margin-top:50px">
   <div class="row">
   <blockquote>Overzicht jeugdhuizen</blockquote>
-  
+  <a href="/jeugdhuizen/create"><span class="btn-block btn btn-primary"> Jeugdhuis Toevoegen</span></a>
+
     <ul class="collapsible popout" data-collapsible="accordion" style="margin-top:50px">
+    
     @foreach($jeugdhuizen as $jeugdhuis)
+
+    
+    
         <li>
           <div class="collapsible-header"><i class="material-icons">home</i>{{$jeugdhuis->name }}</div>
           <div class="collapsible-body"><span>{{$jeugdhuis->zipcode}} {{$jeugdhuis->village}}  </span>
           <hr>
+          @if(count($jeugdhuis->users) > 0)
+
           <small><b>Leden van jeugdhuis:</b></small>
           <div class="row">
             <div class="col s5">
@@ -21,7 +28,7 @@
             <b>Email:</b> 
             </div>
             <div class="col s3"> 
-            <b>Moderator:</b>
+            <b class="center-align">Moderator:</b>
             </div>
             
           </div>
@@ -49,8 +56,16 @@
             
             
           </div>
-         
+          
           @endforeach
+          
+          @else
+          <div class="row">
+          <p>Nog geen gebruikers voor dit jeugdhuis</p>
+          </div>
+            
+         @endif
+          
 
           <a href="/jeugdhuizen/{{$jeugdhuis->id}}/edit"><div class="btn btn-primary btn-block">Jeugdhuis aanpassen</div></a>
 
@@ -60,7 +75,6 @@
         </li>
     @endforeach
     </ul>
-    <a href="/jeugdhuizen/create"><span class="btn-block btn btn-primary"> Jeugdhuis Toevoegen</span></a>
  
 
   </div>
