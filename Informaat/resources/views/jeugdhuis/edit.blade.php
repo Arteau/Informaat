@@ -33,7 +33,7 @@
 
     <div id="modal_delete_jeugdhuis" class="modal">
         <div class="modal-content">
-            <h4>Delete</h4>
+            <h4>Verwijderen</h4>
             <p>Ben je zeker dat je dit jeugdhuis wil verwijderen</p>
             
             <ul>

@@ -13,7 +13,7 @@
       <ul class="tabs tabs-fixed-width">
         <li class="tab"><a class="active" href="#favorieten">Favorieten</a></li>
         <li class="tab"><a href="#mijn_posts">Mijn posts</a></li>
-        <li class="tab"><a href="#mijn_comments">Mijn comments</a></li>
+        <li class="tab"><a href="#mijn_comments">Mijn reacties</a></li>
       </ul>
     </div>
     <div class="card-content grey lighten-4">

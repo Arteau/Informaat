@@ -67,9 +67,14 @@
 
     <div id="modal_delete" class="modal">
         <div class="modal-content">
-            <h4>Delete</h4>
-            <p>Are you sure?</p>
+            <h4>Verwijderen</h4>
+            <p>Ben je zeker dat je deze post wil verwijderen</p>
             
+            <ul>
+            <li><small>Hieronder vallen ook:</small></li>
+            <li>Alle reacties op deze post.</li>
+            <li>...</li>
+            </ul>
         </div>
         <div class="modal-footer">
             

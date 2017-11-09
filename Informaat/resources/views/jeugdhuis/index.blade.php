@@ -19,7 +19,8 @@
           <hr>
           @if(count($jeugdhuis->users) > 0)
 
-          <small><b>Leden van jeugdhuis:</b></small>
+          <small><i>Leden van jeugdhuis:</i></small>
+          <br>
           <div class="row">
             <div class="col s5">
             <b>Naam:</b>
@@ -67,7 +68,7 @@
          @endif
           
 
-          <a href="/jeugdhuizen/{{$jeugdhuis->id}}/edit"><div class="btn btn-primary btn-block">Jeugdhuis aanpassen</div></a>
+          <a href="/jeugdhuizen/{{$jeugdhuis->id}}/edit"><div class="btn btn-primary btn-block" style="background-color:#d75c6d">Jeugdhuis aanpassen</div></a>
 
 
           </div>

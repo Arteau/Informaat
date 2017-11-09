@@ -12,7 +12,7 @@
                         {{ csrf_field() }}
 
                         <div class="input-field">
-                            <label for="name">Name</label> 
+                            <label for="name">Naam*</label> 
                             <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
                         </div>
 
@@ -20,7 +20,10 @@
                            
                             
                                 <select id="jeugdhuis_id" type="text" class="input-field" name="jeugdhuis_id">
+                                    
+                                    <option disabled selected>Jeugdhuis*</option>
                                     @foreach($jeugdhuizen as $jeugdhuis) 
+                                        
                                         <option value="{{$jeugdhuis->id}}">{{$jeugdhuis->name}}</option>
                                     @endforeach
                                 </select>
@@ -29,7 +32,7 @@
                         </div>
 
                         <div class="input-field">
-                            <label for="email" >E-Mail Address</label>
+                            <label for="email" >E-Mail Addres*</label>
 
                            
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
@@ -39,7 +42,7 @@
                         </div>
 
                         <div class="input-field">
-                            <label for="password">Password</label>
+                            <label for="password">Wachtwoord*</label>
 
                             
                                 <input id="password" type="password" class="form-control" name="password" required>
@@ -48,7 +51,7 @@
                         </div>
 
                         <div class="input-field">
-                            <label for="password-confirm">Confirm Password</label>
+                            <label for="password-confirm">Herhaal wachtwoord*</label>
 
                            
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
@@ -69,7 +72,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Register
+                                    Registreer
                                 </button>
                             </div>
                         </div>

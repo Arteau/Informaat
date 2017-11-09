@@ -10,7 +10,7 @@
 </blockquote>
 
   <div class="row">
- 
+ @if(count($tops) > 0)
   @foreach($tops as $top)
   <a href="/posts/{{$top->id}}">
     <div class="col s6 m3" class="top">
@@ -40,6 +40,12 @@
     </div> 
   </a>
   @endforeach
+  @else
+  <div class="col s6 m3" class="top">
+  <p>Er zijn nog geen top posts</p>
+  </div>
+
+  @endif
   </div>
 
  <hr>
@@ -71,12 +77,16 @@
         </form>
       </div>
     </div>
+    <a href="/posts/create"><button class="btn btn-default btn-block" style="background-color:#ee6e73">Create post</button></a>
+
     <blockquote>
       Alle posts
     </blockquote>
     <div class="col s12 m12">
-  
+   
+   
     @foreach($posts as $post)
+    
     <a href="/posts/{{$post->id}}">
       <div class="row z-depth-2 hoverable" style="color:#636b6f; min-height:118px;height:182px">
         <div class="col s12 m1 hide-on-small-only	" style="position:relative">
@@ -156,10 +166,11 @@
         </div>
       </div>
       </a>
+      
     @endforeach
     {{ $posts->links() }}
-    <a href="/posts/create"><button class="btn btn-default">Create post</button></a>
-</div>
+
+    </div>
   </div>
 </div>
 

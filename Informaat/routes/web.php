@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/home', function () {
+    return view('welcome');
+});
 
 Auth::routes();
 
@@ -21,7 +24,7 @@ Route::get('/user/{user}/edit', 'UserController@edit');
 Route::patch('/user/{user}/update', 'UserController@update');
 Route::patch('/user/{user}/delete', 'UserController@delete');
 
-Route::get('/home', 'HomeController@index')->name('home');
+
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 Route::get('/jeugdhuis', 'DashboardController@jeugdhuis');
