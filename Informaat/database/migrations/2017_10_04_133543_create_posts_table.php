@@ -25,7 +25,7 @@ class CreatePostsTable extends Migration
             $table->boolean('question')->default(true);
             $table->boolean('upload')->default(false);
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->softDeletes();            
             $table->timestamps();
         });

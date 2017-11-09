@@ -25,16 +25,11 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->boolean('isAdmin')->default(false);    
-            $table->integer('jeugdhuis_id')->nullable();        
-            // $table->integer('comment_id')->unsigned();
-            // $table->integer('post_id')->unsigned();           
+            $table->integer('jeugdhuis_id')->unsigned();        
+            $table->foreign('jeugdhuis_id')->references('id')->on('jeugdhuis')->onDelete('cascade');            
             $table->rememberToken();
             $table->timestamps();
         });
-        // Schema::table('users', function(Blueprint $table) {
-        //     $table->foreign('comment_id')->references('id')->on('comments');
-        //     $table->foreign('post_id')->references('id')->on('posts');
-        // });
     }
 
     /**

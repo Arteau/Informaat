@@ -38,6 +38,7 @@
                         <li><a href="/">Home</a></li> 
                         <li><a href="{{ route('register') }}">Register</a></li>
                         <li><a href="/jeugdhuizen">Jeugdhuizen</a></li>
+                        <li><a href="/jeugdhuis">Formaat</a></li> 
                         <li><a href="/dashboard">Dashboard</a></li>
                         <li><a href="/posts">Posts</a></li>
 
