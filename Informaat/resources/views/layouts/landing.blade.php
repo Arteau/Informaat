@@ -35,12 +35,12 @@
                         <li><a href="{{ route('login') }}">Log in</a></li>
                         
                     @elseif (Auth::user()->isAdmin)
-                        <li><a href="/">Home</a></li> 
-                        <li><a href="{{ route('register') }}">Registreer</a></li>
-                        <li><a href="/jeugdhuizen">Jeugdhuizen</a></li>
-                        <li><a href="/jeugdhuis">Formaat</a></li> 
-                        <li><a href="/dashboard">Dashboard</a></li>
-                        <li><a href="/posts">Posts</a></li>
+                        <li><a href="/"><i class="material-icons">home</i>Home</a></li> 
+                        <li><a href="{{ route('register') }}"><i class="material-icons">group_add</i>Registreer</a></li>
+                        <li><a href="/jeugdhuizen"><i class="material-icons">add_location</i>Jeugdhuizen</a></li>
+                        <li><a href="/jeugdhuis"><i class="material-icons">local_bar</i>Formaat</a></li> 
+                        <li><a href="/dashboard"><i class="material-icons">dashboard</i>Dashboard</a></li>
+                        <li><a href="/posts"><i class="material-icons">info_outline</i>Posts</a></li>
 
                         <hr>
                        
@@ -67,10 +67,10 @@
                         </li>
 
                     @else
-                        <li><a href="/">Home</a></li> 
-                        <li><a href="/dashboard">Dashboard</a></li>
-                        <li><a href="/jeugdhuis">Mijn jeugdhuis</a></li> 
-                        <li><a href="/posts">Posts</a></li>
+                        <li><a href="/"><i class="material-icons">home</i>Home</a></li> 
+                        <li><a href="/dashboard"><i class="material-icons">dashboard</i>Dashboard</a></li>
+                        <li><a href="/jeugdhuis"><i class="material-icons">local_bar</i>Mijn jeugdhuis</a></li> 
+                        <li><a href="/posts"><i class="material-icons">info_outline</i>Posts</a></li>
                         <hr>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
