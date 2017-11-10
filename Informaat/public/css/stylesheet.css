@@ -32,9 +32,15 @@ blockquote{
 .collapse-margin{
     margin-bottom:60px
 }
+.collapse-margin-t{
+    margin-top:50px;
+}
 .collapse-header-height {
     height:50px; 
     border-radius:5px;
+}
+.jh-edit-btn{
+    background-color:#d75c6d;
 }
 .comment-wrapper{
     position:relative;

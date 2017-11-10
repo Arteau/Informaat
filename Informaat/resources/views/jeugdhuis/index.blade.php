@@ -7,7 +7,7 @@
   <blockquote>Overzicht jeugdhuizen</blockquote>
   <a href="/jeugdhuizen/create"><span class="btn-block btn btn-primary hoverable"> Jeugdhuis Toevoegen</span></a>
 
-    <ul class="collapsible popout" data-collapsible="accordion" style="margin-top:50px">
+    <ul class="collapsible popout collapse-margin-t" data-collapsible="accordion">
     
     @foreach($jeugdhuizen as $jeugdhuis)
 
@@ -69,7 +69,7 @@
          @endif
           
 
-          <a href="/jeugdhuizen/{{$jeugdhuis->id}}/edit"><div class="btn btn-primary btn-block" style="background-color:#d75c6d">Jeugdhuis aanpassen</div></a>
+          <a href="/jeugdhuizen/{{$jeugdhuis->id}}/edit"><div class="btn btn-primary btn-block jh-edit-btn">Jeugdhuis aanpassen</div></a>
 
 
           </div>
