@@ -203,7 +203,12 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        if($post->user_id == Auth::user()->id || Auth::user()->isAdmin || (Auth::user()->moderator && Auth::user()->jeugdhuis == $post->user->jeugdhuis))  
+        {      
         return view('post.edit', compact('post'));
+        } else {
+            abort(403);
+        }
     }
 
     /**

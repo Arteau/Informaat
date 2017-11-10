@@ -19,7 +19,8 @@
     <div class="card-content grey lighten-4">
         <div id="favorieten">
 
-
+      
+      @if(count($favorite_posts) > 0) 
         @foreach($favorite_posts as $favorite)
        
         <a href="/posts/{{$favorite->post->id}}">
@@ -103,6 +104,11 @@
         </div>
         </a>
     @endforeach
+    @else
+    
+      <p>Je hebt nog geen favorieten.</p> 
+    
+    @endif
 
 
 
@@ -113,6 +119,7 @@
         <div id="mijn_posts">
             
         
+        @if(count($user_posts) > 0)
         @foreach($user_posts as $post)
         <a href="/posts/{{$post->id}}">
         <div class="row z-depth-2 hoverable" style="color:#636b6f; min-height:118px;">
@@ -150,9 +157,6 @@
                     
                     <h5 class="">{{$post->title}}</h5>
                     <i class="truncate">{{$post->body}}</i>
-                    
-                    
-                   
                     @if(!empty($post->tag1 | $post->tag2 | $post->tag3))
                     <small><b>Tags: </b>{{$post->tag1}} | {{$post->tag2}} | {{$post->tag3}}</small>
                     @else
@@ -195,6 +199,12 @@
         </div>
         </a>
     @endforeach
+
+    @else
+
+    <p>Je hebt nog geen posts.</p>
+
+    @endif
     
 
 
@@ -204,9 +214,10 @@
             
 
 
-
-      @if(!empty($post))
+  
+      @if(count($comments) > 0)
         @foreach($comments as $comment)
+       
     <a href="posts/{{$comment->post->id}}#comments">
     <div class="card horizontal z-depth-2 hoverable" style="color: rgb(99, 107, 111);text-decoration:none;">
       <div class="card-image">
@@ -216,16 +227,16 @@
         <div class="card-content">
         {{ $comment->votes }}
             @if(!$user->hasVoted($comment))
-            <object><a href="/posts/{{$post->id}}/comment/{{$comment->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a></object>
-            <object><a href="/posts/{{$post->id}}/comment/{{$comment->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a></object>
+            <object><a href="/posts/{{$comment->post->id}}/comment/{{$comment->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a></object>
+            <object><a href="/posts/{{$comment->post->id}}/comment/{{$comment->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a></object>
             @else
                 @if($user->hasUpVoted($comment))
-                    <object><a href="/posts/{{$post->id}}/comment/{{$comment->id}}/cancelvote"><i class="fa fa-caret-up" aria-hidden="true" style="color:black"></i></a></object>
-                    <object><a href="/posts/{{$post->id}}/comment/{{$comment->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a></object>
+                    <object><a href="/posts/{{$comment->post->id}}/comment/{{$comment->id}}/cancelvote"><i class="fa fa-caret-up" aria-hidden="true" style="color:black"></i></a></object>
+                    <object><a href="/posts/{{$comment->post->id}}/comment/{{$comment->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a></object>
                 @endif
                 @if($user->hasDownVoted($comment))
-                    <object><a href="/posts/{{$post->id}}/comment/{{$comment->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a></object>
-                    <object><a href="/posts/{{$post->id}}/comment/{{$comment->id}}/cancelvote"><i class="fa fa-caret-down" aria-hidden="true" style="color:black"></i></a></object>
+                    <object><a href="/posts/{{$comment->post->id}}/comment/{{$comment->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a></object>
+                    <object><a href="/posts/{{$comment->post->id}}/comment/{{$comment->id}}/cancelvote"><i class="fa fa-caret-down" aria-hidden="true" style="color:black"></i></a></object>
                 @endif
             @endif
 
@@ -236,13 +247,16 @@
                 {{$comment->user->name}} van {{$comment->user->jeugdhuis->name}}</small>
         </div>
         <div class="card-action">
-          <object><a href="/posts/{{$post->id}}/comment/{{$comment->id}}/edit">Edit comment </a></object>
+          <object><a href="/posts/{{$comment->post->id}}/comment/{{$comment->id}}/edit">Edit comment </a></object>
         </div>
       </div>
     </div>
     </a>
     @endforeach
+    @else
+      <p>Je hebt nog geen reacties geplaatst.</p>
     @endif
+    
     
 
 

@@ -77,7 +77,7 @@
         </form>
       </div>
     </div>
-    <a href="/posts/create"><button class="btn btn-default btn-block" style="background-color:#ee6e73">Post aanmaken</button></a>
+    <a href="/posts/create"><button class="btn btn-default btn-block hoverable" style="background-color:#ee6e73">Post aanmaken</button></a>
 
     <blockquote>
       Alle posts

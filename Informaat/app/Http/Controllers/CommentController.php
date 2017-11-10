@@ -147,8 +147,13 @@ class CommentController extends Controller
     public function edit(Post $post, Comment $comment)
     {
         
+        if($comment->user_id == Auth::user()->id || Auth::user()->isAdmin || (Auth::user()->moderator && Auth::user()->jeugdhuis == $comment->user->jeugdhuis)) {
+            return view('comment.edit', compact('comment', 'post'));
+            
+        } else {
+            abort(403);
+        }
         
-        return view('comment.edit', compact('comment', 'post'));
     }
 
     /**

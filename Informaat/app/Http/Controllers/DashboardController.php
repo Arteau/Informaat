@@ -38,6 +38,7 @@ class DashboardController extends Controller
         $favorite_posts = Auth::user()->favorites;
         $comments = Auth::user()->comments;
         $posts = Post::orderBy('votes', 'desc')->get();
+        
         return view('dashboard.index', compact('posts', 'user', 'user_posts', 'favorite_posts', 'comments'));
         
     }

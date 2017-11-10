@@ -1,11 +1,10 @@
 @extends('layouts.landing')
 
-@if($comment->user_id == Auth::user()->id || Auth::user()->isAdmin || (Auth::user()->moderator && Auth::user()->jeugdhuis == $comment->user->jeugdhuis))
 
 @section('content')
 <div class="container">
     <div class="row bg-title">
-        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <div class="col-xs-12">
             <blockquote>Reactie aanpassen</blockquote> 
         </div>
     </div>
@@ -53,9 +52,3 @@
 </div>
 @endsection
 
-@else 
-@section('content')
-<h1>Geen toegang</h1>
-@endsection
-
-@endif

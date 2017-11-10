@@ -40,7 +40,7 @@
                         <li><a href="/jeugdhuizen"><i class="material-icons">add_location</i>Jeugdhuizen</a></li>
                         <li><a href="/jeugdhuis"><i class="material-icons">local_bar</i>Formaat</a></li> 
                         <li><a href="/dashboard"><i class="material-icons">dashboard</i>Dashboard</a></li>
-                        <li><a href="/posts"><i class="material-icons">info_outline</i>Posts</a></li>
+                        <li><a href="/posts"><i class="material-icons">message</i>Posts</a></li>
 
                         <hr>
                        
@@ -70,7 +70,7 @@
                         <li><a href="/"><i class="material-icons">home</i>Home</a></li> 
                         <li><a href="/dashboard"><i class="material-icons">dashboard</i>Dashboard</a></li>
                         <li><a href="/jeugdhuis"><i class="material-icons">local_bar</i>Mijn jeugdhuis</a></li> 
-                        <li><a href="/posts"><i class="material-icons">info_outline</i>Posts</a></li>
+                        <li><a href="/posts"><i class="material-icons">message</i>Posts</a></li>
                         <hr>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

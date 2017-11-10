@@ -102,6 +102,11 @@ bottom: 10px;
 }
 .upvote > .fa-caret-up, .downvote > .fa-caret-down{
     color:#ee6e73;
+    transition: 0.5s;
+    
+}
+.upvote > .fa-caret-up:hover, .downvote > .fa-caret-down:hover{
+    color:#b02829;
 }
 
 
@@ -122,3 +127,31 @@ bottom: 10px;
     transition: 0.4s;
 
 }
+.show-wrapper{
+    min-height:200px;
+    display:flex;
+}
+
+.icon-column {
+    display: flex;
+}
+.icon-wrapper {
+    margin: 0 auto;
+}
+@media screen and (max-width: 600px) {
+    .show-wrapper {
+        display:inline !important;
+    }
+    .icon-column {
+        background-color:#dadada;
+    }
+}
+
+/* .m10 > .icon-wrapper img{
+    width:100px;
+    }
+
+.s10 > .icon-wrapper {
+    
+    transform: translateY(0);
+} */

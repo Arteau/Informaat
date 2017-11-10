@@ -3,6 +3,56 @@
 @section('content')
 <div class="container" style="margin-top:50px;">
 
+<!-- begin new layout -->
+
+    <div class="row z-depth-2 show-wrapper" >
+        
+        <div class="col m2 s10 icon-column">
+        <div class="valign-wrapper icon-wrapper" >
+            <img src="http://web-project.local/img/icon_sound.svg" alt="" style="width: 100%;"></div>
+        </div>
+        <div class="col s2 hide-on-med-and-up center-align">
+            <a class="btn-floating waves-effect waves-light amber">
+                <i class="material-icons right">star</i>
+            </a>
+        </div>
+        <div class="col m10 s12">
+        
+            <div class="col  m10 s12 ">
+            <h4 class="card-title flow-text"><b>Hoe verbeter ik mijn vergaderingen?</b></h4>
+            <hr>
+            </div>
+            <div class="col m2 hide-on-small-only ">
+                <a class="btn-floating waves-effect waves-light amber">
+                    <i class="material-icons right">star</i>
+                </a>
+            </div>
+            <div class="col  s12 " style="min-height:130px">
+                <i class="card-body"> Wij hadden de vraag hoe we onze vergaderingen effficienter konden laten verlopen enzo voort enzo verder. klmqsdjfmqkjsf mqjdfsmlkjq smfjqskljfdlqsjf dsqjflkjqsdlfdjql mfjqmsdfjlk qsjflmqsjdfk qjdfkljsdf kjqsfdlkjqskl fjqslkdfjqsiofji jdflkqsj</i>
+                <p><small><b>Geplaatst door: </b> Dieter Vercammen van Jeugdhuis Zoezel</small></p>
+            </div>
+            <div class="col s3 center-align">
+            <i class="material-icons tiny">control_point</i>45
+            <i class="material-icons tiny">message</i>12
+
+            </div>
+            <div class="col s3 center-align">
+                <small>3 min geleden</small>
+            </div>
+            <div class="col s3 center-align">
+                <i class="fa fa-caret-up" aria-hidden="true"></i>
+                <i class="fa fa-caret-down" aria-hidden="true"></i>
+            </div>
+            <div class="col s3 center-align">
+                <i class="fa fa-star" aria-hidden="true"></i>
+            </div>
+            
+        </div>
+
+    </div>
+
+    <!-- new layout -->
+
     <div class="col row z-depth-2" style="min-height:230px">
       <div class="col m2" >
           <div class="valign-wrapper" style="position:relative">
@@ -58,20 +108,22 @@
                 </div>
 
                 <div class="col m2">
-              {{ $post->votes }}
-                @if(!$user->hasVoted($post))
-                <a href="/posts/{{$post->id}}/upvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
-                <a href="/posts/{{$post->id}}/downvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
-                @else
-                    @if($user->hasUpVoted($post))
-                        <a href="/posts/{{$post->id}}/cancelvote" class="upvote cancelvote"><i class="fa fa-caret-up" aria-hidden="true" style="color:black"></i></a>
-                        <a href="/posts/{{$post->id}}/downvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                <div style="position:absolute" class="votes">{{ $post->votes }}</div>
+                <div style="position:absolute" class="votes_caret">
+                    @if(!$user->hasVoted($post))
+                    <object><a href="/posts/{{$post->id}}/upvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a></object>
+                    <object><a href="/posts/{{$post->id}}/downvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a></object>
+                    @else
+                        @if($user->hasUpVoted($post))
+                            <object><a href="/posts/{{$post->id}}/cancelvote" class="upvote cancelvote"><i class="fa fa-caret-up" aria-hidden="true" ></i></a></object>
+                            <object><a href="/posts/{{$post->id}}/downvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a></object>
+                        @endif
+                        @if($user->hasDownVoted($post))
+                            <object><a href="/posts/{{$post->id}}/upvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a></object>
+                            <object><a href="/posts/{{$post->id}}/cancelvote" class="downvote  cancelvote"><i class="fa fa-caret-down" aria-hidden="true" ></i></a></object>
+                        @endif
                     @endif
-                    @if($user->hasDownVoted($post))
-                        <a href="/posts/{{$post->id}}/upvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
-                        <a href="/posts/{{$post->id}}/cancelvote" class="downvote cancelvote"><i class="fa fa-caret-down" aria-hidden="true" style="color:black"></i></a>
-                    @endif
-                @endif
+                </div>
 
 
                 
