@@ -102,7 +102,7 @@ bottom: 10px;
 }
 .upvote > .fa-caret-up, .downvote > .fa-caret-down{
     color:#ee6e73;
-    transition: 0.5s;
+    transition: 0.3s;
     
 }
 .upvote > .fa-caret-up:hover, .downvote > .fa-caret-down:hover{

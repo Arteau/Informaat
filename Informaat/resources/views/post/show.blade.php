@@ -9,43 +9,64 @@
         
         <div class="col m2 s10 icon-column">
         <div class="valign-wrapper icon-wrapper" >
-            <img src="http://web-project.local/img/icon_sound.svg" alt="" style="width: 100%;"></div>
+            @if($post->topic === "muziek")
+                <img src="http://web-project.local/img/icon_sound.svg" alt="" style="width: 100%;"></div>
+            @elseif($post->topic === "techniek")
+                <img src="http://web-project.local/img/icon_techniek.svg" alt="" style="width: 100%;"></div>
+            @else
+                <img src="http://web-project.local/img/icon_social.svg" alt="" style="width: 100%;"></div>
+            @endif
         </div>
         <div class="col s2 hide-on-med-and-up center-align">
-            <a class="btn-floating waves-effect waves-light amber">
-                <i class="material-icons right">star</i>
+            <a class="btn-floating waves-effect waves-light blue lighten-3">
+                <i class="material-icons right tiny">edit</i>
             </a>
         </div>
         <div class="col m10 s12">
         
             <div class="col  m10 s12 ">
-            <h4 class="card-title flow-text"><b>Hoe verbeter ik mijn vergaderingen?</b></h4>
+            <h4 class="card-title flow-text"><b>{{$post->title}}</b></h4>
             <hr>
             </div>
             <div class="col m2 hide-on-small-only ">
-                <a class="btn-floating waves-effect waves-light amber">
-                    <i class="material-icons right">star</i>
+                <a class="btn-floating waves-effect waves-light blue lighten-3">
+                    <i class="material-icons right tiny">edit</i>
                 </a>
             </div>
             <div class="col  s12 " style="min-height:130px">
-                <i class="card-body"> Wij hadden de vraag hoe we onze vergaderingen effficienter konden laten verlopen enzo voort enzo verder. klmqsdjfmqkjsf mqjdfsmlkjq smfjqskljfdlqsjf dsqjflkjqsdlfdjql mfjqmsdfjlk qsjflmqsjdfk qjdfkljsdf kjqsfdlkjqskl fjqslkdfjqsiofji jdflkqsj</i>
-                <p><small><b>Geplaatst door: </b> Dieter Vercammen van Jeugdhuis Zoezel</small></p>
+                <i class="card-body">{{$post->body}}</i>
             </div>
-            <div class="col s3 center-align">
-            <i class="material-icons tiny">control_point</i>45
-            <i class="material-icons tiny">message</i>12
+            <div class="col s12">
+                @if(!empty($post->tag1 | $post->tag2 | $post->tag3))
+                    <small><b>Tags: </b>{{$post->tag1}} | {{$post->tag2}} | {{$post->tag3}}</small>
+                @endif
+                <p><small><b>Geplaatst door: </b> {{$post->user->name}} van {{$post->user->jeugdhuis->name}}</small></p>
+            </div>
+
+            <div class="col m10 s8 center-align row">
+                <div style="display:inline-block; margin:3px; float:left; border:1px solid #cecece; border-radius:3px; padding:2px; color: #adadad">
+                45<i class="fa fa-arrow-circle-o-up fa-fw" aria-hidden="true" style="transform:translateY(10%)"></i> 
+                </div>
+                <div style="display:inline-block; margin:3px; float:left; border:1px solid #cecece; border-radius:3px; padding:2px; color: #adadad">
+                12 <i class="material-icons tiny" style="transform:translateY(25%)">message</i>
+                </div>
+                <div style="display:inline-block; margin:3px; float:left; border:1px solid #cecece; border-radius:3px; padding:2px; color: #adadad">
+                2 min <i class="material-icons tiny" style="transform:translateY(17%)">schedule</i> 
+                </div>
+            </div>
+           
+            <div class="col m1 s2 downvote upvote" >
+                <i aria-hidden="true" class="fa fa-caret-up fa-2x right"></i>
+                
+                <i class="fa fa-caret-down fa-2x right" aria-hidden="true"></i>
+                
+            </div>
+            <div class="col m 1s2 downvote upvote" >
+
+            <i class="fa fa-star fa-2x right " aria-hidden="true"></i>
 
             </div>
-            <div class="col s3 center-align">
-                <small>3 min geleden</small>
-            </div>
-            <div class="col s3 center-align">
-                <i class="fa fa-caret-up" aria-hidden="true"></i>
-                <i class="fa fa-caret-down" aria-hidden="true"></i>
-            </div>
-            <div class="col s3 center-align">
-                <i class="fa fa-star" aria-hidden="true"></i>
-            </div>
+            
             
         </div>
 
