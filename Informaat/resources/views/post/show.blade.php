@@ -50,7 +50,7 @@
                 <p><small><b>Geplaatst door: </b> {{$post->user->name}} van {{$post->user->jeugdhuis->name}}</small></p>
             </div>
 
-            <div class="col m10 s12 center-align row">
+            <div class="col m7 s12 center-align row">
                 <div class="info-post">
                 {{ $post->votes }}<i class="fa fa-arrow-circle-o-up fa-fw info-votes" aria-hidden="true" ></i> 
                 </div>
@@ -61,7 +61,7 @@
                 {{$diff_time}} <i class="material-icons tiny info-time">schedule</i> 
                 </div>
             </div>
-            <div class="col m1 s6  downvote upvote" >
+            <div class="col m2 s6  downvote upvote" >
                 @if( count($post->favorites->where('user_id', auth()->id())) ) 
                     <form action="/posts/{{ $post->id }}/unfavorite" method="POST">
                       {{ csrf_field() }}
@@ -78,7 +78,7 @@
                     </form>
                   @endif
             </div>
-            <div class="col m1 s6 downvote upvote" >
+            <div class="col m3 s6 downvote upvote" >
                 @if(!$user->hasVoted($post))
                     <object><a href="/posts/{{$post->id}}/upvote" class="upvote"><i class="fa fa-caret-up fa-3x" aria-hidden="true"></i></a></object>
                     <object><a href="/posts/{{$post->id}}/downvote" class="downvote"><i class="fa fa-caret-down fa-3x" aria-hidden="true"></i></a></object>
