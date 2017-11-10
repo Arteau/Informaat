@@ -17,22 +17,7 @@
         <a href="/posts/{{$post->id}}">
         <div class="row z-depth-2 hoverable post-main-wrapper">
           <div class="col s12 m1 hide-on-small-only	post-votes-wrapper">
-            <div class="votes post-votes-number">{{ $post->votes }}</div>
-                <div class="votes_caret post-votes-number">
-                    @if(!$user->hasVoted($post))
-                    <object><a href="/posts/{{$post->id}}/upvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a></object>
-                    <object><a href="/posts/{{$post->id}}/downvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a></object>
-                    @else
-                        @if($user->hasUpVoted($post))
-                            <object><a href="/posts/{{$post->id}}/cancelvote" class="upvote cancelvote"><i class="fa fa-caret-up" aria-hidden="true" ></i></a></object>
-                            <object><a href="/posts/{{$post->id}}/downvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a></object>
-                        @endif
-                        @if($user->hasDownVoted($post))
-                            <object><a href="/posts/{{$post->id}}/upvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a></object>
-                            <object><a href="/posts/{{$post->id}}/cancelvote" class="downvote  cancelvote"><i class="fa fa-caret-down" aria-hidden="true" ></i></a></object>
-                        @endif
-                    @endif
-                </div>
+           
           </div>
           <div class="col s12 m2 hide-on-small-only	post-img-wrapper">
           @if($post->topic == "techniek")
@@ -63,22 +48,7 @@
             </div>
           </div>
           <div class="col s2 m1" >
-            <div class="relative-pos">
-            @if( count($post->favorites->where('user_id', auth()->id())) )
-                      <form action="/posts/{{ $post->id }}/unfavorite" method="POST" class="favorite">
-                        {{ csrf_field() }}
-                        {{ method_field('PATCH') }}     
-                        <button type="submit" class="star">
-                          <i class="fa fa-star fa-2x" aria-hidden="true"></i>
-                        </button>
-                      </form>
-                    @else
-                      <form action="/posts/{{ $post->id }}/favorite" method="POST" class="favorite">
-                        {{ csrf_field() }}
-                        <button type="submit" class="star"><i class="fa fa-star-o fa-2x" aria-hidden="true"></i></button>
-                      </form>
-            @endif
-            </div>
+          
           </div>
         </div>
         </a>
