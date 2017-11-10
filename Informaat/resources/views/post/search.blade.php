@@ -2,24 +2,18 @@
 
 @section('content')
 <div class="container container-margin">
-
     <form role="search" class="app-search" action="/posts/search" method="POST">
         {{ csrf_field() }}
-
             <input type="text" name="keyword" id="keyword" placeholder="Zoeken" class="form-control width-100">
-    </form>
-    
+    </form>  
     @if (!empty($searchPost))
-
         @isset($searchPost)
         @empty($searchPost[0])
             <br>
             <h3 class="text-center">Whooops, geen resultaten gevonden!</h3>
         @endempty
         @endisset
-
-        @foreach($searchPost as $post)
-        
+        @foreach($searchPost as $post)    
         <a href="/posts/{{$post->id}}">
         <div class="row z-depth-2 hoverable post-main-wrapper">
           <div class="col s12 m1 hide-on-small-only	post-votes-wrapper">
@@ -45,20 +39,14 @@
             <img src="{{asset('img/icon_techniek.svg')}}" alt="" >  
           @elseif($post->topic == "sociaal")
             <img src="{{asset('img/icon_social.svg')}}" alt="">  
-  
           @else
             <img src="{{asset('img/icon_sound.svg')}}" alt="">  
-  
           @endif
           </div>
           <div class="col s10 m8">
-            <div class="">
-                    
-                    <h5 class="">{{$post->title}}</h5>
-                    <i class="truncate">{{$post->body}}</i>
-                    
-                    
-                   
+            <div>            
+                    <h5>{{$post->title}}</h5>
+                    <i class="truncate">{{$post->body}}</i>                  
                     @if(!empty($post->tag1 | $post->tag2 | $post->tag3))
                     <small><b>Tags: </b>{{$post->tag1}} | {{$post->tag2}} | {{$post->tag3}}</small>
                     @else
@@ -71,33 +59,24 @@
                     <p><small><b>{{count($post->comments)}} reacties </b> </small></p>
                     @endif
             </div>
-            <div class="col s12 m12">
-            
+            <div class="col s12 m12">        
             </div>
           </div>
           <div class="col s2 m1" >
-            <!-- -->
             <div class="relative-pos">
-              
-            
             @if( count($post->favorites->where('user_id', auth()->id())) )
-  
                       <form action="/posts/{{ $post->id }}/unfavorite" method="POST" class="favorite">
                         {{ csrf_field() }}
-                        {{ method_field('PATCH') }}
-                        
+                        {{ method_field('PATCH') }}     
                         <button type="submit" class="star">
                           <i class="fa fa-star fa-2x" aria-hidden="true"></i>
                         </button>
                       </form>
                     @else
-                  
                       <form action="/posts/{{ $post->id }}/favorite" method="POST" class="favorite">
                         {{ csrf_field() }}
-                        
                         <button type="submit" class="star"><i class="fa fa-star-o fa-2x" aria-hidden="true"></i></button>
                       </form>
-  
             @endif
             </div>
           </div>
@@ -105,7 +84,6 @@
         </a>
 
         @endforeach
-
     @endif
 </div>
 @endsection

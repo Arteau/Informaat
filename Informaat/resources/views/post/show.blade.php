@@ -129,13 +129,8 @@
       </div>
       <div class="card-stacked">
         <div class="card-content card-content-comment">
-        
-            
-
             <h4 class="card-title flow-text"><b>{{$comment->title}}</b></h4>
                 <i>{{$comment->body}}</i>
-                
-                
         </div>
         @if($comment->user_id == Auth::user()->id || Auth::user()->isAdmin || (Auth::user()->moderator && Auth::user()->jeugdhuis == $comment->user->jeugdhuis))
         <div class="card-action card-action-comment">

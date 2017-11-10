@@ -56,7 +56,7 @@
 
           @include ('layouts.errors')
           <label for="keyword">Zoeken</label>
-          <input type="text" name="keyword" id="keyword"  class="field-input width-100">
+          <input type="text" name="keyword" placeholder="Zoek hier je posts" id="keyword"  class="field-input width-100">
       </form>
     </div>
 

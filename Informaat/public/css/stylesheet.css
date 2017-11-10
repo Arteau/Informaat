@@ -3,7 +3,7 @@ blockquote{
 }
 .container-margin {
     margin-top:50px;
-    margin-bottom:50px;
+    
 }
 .col-min-height{
     min-height:130px;
@@ -78,6 +78,12 @@ blockquote{
     max-height:80px; 
     left: 50% !important;
     transform: translateX(-50%);
+}
+#comment-a {
+    color:#636b6f;
+}
+#comment-a:hover {
+    text-decoration: none;
 }
 .top-post-icon-wrapper{
     position: absolute;
