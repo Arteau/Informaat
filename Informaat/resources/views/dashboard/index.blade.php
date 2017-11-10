@@ -215,59 +215,58 @@
 
 
   
-      @if(count($comments) > 0)
+        @if(count($comments) != 0)
         @foreach($comments as $comment)
-       
-    <a href="posts/{{$comment->post->id}}#comments">
-    <div class="card horizontal z-depth-2 hoverable" style="color: rgb(99, 107, 111);text-decoration:none;">
-      <div class="card-image">
-       <!-- image here -->
-      </div>
-      <div class="card-stacked">
-        <div class="card-content">
-        {{ $comment->votes }}
-            @if(!$user->hasVoted($comment))
-            <object><a href="/posts/{{$comment->post->id}}/comment/{{$comment->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a></object>
-            <object><a href="/posts/{{$comment->post->id}}/comment/{{$comment->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a></object>
-            @else
-                @if($user->hasUpVoted($comment))
-                    <object><a href="/posts/{{$comment->post->id}}/comment/{{$comment->id}}/cancelvote"><i class="fa fa-caret-up" aria-hidden="true" style="color:black"></i></a></object>
-                    <object><a href="/posts/{{$comment->post->id}}/comment/{{$comment->id}}/downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a></object>
+        <div class="card horizontal z-depth-2">
+          <div class="card-image" style="width:23px; margin:3%">
+              <div class="comment-wrapper" style="position:relative;transform:translateY(-50%);top:50%">
+                <p class="text-center">{{ $comment->votes }}</p>
+                @if(!$user->hasVoted($comment))
+                <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/upvote" class="upvote" style="position:absolute; bottom:10px"><i class="fa fa-caret-up fa-3x" aria-hidden="true"></i></a>
+                <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/downvote" class="downvote" style="position:absolute; top:10px"><i class="fa fa-caret-down fa-3x" aria-hidden="true"></i></a>
+                @else
+                    @if($user->hasUpVoted($comment))
+                        <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/cancelvote" class="upvote cancelvote" style="position:absolute; bottom:10px"><i class="fa fa-caret-up fa-3x" aria-hidden="true" style="color:black"></i></a>
+                        <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/downvote" class="downvote" style="position:absolute; top:10px"><i class="fa fa-caret-down fa-3x" aria-hidden="true"></i></a>
+                    @endif
+                    @if($user->hasDownVoted($comment))
+                        <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/upvote" class="upvote" style="position:absolute; bottom:10px"><i class="fa fa-caret-up fa-3x" aria-hidden="true"></i></a>
+                        <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/cancelvote" class="downvote cancelvote" style="position:absolute; top:10px"><i class="fa fa-caret-down fa-3x" aria-hidden="true" style="color:black"></i></a>
+                    @endif
                 @endif
-                @if($user->hasDownVoted($comment))
-                    <object><a href="/posts/{{$comment->post->id}}/comment/{{$comment->id}}/upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a></object>
-                    <object><a href="/posts/{{$comment->post->id}}/comment/{{$comment->id}}/cancelvote"><i class="fa fa-caret-down" aria-hidden="true" style="color:black"></i></a></object>
-                @endif
+                </div>
+          </div>
+          <div class="card-stacked">
+            <div class="card-content" style="padding:0px 24px; min-height:105px">
+            
+                
+    
+                <h4 class="card-title flow-text"><b>{{$comment->title}}</b></h4>
+                    <i>{{$comment->body}}</i>
+                    
+                    
+            </div>
+            @if($comment->user_id == Auth::user()->id || Auth::user()->isAdmin || (Auth::user()->moderator && Auth::user()->jeugdhuis == $comment->user->jeugdhuis))
+            <div class="card-action" style="padding:0px 24px">
+                <p><small> <b>Geplaatst door:</b> {{$comment->user->name}} van {{$comment->user->jeugdhuis->name}}</small></p>
+                <div style="display:inline-block; margin:3px; float:left; border:1px solid #cecece; border-radius:3px; padding:2px; color: #adadad">
+                {{$comment->created_at->diffForHumans()}} <i class="material-icons tiny" style="transform:translateY(17%)">schedule</i> 
+                </div>
+                <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/edit" class="btn-floating waves-effect waves-light  blue lighten-3 right" style="margin-top:-5px; margin-bottom:5px">
+                    <i class="material-icons right tiny">edit</i>
+                </a>
+             
+            </div>
             @endif
-
-                <h2 class="card-title">{{$comment->title}}</h2>
-                <i>{{$comment->body}}</i>
-                <br>
-                <small> Geplaatst: {{$comment->created_at->diffForHumans()}} door
-                {{$comment->user->name}} van {{$comment->user->jeugdhuis->name}}</small>
+          </div>
         </div>
-        <div class="card-action">
-          <object><a href="/posts/{{$comment->post->id}}/comment/{{$comment->id}}/edit">Edit comment </a></object>
-        </div>
-      </div>
-    </div>
-    </a>
-    @endforeach
-    @else
-      <p>Je hebt nog geen reacties geplaatst.</p>
-    @endif
-    
-    
-
-
-
-
-
-
-
-
-
-
+        @endforeach
+        <hr>
+        @else
+        <small>Je hebt nog geen reacties geplaatst</small>
+        <br>
+        @endif
+        
         </div>
     </div>
   </div>

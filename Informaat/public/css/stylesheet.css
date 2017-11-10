@@ -109,6 +109,9 @@ bottom: 10px;
     color:#b02829;
 }
 
+.cancelvote  > .fa-caret-down:hover, .cancelvote  > .fa-caret-up:hover {
+    color:#ee6e73 !important;
+}
 
 .cancelvote  > .fa-caret-down, .cancelvote  > .fa-caret-up {
     color:#b02829 !important;

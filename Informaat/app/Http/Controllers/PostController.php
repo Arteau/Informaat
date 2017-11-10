@@ -10,6 +10,8 @@ use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Session;
+use Carbon\Carbon;
+
 
 
 class PostController extends Controller
@@ -138,8 +140,12 @@ class PostController extends Controller
         $user = Auth::user();
         
         $comments = Comment::where('post_id', $post->id)->orderBy('votes', 'desc')->paginate(5);
+
+        Carbon::setLocale('nl');        
+       
+        $diff_time = $post->created_at->diffForHumans();
         
-        return view('post.show', compact('post','user', 'comments'));
+        return view('post.show', compact('post','user', 'comments', 'diff_time'));
         
     }
 

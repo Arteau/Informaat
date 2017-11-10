@@ -18,9 +18,13 @@
             @endif
         </div>
         <div class="col s2 hide-on-med-and-up center-align">
-            <a class="btn-floating waves-effect waves-light blue lighten-3">
+            @if($post->user_id == Auth::user()->id || Auth::user()->isAdmin || (Auth::user()->moderator && Auth::user()->jeugdhuis == $post->user->jeugdhuis))
+
+            <a href="/posts/{{$post->id}}/edit" class="btn-floating waves-effect waves-light  blue lighten-3 right">
                 <i class="material-icons right tiny">edit</i>
             </a>
+
+            @endif
         </div>
         <div class="col m10 s12">
         
@@ -29,9 +33,12 @@
             <hr>
             </div>
             <div class="col m2 hide-on-small-only ">
-                <a class="btn-floating waves-effect waves-light blue lighten-3">
+                @if($post->user_id == Auth::user()->id || Auth::user()->isAdmin || (Auth::user()->moderator && Auth::user()->jeugdhuis == $post->user->jeugdhuis))
+                
+                <a href="/posts/{{$post->id}}/edit" class="btn-floating waves-effect waves-light  blue lighten-3 right">
                     <i class="material-icons right tiny">edit</i>
                 </a>
+                @endif
             </div>
             <div class="col  s12 " style="min-height:130px">
                 <i class="card-body">{{$post->body}}</i>
@@ -43,156 +50,103 @@
                 <p><small><b>Geplaatst door: </b> {{$post->user->name}} van {{$post->user->jeugdhuis->name}}</small></p>
             </div>
 
-            <div class="col m10 s8 center-align row">
+            <div class="col m10 s12 center-align row">
                 <div style="display:inline-block; margin:3px; float:left; border:1px solid #cecece; border-radius:3px; padding:2px; color: #adadad">
-                45<i class="fa fa-arrow-circle-o-up fa-fw" aria-hidden="true" style="transform:translateY(10%)"></i> 
+                {{ $post->votes }}<i class="fa fa-arrow-circle-o-up fa-fw" aria-hidden="true" style="transform:translateY(10%)"></i> 
                 </div>
                 <div style="display:inline-block; margin:3px; float:left; border:1px solid #cecece; border-radius:3px; padding:2px; color: #adadad">
-                12 <i class="material-icons tiny" style="transform:translateY(25%)">message</i>
+                {{count($post->comments)}} <i class="material-icons tiny" style="transform:translateY(25%)">message</i>
                 </div>
                 <div style="display:inline-block; margin:3px; float:left; border:1px solid #cecece; border-radius:3px; padding:2px; color: #adadad">
-                2 min <i class="material-icons tiny" style="transform:translateY(17%)">schedule</i> 
+                {{$diff_time}} <i class="material-icons tiny" style="transform:translateY(17%)">schedule</i> 
                 </div>
             </div>
-           
-            <div class="col m1 s2 downvote upvote" >
-                <i aria-hidden="true" class="fa fa-caret-up fa-2x right"></i>
-                
-                <i class="fa fa-caret-down fa-2x right" aria-hidden="true"></i>
-                
-            </div>
-            <div class="col m 1s2 downvote upvote" >
-
-            <i class="fa fa-star fa-2x right " aria-hidden="true"></i>
-
-            </div>
-            
-            
-        </div>
-
-    </div>
-
-    <!-- new layout -->
-
-    <div class="col row z-depth-2" style="min-height:230px">
-      <div class="col m2" >
-          <div class="valign-wrapper" style="position:relative">
-          <div style="position: absolute;top: 3rem;left: 2%;">
-             <img src="{{asset('img/icon_sound.svg')}}" alt="" style="width:100%">
-          </div>
-        </div>
-          
-      </div>
-      <div class="col m10">
-        <div class="row">
-            <div style="position:relative">
-
-            @if( count($post->favorites->where('user_id', auth()->id())) )
-                
-                    <form action="/posts/{{ $post->id }}/unfavorite" method="POST" style="position:absolute; right:0">
+            <div class="col m1 s6  downvote upvote" >
+                @if( count($post->favorites->where('user_id', auth()->id())) ) 
+                    <form action="/posts/{{ $post->id }}/unfavorite" method="POST">
                       {{ csrf_field() }}
-                      {{ method_field('PATCH') }}
-                      
+                      {{ method_field('PATCH') }}               
                       <button type="submit" class="star">
-                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star fa-2x" aria-hidden="true"></i>
                       </button>
                     </form>
-                  
-                  @else
+                @else
                 
-                    <form action="/posts/{{ $post->id }}/favorite" method="POST" style="position:absolute; right:0">
-                      {{ csrf_field() }}
-                      
-                      <button type="submit" class="star"><i class="fa fa-star-o" aria-hidden="true"></i></button>
+                    <form action="/posts/{{ $post->id }}/favorite" method="POST">
+                      {{ csrf_field() }} 
+                      <button type="submit" class="star"><i class="fa fa-star-o fa-2x" aria-hidden="true"></i></button>
                     </form>
-
                   @endif
-            
+            </div>
+            <div class="col m1 s6 downvote upvote" >
+                @if(!$user->hasVoted($post))
+                    <object><a href="/posts/{{$post->id}}/upvote" class="upvote"><i class="fa fa-caret-up fa-3x" aria-hidden="true"></i></a></object>
+                    <object><a href="/posts/{{$post->id}}/downvote" class="downvote"><i class="fa fa-caret-down fa-3x" aria-hidden="true"></i></a></object>
+                @else
+                    @if($user->hasUpVoted($post))
+                        <object><a href="/posts/{{$post->id}}/cancelvote" class="upvote cancelvote"><i class="fa fa-caret-up fa-3x" aria-hidden="true" ></i></a></object>
+                        <object><a href="/posts/{{$post->id}}/downvote" class="downvote"><i class="fa fa-caret-down fa-3x" aria-hidden="true"></i></a></object>
+                    @endif
+                    @if($user->hasDownVoted($post))
+                        <object><a href="/posts/{{$post->id}}/upvote" class="upvote"><i class="fa fa-caret-up fa-3x" aria-hidden="true"></i></a></object>
+                        <object><a href="/posts/{{$post->id}}/cancelvote" class="downvote  cancelvote"><i class="fa fa-caret-down fa-3x" aria-hidden="true" ></i></a></object>
+                    @endif
+                @endif
             </div>
             
-            <div class="col m12">
-                <h4 class="card-title"><b>{{$post->title}}</b></h4>
-                <i>{{$post->body}}</i>
-                <hr>
-            </div>
-                <div class="col m10">
-                    <br>
-                    @if(!empty($post->tag1 | $post->tag2 | $post->tag3))
-                    <small><b>Tags: </b>{{$post->tag1}} | {{$post->tag2}} | {{$post->tag3}}</small>
-                    @endif
-                    <p><small><b>Geplaatst door:</b> {{$post->user->name}}  van {{$post->user->jeugdhuis->name}}</small></p>
-                    @if(count($post->comments) === 1)
-                    <p><small><b>{{count($post->comments)}} reactie </b> </small></p>
-                    @else
-                    <p><small><b>{{count($post->comments)}} reacties </b> </small></p>
-                    @endif
-                </div>
-
-                <div class="col m2">
-                <div style="position:absolute" class="votes">{{ $post->votes }}</div>
-                <div style="position:absolute" class="votes_caret">
-                    @if(!$user->hasVoted($post))
-                    <object><a href="/posts/{{$post->id}}/upvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a></object>
-                    <object><a href="/posts/{{$post->id}}/downvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a></object>
-                    @else
-                        @if($user->hasUpVoted($post))
-                            <object><a href="/posts/{{$post->id}}/cancelvote" class="upvote cancelvote"><i class="fa fa-caret-up" aria-hidden="true" ></i></a></object>
-                            <object><a href="/posts/{{$post->id}}/downvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a></object>
-                        @endif
-                        @if($user->hasDownVoted($post))
-                            <object><a href="/posts/{{$post->id}}/upvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a></object>
-                            <object><a href="/posts/{{$post->id}}/cancelvote" class="downvote  cancelvote"><i class="fa fa-caret-down" aria-hidden="true" ></i></a></object>
-                        @endif
-                    @endif
-                </div>
-
-
-                
-
-                  </div>
+            
+            
         </div>
-        @if($post->user_id == Auth::user()->id || Auth::user()->isAdmin || (Auth::user()->moderator && Auth::user()->jeugdhuis == $post->user->jeugdhuis))
-        <div class="card-action">
-          <a href="/posts/{{$post->id}}/edit">Post aanpassen</a>
-        </div>
-        @endif
-      </div>
+
     </div>
+<hr>
+<br>
+    <!-- new layout -->
+<blockquote>Reacties</blockquote>
+
     <hr>
     <div id="comments">
     @if(count($comments) != 0)
     @foreach($comments as $comment)
     <div class="card horizontal z-depth-2">
-      <div class="card-image">
-       <!-- image here -->
-      </div>
-      <div class="card-stacked">
-        <div class="card-content">
-        {{ $comment->votes }}
+      <div class="card-image" style="width:23px; margin:3%">
+          <div class="comment-wrapper" style="position:relative;transform:translateY(-50%);top:50%">
+            <p class="text-center">{{ $comment->votes }}</p>
             @if(!$user->hasVoted($comment))
-            <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/upvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
-            <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/downvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+            <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/upvote" class="upvote" style="position:absolute; bottom:10px"><i class="fa fa-caret-up fa-3x" aria-hidden="true"></i></a>
+            <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/downvote" class="downvote" style="position:absolute; top:10px"><i class="fa fa-caret-down fa-3x" aria-hidden="true"></i></a>
             @else
                 @if($user->hasUpVoted($comment))
-                    <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/cancelvote" class="upvote cancelvote"><i class="fa fa-caret-up" aria-hidden="true" style="color:black"></i></a>
-                    <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/downvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                    <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/cancelvote" class="upvote cancelvote" style="position:absolute; bottom:10px"><i class="fa fa-caret-up fa-3x" aria-hidden="true" style="color:black"></i></a>
+                    <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/downvote" class="downvote" style="position:absolute; top:10px"><i class="fa fa-caret-down fa-3x" aria-hidden="true"></i></a>
                 @endif
                 @if($user->hasDownVoted($comment))
-                    <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/upvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
-                    <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/cancelvote" class="downvote cancelvote"><i class="fa fa-caret-down" aria-hidden="true" style="color:black"></i></a>
+                    <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/upvote" class="upvote" style="position:absolute; bottom:10px"><i class="fa fa-caret-up fa-3x" aria-hidden="true"></i></a>
+                    <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/cancelvote" class="downvote cancelvote" style="position:absolute; top:10px"><i class="fa fa-caret-down fa-3x" aria-hidden="true" style="color:black"></i></a>
                 @endif
             @endif
+            </div>
+      </div>
+      <div class="card-stacked">
+        <div class="card-content" style="padding:0px 24px; min-height:105px">
+        
             
 
-                <h2 class="card-title">{{$comment->title}}</h2>
+            <h4 class="card-title flow-text"><b>{{$comment->title}}</b></h4>
                 <i>{{$comment->body}}</i>
-                <hr>
-                <small> Geplaatst: {{$comment->created_at->diffForHumans()}} door
-                {{$comment->user->name}} van {{$comment->user->jeugdhuis->name}}</small>
+                
+                
         </div>
         @if($comment->user_id == Auth::user()->id || Auth::user()->isAdmin || (Auth::user()->moderator && Auth::user()->jeugdhuis == $comment->user->jeugdhuis))
-        <div class="card-action">
-          <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/edit">Reactie aanpassen</a>
+        <div class="card-action" style="padding:0px 24px">
+            <p><small> <b>Geplaatst door:</b> {{$comment->user->name}} van {{$comment->user->jeugdhuis->name}}</small></p>
+            <div style="display:inline-block; margin:3px; float:left; border:1px solid #cecece; border-radius:3px; padding:2px; color: #adadad">
+            {{$comment->created_at->diffForHumans()}} <i class="material-icons tiny" style="transform:translateY(17%)">schedule</i> 
+            </div>
+            <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/edit" class="btn-floating waves-effect waves-light  blue lighten-3 right" style="margin-top:-5px; margin-bottom:5px">
+                <i class="material-icons right tiny">edit</i>
+            </a>
+         
         </div>
         @endif
       </div>
@@ -212,7 +166,7 @@
 
     
 
-    <ul class="collapsible hoverable " data-collapsible="accordion">
+    <ul class="collapsible hoverable " data-collapsible="accordion" style="margin-bottom:60px">
         <li>
             <div class="collapsible-header btn" style="height:50px; border-radius:5px;">
                 <i class="material-icons"></i>Reactie plaatsen

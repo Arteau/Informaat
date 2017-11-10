@@ -33,7 +33,7 @@
         <b><p class="truncate center-align white-text">{{$top->title}}</p></b>
          
         </div>
-        <div class="card-action center-align black-text">
+        <div class="card-action center-align black-text" style="background-color:#fdd2a0">
           Lees meer
         </div>
       </div>
