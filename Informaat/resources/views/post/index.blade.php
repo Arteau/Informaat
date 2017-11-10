@@ -15,25 +15,25 @@
   <a href="/posts/{{$top->id}}">
     <div class="col s6 m3" class="top">
       <div class="card hoverable">
-        <div class="card-image valign-wrapper" style="padding:20px; padding-bottom:0;background-color:#f79727">
+        <div class="card-image card-image-top-post valign-wrapper">
           @if($top->topic == "techniek")
-            <img src="{{asset('img/icon_techniek_white.svg')}}" alt="" style="max-height:80px; left: 50%;transform: translateX(-50%);"> 
+            <img src="{{asset('img/icon_techniek_white.svg')}}" class="card-image-top-image" alt=""> 
           @elseif($top->topic == "sociaal")
-            <img src="{{asset('img/icon_social_white.svg')}}" alt="" style="max-height:80px; left: 50%;transform: translateX(-50%);"> 
+            <img src="{{asset('img/icon_social_white.svg')}}" class="card-image-top-image" alt=""> 
           @else
-            <img src="{{asset('img/icon_sound_white.svg')}}" alt="" style="max-height:80px; left: 50%;transform: translateX(-50%);"> 
+            <img src="{{asset('img/icon_sound_white.svg')}}" class="card-image-top-image" alt=""> 
           @endif
           <span class="card-title"></span>
         </div>
-        <div class="card-content" style="background-color:#f79727">
-        <span style="position: absolute;top: 2px;color: black;left: 3px;">
-          <i class="material-icons" style="color:rgba(246, 248, 251, 0.83); font-size:17px">thumb_up</i>
-          <span style="top: -3px;left: 21px;position: absolute; color:rgba(246, 248, 251, 0.83)">{{ $top->votes }}</span>
+        <div class="card-content card-content-top-post">
+        <span class="top-post-icon-wrapper">
+          <i aria-hidden="true" class="fa fa-arrow-circle-o-up fa-fw top-post-icon"></i>
+          <span class="top-post-icon-number">{{ $top->votes }}</span>
         </span> 
         <b><p class="truncate center-align white-text">{{$top->title}}</p></b>
          
         </div>
-        <div class="card-action center-align black-text" style="background-color:#fdd2a0">
+        <div class="card-action center-align black-text top-post-bottom">
           Lees meer
         </div>
       </div>
@@ -56,7 +56,7 @@
 
           @include ('layouts.errors')
           <label for="keyword">Zoeken</label>
-          <input type="text" name="keyword" id="keyword"  class="field-input" style="width:100%">
+          <input type="text" name="keyword" id="keyword"  class="field-input width-100">
       </form>
     </div>
 
@@ -77,7 +77,7 @@
         </form>
       </div>
     </div>
-    <a href="/posts/create"><button class="btn btn-default btn-block hoverable" style="background-color:#ee6e73">Post aanmaken</button></a>
+    <a href="/posts/create"><button class="btn btn-default btn-block hoverable btn-create-post">Post aanmaken</button></a>
 
     <blockquote>
       Alle posts
@@ -88,10 +88,10 @@
     @foreach($posts as $post)
     
     <a href="/posts/{{$post->id}}">
-      <div class="row z-depth-2 hoverable" style="color:#636b6f; min-height:118px;height:182px">
-        <div class="col s12 m1 hide-on-small-only	" style="position:relative">
-          <div style="position:absolute" class="votes">{{ $post->votes }}</div>
-              <div style="position:absolute" class="votes_caret">
+      <div class="row z-depth-2 hoverable post-main-wrapper">
+        <div class="col s12 m1 hide-on-small-only	post-votes-wrapper">
+          <div class="votes post-votes-number">{{ $post->votes }}</div>
+              <div class="votes_caret post-votes-number">
                   @if(!$user->hasVoted($post))
                   <object><a href="/posts/{{$post->id}}/upvote" class="upvote"><i class="fa fa-caret-up" aria-hidden="true"></i></a></object>
                   <object><a href="/posts/{{$post->id}}/downvote" class="downvote"><i class="fa fa-caret-down" aria-hidden="true"></i></a></object>
@@ -107,14 +107,14 @@
                   @endif
               </div>
         </div>
-        <div class="col s12 m2 hide-on-small-only	" style="position:relative; height:182px">
+        <div class="col s12 m2 hide-on-small-only	post-img-wrapper">
         @if($post->topic == "techniek")
-          <img src="{{asset('img/icon_techniek.svg')}}" alt="" style="max-height:100px;position: absolute;left: 50%;transform: translate(-50%, 50%);">  
+          <img src="{{asset('img/icon_techniek.svg')}}" alt="" >  
         @elseif($post->topic == "sociaal")
-        <img src="{{asset('img/icon_social.svg')}}" alt="" style="max-height:100px;position: absolute;left: 50%;transform: translate(-50%, 50%);">  
+          <img src="{{asset('img/icon_social.svg')}}" alt="">  
 
         @else
-        <img src="{{asset('img/icon_sound.svg')}}" alt="" style="max-height:100px;position: absolute;left: 50%;transform: translate(-50%, 50%);">  
+          <img src="{{asset('img/icon_sound.svg')}}" alt="">  
 
         @endif
         </div>
@@ -144,7 +144,7 @@
         </div>
         <div class="col s2 m1" >
           <!-- -->
-          <div style="position:relative">
+          <div class="relative-pos">
             
           
           @if( count($post->favorites->where('user_id', auth()->id())) )
@@ -154,7 +154,7 @@
                       {{ method_field('PATCH') }}
                       
                       <button type="submit" class="star">
-                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star fa-2x" aria-hidden="true"></i>
                       </button>
                     </form>
                   @else
@@ -162,7 +162,7 @@
                     <form action="/posts/{{ $post->id }}/favorite" method="POST" class="favorite">
                       {{ csrf_field() }}
                       
-                      <button type="submit" class="star"><i class="fa fa-star-o" aria-hidden="true"></i></button>
+                      <button type="submit" class="star"><i class="fa fa-star-o fa-2x" aria-hidden="true"></i></button>
                     </form>
 
           @endif
