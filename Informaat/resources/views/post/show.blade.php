@@ -10,11 +10,11 @@
         <div class="col m2 s10 icon-column">
         <div class="valign-wrapper icon-wrapper" >
             @if($post->topic === "muziek")
-                <img src="http://web-project.local/img/icon_sound.svg" alt="" class="img-full-width"></div>
+                <img src="{{asset('img/icon_sound.svg')}}" alt="" class="img-full-width"></div>
             @elseif($post->topic === "techniek")
-                <img src="http://web-project.local/img/icon_techniek.svg" alt="" class="img-full-width"></div>
+                <img src="{{asset('img/icon_techniek.svg')}}" alt="" class="img-full-width"></div>
             @else
-                <img src="http://web-project.local/img/icon_social.svg" alt="" class="img-full-width"></div>
+                <img src="{{asset('img/icon_social.svg')}}" alt="" class="img-full-width"></div>
             @endif
         </div>
         <div class="col s2 hide-on-med-and-up center-align">
