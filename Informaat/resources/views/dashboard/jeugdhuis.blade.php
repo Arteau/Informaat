@@ -3,7 +3,7 @@
 @section('content')
 <br>
 
-<div class="container" style="margin-top:50px">
+<div class="container container-margin">
 <blockquote>Overzicht {{$jeugdhuis->name}}</blockquote>
 <br>
 @if(count($jeugdhuis->users) === 1)

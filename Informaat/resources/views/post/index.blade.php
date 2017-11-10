@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- /.container -->
-<div class="container" style="margin-top:50px; margin-bottom:50px;">
+<div class="container container-margin">
 
   
 <blockquote>

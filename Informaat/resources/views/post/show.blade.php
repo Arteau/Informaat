@@ -1,7 +1,7 @@
 @extends('layouts.landing')
 
 @section('content')
-<div class="container" style="margin-top:50px;">
+<div class="container container-margin">
 
 <!-- begin new layout -->
 
@@ -10,11 +10,11 @@
         <div class="col m2 s10 icon-column">
         <div class="valign-wrapper icon-wrapper" >
             @if($post->topic === "muziek")
-                <img src="http://web-project.local/img/icon_sound.svg" alt="" style="width: 100%;"></div>
+                <img src="http://web-project.local/img/icon_sound.svg" alt="" class="img-full-width"></div>
             @elseif($post->topic === "techniek")
-                <img src="http://web-project.local/img/icon_techniek.svg" alt="" style="width: 100%;"></div>
+                <img src="http://web-project.local/img/icon_techniek.svg" alt="" class="img-full-width"></div>
             @else
-                <img src="http://web-project.local/img/icon_social.svg" alt="" style="width: 100%;"></div>
+                <img src="http://web-project.local/img/icon_social.svg" alt="" class="img-full-width"></div>
             @endif
         </div>
         <div class="col s2 hide-on-med-and-up center-align">
@@ -40,7 +40,7 @@
                 </a>
                 @endif
             </div>
-            <div class="col  s12 " style="min-height:130px">
+            <div class="col s12 col-min-height">
                 <i class="card-body">{{$post->body}}</i>
             </div>
             <div class="col s12">
@@ -51,14 +51,14 @@
             </div>
 
             <div class="col m10 s12 center-align row">
-                <div style="display:inline-block; margin:3px; float:left; border:1px solid #cecece; border-radius:3px; padding:2px; color: #adadad">
-                {{ $post->votes }}<i class="fa fa-arrow-circle-o-up fa-fw" aria-hidden="true" style="transform:translateY(10%)"></i> 
+                <div class="info-post">
+                {{ $post->votes }}<i class="fa fa-arrow-circle-o-up fa-fw info-votes" aria-hidden="true" ></i> 
                 </div>
-                <div style="display:inline-block; margin:3px; float:left; border:1px solid #cecece; border-radius:3px; padding:2px; color: #adadad">
-                {{count($post->comments)}} <i class="material-icons tiny" style="transform:translateY(25%)">message</i>
+                <div class="info-post">
+                {{count($post->comments)}} <i class="material-icons tiny info-comments">message</i>
                 </div>
-                <div style="display:inline-block; margin:3px; float:left; border:1px solid #cecece; border-radius:3px; padding:2px; color: #adadad">
-                {{$diff_time}} <i class="material-icons tiny" style="transform:translateY(17%)">schedule</i> 
+                <div class="info-post">
+                {{$diff_time}} <i class="material-icons tiny info-time">schedule</i> 
                 </div>
             </div>
             <div class="col m1 s6  downvote upvote" >
@@ -109,26 +109,26 @@
     @if(count($comments) != 0)
     @foreach($comments as $comment)
     <div class="card horizontal z-depth-2">
-      <div class="card-image" style="width:23px; margin:3%">
-          <div class="comment-wrapper" style="position:relative;transform:translateY(-50%);top:50%">
+      <div class="card-image card-image-comment">
+          <div class="comment-wrapper">
             <p class="text-center">{{ $comment->votes }}</p>
             @if(!$user->hasVoted($comment))
-            <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/upvote" class="upvote" style="position:absolute; bottom:10px"><i class="fa fa-caret-up fa-3x" aria-hidden="true"></i></a>
-            <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/downvote" class="downvote" style="position:absolute; top:10px"><i class="fa fa-caret-down fa-3x" aria-hidden="true"></i></a>
+            <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/upvote" class="upvote comment-upvote" ><i class="fa fa-caret-up fa-3x" aria-hidden="true"></i></a>
+            <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/downvote" class="downvote comment-downvote"><i class="fa fa-caret-down fa-3x" aria-hidden="true"></i></a>
             @else
                 @if($user->hasUpVoted($comment))
-                    <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/cancelvote" class="upvote cancelvote" style="position:absolute; bottom:10px"><i class="fa fa-caret-up fa-3x" aria-hidden="true" style="color:black"></i></a>
-                    <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/downvote" class="downvote" style="position:absolute; top:10px"><i class="fa fa-caret-down fa-3x" aria-hidden="true"></i></a>
+                    <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/cancelvote" class="upvote comment-upvote cancelvote"><i class="fa fa-caret-up fa-3x" aria-hidden="true"></i></a>
+                    <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/downvote" class="downvote comment-downvote"><i class="fa fa-caret-down fa-3x" aria-hidden="true"></i></a>
                 @endif
                 @if($user->hasDownVoted($comment))
-                    <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/upvote" class="upvote" style="position:absolute; bottom:10px"><i class="fa fa-caret-up fa-3x" aria-hidden="true"></i></a>
-                    <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/cancelvote" class="downvote cancelvote" style="position:absolute; top:10px"><i class="fa fa-caret-down fa-3x" aria-hidden="true" style="color:black"></i></a>
+                    <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/upvote" class="upvote comment-upvote" ><i class="fa fa-caret-up fa-3x" aria-hidden="true"></i></a>
+                    <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/cancelvote" class="downvote cancelvote comment-downvote"><i class="fa fa-caret-down fa-3x" aria-hidden="true"></i></a>
                 @endif
             @endif
             </div>
       </div>
       <div class="card-stacked">
-        <div class="card-content" style="padding:0px 24px; min-height:105px">
+        <div class="card-content card-content-comment">
         
             
 
@@ -138,12 +138,12 @@
                 
         </div>
         @if($comment->user_id == Auth::user()->id || Auth::user()->isAdmin || (Auth::user()->moderator && Auth::user()->jeugdhuis == $comment->user->jeugdhuis))
-        <div class="card-action" style="padding:0px 24px">
+        <div class="card-action card-action-comment">
             <p><small> <b>Geplaatst door:</b> {{$comment->user->name}} van {{$comment->user->jeugdhuis->name}}</small></p>
-            <div style="display:inline-block; margin:3px; float:left; border:1px solid #cecece; border-radius:3px; padding:2px; color: #adadad">
-            {{$comment->created_at->diffForHumans()}} <i class="material-icons tiny" style="transform:translateY(17%)">schedule</i> 
+            <div class="info-post">
+            {{$comment->created_at->diffForHumans()}} <i class="material-icons tiny info-time">schedule</i> 
             </div>
-            <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/edit" class="btn-floating waves-effect waves-light  blue lighten-3 right" style="margin-top:-5px; margin-bottom:5px">
+            <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/edit" class="btn-floating waves-effect waves-light  blue lighten-3 right edit-comment" >
                 <i class="material-icons right tiny">edit</i>
             </a>
          
@@ -166,9 +166,9 @@
 
     
 
-    <ul class="collapsible hoverable " data-collapsible="accordion" style="margin-bottom:60px">
+    <ul class="collapsible hoverable collapse-margin" data-collapsible="accordion">
         <li>
-            <div class="collapsible-header btn" style="height:50px; border-radius:5px;">
+            <div class="collapsible-header btn collapse-header-height ">
                 <i class="material-icons"></i>Reactie plaatsen
             </div>
             <div class="collapsible-body">

@@ -1,7 +1,7 @@
 @extends('layouts.landing')
 
 @section('content')
-<div class="container" style="margin-top:50px">
+<div class="container container-margin">
 
     <form role="search" class="app-search" action="/posts/search" method="POST">
         {{ csrf_field() }}

@@ -2,7 +2,7 @@
 
 
 @section('content')
-<div class="container">
+<div class="container container-margin">
     <div class="row bg-title">
         <div class="col-xs-12">
             <blockquote>Reactie aanpassen</blockquote> 

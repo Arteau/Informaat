@@ -1,7 +1,7 @@
 @extends('layouts.landing')
 
 @section('content')
-<div class="container" style="margin-top:50px">
+<div class="container container-margin">
 <h5>Jeugdhuis toevoegen</h5>
 <form action="/jeugdhuizen" method="POST">
             {{ csrf_field() }}

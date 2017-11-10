@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container" style="margin-top:50px">
+<div class="container container-margin">
   <div class="row">
   <blockquote>Overzicht jeugdhuizen</blockquote>
   <a href="/jeugdhuizen/create"><span class="btn-block btn btn-primary hoverable"> Jeugdhuis Toevoegen</span></a>
