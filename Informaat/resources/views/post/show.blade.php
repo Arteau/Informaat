@@ -133,18 +133,19 @@
             <h4 class="card-title flow-text"><b>{{$comment->title}}</b></h4>
                 <i>{{$comment->body}}</i>
         </div>
-        @if($comment->user_id == Auth::user()->id || Auth::user()->isAdmin || (Auth::user()->moderator && Auth::user()->jeugdhuis == $comment->user->jeugdhuis))
         <div class="card-action card-action-comment">
             <p><small> <b>Geplaatst door:</b> {{$comment->user->name}} van {{$comment->user->jeugdhuis->name}}</small></p>
             <div class="info-post">
             {{$comment->created_at->diffForHumans()}} <i class="material-icons tiny info-time">schedule</i> 
             </div>
+        @if($comment->user_id == Auth::user()->id || Auth::user()->isAdmin || (Auth::user()->moderator && Auth::user()->jeugdhuis == $comment->user->jeugdhuis))
+            
             <a href="/posts/{{$post->id}}/comment/{{$comment->id}}/edit" class="btn-floating waves-effect waves-light  blue lighten-3 right edit-comment" >
                 <i class="material-icons right tiny">edit</i>
             </a>
-         
+            @endif
         </div>
-        @endif
+       
       </div>
     </div>
     @endforeach
