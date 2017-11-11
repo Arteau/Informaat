@@ -233,6 +233,9 @@ bottom: 10px;
     position: absolute;
     top:60px;
 }
+.mobile-shadow{
+    padding-left:23px;
+}
 .favorite {
     top: 0;
     position: absolute;

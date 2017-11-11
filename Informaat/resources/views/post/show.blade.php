@@ -4,8 +4,9 @@
 <div class="container container-margin">
 
 <!-- begin new layout -->
-
-    <div class="row z-depth-2 show-wrapper" >
+<div class="z-depth-2 mobile-shadow">
+    <div class="row  show-wrapper" >
+        
         
         <div class="col m2 s10 icon-column">
         <div class="valign-wrapper icon-wrapper" >
@@ -97,7 +98,7 @@
             
             
         </div>
-
+    </div>
     </div>
 <hr>
 <br>
